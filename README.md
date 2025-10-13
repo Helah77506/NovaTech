@@ -1,5 +1,6 @@
 
-<img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/ba734315-664f-40a1-8bf2-f82bbe500d5a" />
+<img width="250" height="250" alt="500441237-ba734315-664f-40a1-8bf2-f82bbe500d5a" src="https://github.com/user-attachments/assets/2eadcdf5-8eed-458b-9270-4d414dced15d" />
+
 
 # NovaTech
 We provide Electronics to educational institutions
