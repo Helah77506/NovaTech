@@ -1,5 +1,6 @@
 
-<img width="250" height="250" alt="500441237-ba734315-664f-40a1-8bf2-f82bbe500d5a" src="https://github.com/user-attachments/assets/2eadcdf5-8eed-458b-9270-4d414dced15d" />
+
+<img width="300" height="300" alt="Logo" src="https://github.com/user-attachments/assets/1a65495e-75a9-4069-8b40-7b23e0eda32f" />
 
 
 # NovaTech
