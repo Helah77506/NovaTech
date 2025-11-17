@@ -13,3 +13,12 @@ Design Trello: https://trello.com/invite/b/6911c73a53e1511beda0c89e/ATTI97b04e5f
 Members Contribution: https://trello.com/invite/b/6911c7c2c6265beb5cf08fb1/ATTI09f9eb9ad269f544b2014b4dccd4d9841F5BAFFE/members-contribution 
 
 Yusuf-Saddique - 230204755
+
+
+
+
+
+
+
+
+Adam Khan-240121356
