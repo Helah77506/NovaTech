@@ -4,11 +4,12 @@
 function listen_Sumbission(){
     const form = document.querySelector("form")
 
-    form.addEventListener("submit",function(e){
-        validateInputs(); 
-        e.preventDefault();    
+     form.addEventListener("submit", function(e){
+        const ok = validateInputs();   
+        if (!ok) e.preventDefault();  
     })
 }
+
 
 //function to validate inputs
 function validateInputs(){ 

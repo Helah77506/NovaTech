@@ -5,11 +5,10 @@ function listen_Sumbission(){
     const form = document.querySelector("form")
 
     form.addEventListener("submit",function(e){
-        validateInputs(); 
-        e.preventDefault();    
+        const ok = validateInputs();   
+        if (!ok) e.preventDefault();   
     })
-
-}
+}    
 
 //validate inputs function 
 function validateInputs(){ 
