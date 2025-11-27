@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaTech – Modern</title>
+
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -11,45 +12,39 @@
 
 <body>
 
-<!-- Head 1 -->
+<!-- Header -->
 <header class="header">
-    <img src="images/logo.png" alt="logo" height="80" width="350"/>
+    <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
 
     <nav class="nav">
-        <a href="#" style="color: rgb(48 84 138);">Home Page</a>
-        <a href="#" style="color: rgb(48 84 138);">Contact</a>
-        <a href="#" style="color: rgb(48 84 138);">About Us</a>
-        &nbsp;
-        <img src="images/user.svg" alt="User" height="26" width="26"/>
-        <a class="Log in" href="#">Login</a>
-        &nbsp;
-        <img src="images/cart.svg" alt="Cart" height="26" width="26"/>
+        <a href="#">Home Page</a>
+        <a href="#">Contact</a>
+        <a href="#">About Us</a>
+        <a href="#"> Products</a>
+
+        <div class="nav-icons">
+            <img src="Assets/Home/user.svg" alt="User" />
+            <a href="#" class="login">Login</a>
+
+            <img src="Assets/Home/cart.svg" alt="Cart" />
+        </div>
     </nav>
 </header>
 
-<!-- Head 2 -->
-<header2 class="header2">
+<!-- Category Bar -->
+<div class="header2">
     <nav class="nav2">
-        <a href="#" style="color: rgb(255, 255, 255);text-decoration:none">Shop All</a>
-        <a href="#" style="color: rgb(255, 255, 255);text-decoration:none">Computers</a>
-        <a href="#" style="color: rgb(255, 255, 255);text-decoration:none">Projectors</a>
-        <a href="#" style="color: rgb(255, 255, 255);text-decoration:none">Smart Boards</a>
-        <a href="#" style="color: rgb(255, 255, 255);text-decoration:none">Classroom Audio</a>
+        <a href="#">Shop All</a>
+        <a href="#">Computers</a>
+        <a href="#">Projectors</a>
+        <a href="#">Smart Boards</a>
+        <a href="#">Classroom Audio</a>
     </nav>
-</header2>
-
-<!-- Mobile Navigation -->
-<div class="mobile-nav" id="mobileNav">
-    <a href="#">Home</a>
-    <a href="#">Products</a>
-    <a href="#">Contact</a>
-    <a href="#">About Us</a>
-    <a href="#">Login</a>
 </div>
 
-<!-- Hero-->
+<!-- Hero Section -->
 <section class="hero">
-    <img src="images\Hero.png" alt="">
+    <img src="Assets/Home/Hero.png" alt="Hero">
     <div class="hero-text">
         <h1>Providing for the Future starts with us</h1>
         <p>Get bulk deals</p>
@@ -57,113 +52,89 @@
     </div>
 </section>
 
-
-<!-- Slider/Ads-->
+<!-- Slider Section -->
 <div class="slider-container">
     <div id="slider" class="slider"></div>
 </div>
 
 <div id="ads-template" style="display:none;">
-
     <div class="ad">
-        <img src="images/Ad1.png">
-        <div class="text">Up to 30% Off!</div>
+        <img src="/Assets/Home/class room auid.webp">
+        <div class="text">Class room Audio </div>
         <a href="#" class="btn">Shop</a>
     </div>
 
     <div class="ad">
         <img src="images/Ad2.png">
-        <div class="text">Always up to date</div>
+        <div class="text">Always up to date with latest technology</div>
         <a href="#" class="btn">Shop</a>
     </div>
 
     <div class="ad">
         <img src="images/Ad3.png">
-        <div class="text">Chromebooks with AI Helpers</div>
+        <div class="text">Chromebooks with AI </div>
         <a href="#" class="btn">Shop</a>
     </div>
 
     <div class="ad">
-        <img src="images/Ad4.png">
-        <div class="text">Accessories and Gadgets</div>
+        <img src="/Assets/Home/talets.png">
+        <div class="text">Tablets made for students</div>
         <a href="#" class="btn">Shop</a>
     </div>
-
 </div>
 
-<!-- Icon -->
+<!-- Icon Bar -->
 <section class="icon-bar">
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    <img src="images/check.svg" alt="Check" height="30" width="80"/>
-    <div class="icon-item"> Curb-side pickup</div>
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    <img src="images/sale.svg" alt="Sale" height="30" width="80"/>
-    <div class="icon-item"> Low prices guaranteed</div>
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    <img src="images/Info.svg" alt="Info" height="30" width="80"/>
-    <div class="icon-item"> Free shipping over $50</div>
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    <img src="images/calender.svg" alt="Calender" height=30 width="80"/>
-    <div class="icon-item"> 24/7 Availability</div>
+
+    <div class="icon">
+        <img src="images/sale.svg">
+        <span>Low prices guaranteed</span>
+    </div>
+
+    <div class="icon">
+        <img src="images/Info.svg">
+        <span>Free shipping over £50</span>
+    </div>
+
+    <div class="icon">
+        <img src="images/calender.svg">
+        <span>24/7 Availability</span>
+    </div>
 </section>
 
 <!-- Contact -->
 <section class="contact-section">
     <div class="contact-left">
-        <h1>Have any questions? </h2>
+        <h1>Have any questions?</h1>
         <h2>Contact us or use our friendly chatbot.</h2>
-        <p>Always one step ahead, instant responses and the fastest help possible</p>
         <button>Contact Us</button>
     </div>
+
     <div class="contact-right">
-        <img src="images\img_botright.png">
+        <img src="images/img_botright.png" alt="">
     </div>
 </section>
 
-<!-- Footer-->
+<!-- Footer -->
 <footer class="footer">
     <div class="col">
         <h4>Store Location</h4>
-        <p>67 Invention Street<br>London, EC1 Tech City</p>
-        <p>info@Novatech.com<br>0800-1234-(0)</p>
+        <p>Aston University<br>Birmingham</p>
+        <p>NovaTech@gmail.com<br>07378867181</p>
     </div>
 
     <div class="col">
         <h4>Shop</h4>
         <a href="#">Shop All</a>
         <a href="#">Computers</a>
+        <a href="#">Projectors</a>
+        <a href="#">Smart Boards</a>
+        <a href="#">Classroom Audio</a>
+        <a href="#">Wireless Presentation Clickers</a>
+        <a href="#">Chromebooks</a>
         <a href="#">Tablets</a>
-        <a href="#">Smartphones</a>
-        <a href="#">Drones & Cameras</a>
-        <a href="#">Audio</a>
-        <a href="#">Mobile</a>
-        <a href="#">T.V & Home Cinema</a>
-        <a href="#">Wearable Tech</a>
-        <a href="#">Sale</a>
+        <a href="#">Printers and Scanners</a>
+
     </div>
 
     <div class="col">
@@ -171,73 +142,60 @@
         <a href="#">Contact Us</a>
         <a href="#">Help Center</a>
         <a href="#">About Us</a>
-        <a href="#">Careers</a>
-    </div>
-
-    <div class="col">
-        <h4>Policy</h4>
-        <a href="#">Shipping & Returns</a>
-        <a href="#">Terms & Conditions</a>
-        <a href="#">Payment Methods</a>
-        <a href="#">FAQ</a>
     </div>
 </footer>
 
-<!-- Payment -->
+<!-- Payments -->
 <section class="payment-options">
     <h4>We accept the following paying methods:</h4>
     <div class="payment-icons">
-        <img src="images/visa.svg" alt="Visa">
-        <img src="images/mastercard.svg" alt="MasterCard">
-        <img src="images/paypal.svg" alt="PayPal">
-        <img src="images/amex.svg" alt="American Express">
-        <img src="images/jcb.svg" alt="JCB">
-        <img src="images/unionpay.svg" alt="Union Pay">
-        <img src="images/googlepay.svg" alt="Google Pay">
-        <img src="images/applepay.svg" alt="Apple Pay">
+        <img src="images/visa.svg">
+        <img src="images/mastercard.svg">
+        <img src="images/paypal.svg">
+        <img src="images/amex.svg">
+        <img src="images/jcb.svg">
+        <img src="images/unionpay.svg">
+        <img src="images/googlepay.svg">
+        <img src="images/applepay.svg">
     </div>
 </section>
 
-<!-- Script -->
 <script>
 const slider = document.getElementById("slider");
-
 let ads = Array.from(document.querySelectorAll("#ads-template .ad"));
-
 const STEP = 47.5;
 const INTERVAL = 5000;
 const PAUSE = 1000;
 
-function renderSlides(extra = false) {
+function renderSlides(extra=false){
     slider.innerHTML = "";
     const count = extra ? 4 : 3;
 
-    for (let i = 0; i < count; i++) {
+    for (let i=0;i<count;i++){
         const ad = ads[i % ads.length].cloneNode(true);
         ad.classList.add("slide");
         slider.appendChild(ad);
     }
 }
 
-function animate() {
+function animate(){
     renderSlides(true);
 
-    requestAnimationFrame(() => {
-        slider.style.transition = "transform 0.6s ease";
-        slider.style.transform = `translateX(-${STEP}%)`;
+    requestAnimationFrame(()=>{
+        slider.style.transition="transform 0.6s ease";
+        slider.style.transform=`translateX(-${STEP}%)`;
     });
 
-    setTimeout(() => {
-        slider.style.transition = "none";
-        slider.style.transform = "translateX(0)";
-        
+    setTimeout(()=>{
+        slider.style.transition="none";
+        slider.style.transform="translateX(0)";
         ads.push(ads.shift());
         renderSlides();
-    }, 600 + PAUSE);
+    },600 + PAUSE);
 }
 
 renderSlides();
-setInterval(animate, INTERVAL);
+setInterval(animate,INTERVAL);
 </script>
 
 </body>
