@@ -1,35 +1,43 @@
-//this file is for the javascript logic which will take place in the login page
+//javascript logic for registration page
 
-//this function will listen for submission on the login page 
+//listens for the submission 
 function listen_Sumbission(){
     const form = document.querySelector("form")
 
-     form.addEventListener("submit", function(e){
+    form.addEventListener("submit",function(e){
         const ok = validateInputs();   
-        if (!ok) e.preventDefault();  
+        if (!ok) e.preventDefault();   
     })
-}
+}    
 
-
-//function to validate inputs
+//validate inputs function 
 function validateInputs(){ 
     const username = document.getElementById("username")
     const password = document.getElementById("password")
+    const email = document.getElementById("email")
     const label = document.getElementById("infolabel")
+    //these values should be used 
     const pw = password.value.trim()
+    const em = email.value.trim()
     //ensure there are no empty fields
-    if(username.value.trim()  ==""||pw == ""){
+    if(username.value.trim()  ==""||pw == ""||em==""){
         //console.log("validate input test run ")
         label.hidden = false
         label.textContent = "Please ensure all fields are filled out"
         return false
     } 
-    //ensure password is more then 8 characters 
+    //ensure password is more then 8 characters and contains 1 upercase and lowercase and a number
     else if(pw.length<8||!/[a-z]/.test(pw)||!/[A-Z]/.test(pw)||!/[0-9]/.test(pw)){
         label.hidden = false
         label.textContent = "Please ensure the password meets the requirements\n-8 or more characters"+
         " \n-at least one uppercase character \n-at least one lowercase character\n-at least one number "
         return false
+
+    }
+    //ensure email is in a correct format 
+    else if(!/[@]/.test(em)){
+        label.hidden = false
+        label.textContent = "Please enter a valid email" 
 
     }
     else{
@@ -40,22 +48,11 @@ function validateInputs(){
 
 //function to handle backend responses 
 function handleBackend(){
-    //if login is sucessful extract and store token and redirect user
+    //if registration is sucessful extract and store token and redirect user
     
     //if fails display sutible error message
 
 }
 
-//Ui Improvement
-//function to toggle password visibility 
-//not vital
-function showPassword(){
-
-}
-
-//function to show loading button when its processing 
-function showLoading(){
-
-}
-
+//listens for sumbission 
 document.addEventListener("DOMContentLoaded", listen_Sumbission);

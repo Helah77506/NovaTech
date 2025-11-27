@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+/* Top header */
+.top-header {
+    background: #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+}
+
+/* Logo section */
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+    width: 100px;
+}
+
+
+.logo-text h2 {
+    margin: 0;
+}
+
+.logo-text p {
+    margin: 0;
+    font-size: 12px;
+    color: #555;
+}
+
+/* Navigation */
+.main-nav a {
+    margin-left: 25px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+}
+
+.main-nav a.active {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* Blue category bar */
+.category-bar {
+    background: #0066cc;
+    color: white;
+    padding: 10px 40px;
+    display: flex;
+    gap: 25px;
+}
+
+.category-bar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.category-bar a:hover {
+    text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+    background: url('image1.png') center/cover no-repeat;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: black;
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    margin: 0;
+}
+
+.hero-text p {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+/* About content */
+.about-content {
+    padding: 50px 15%;
+}
+
+.about-content h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.about-content p {
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.about-content ul li {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
