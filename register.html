@@ -4,54 +4,21 @@
 
     <head>
         <title>Registartion System </title>
-         <style>
-      /* Describes the background of page and centers text to the middle of the page */
-      body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; 
-        }
-
-        .container {  
-            background: white;
-            padding: 25px 35px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            width: 320px;
-        }
-
-        input[type="text"],
-        input[type="password"],
-        input[type="email"] {
-            width: 90%;
-            padding: 8px;
-            margin: 6px 0;
-        }
-
-        input[type="submit"],
-        input[type="reset"] {
-            margin: 10px 5px;
-            padding: 8px 20px;
-        }
-      
-    </style>
+        <script src="register.js"></script>
         </head>
 <body>
   <div class = "container"></div>
   <h2>Register to become a customer</h2>
   <form method = "post" action="register.html">
-	Username: <input type="text" name="username" placeholder="username" required/><br>
-	Password: <input type="password" name="password" placeholder="password" required/><br>
-    Email:    <input type="email" name="email" placeholder="email" required/> <br><br>
+	Username: <input type="text" name="username" id="username" /><br>
+	Password: <input type="password" name="password" id="password"/><br>
+    Email:    <input type="email" name="email" id="email" /> <br><br>
 
 	<input type="submit" value="Register" /> 
 	<input type="reset" value="clear"/>
 	<input type="hidden" name="submitted" value="true"/>
+  <!-- label for telling the user if they got inputs wrong -->
+  <label id="infolabel" hidden>.</label> 
   </form>  
   <p> Already a customer? <a href="login.html">Log in</a>  </p>
 </div>

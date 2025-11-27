@@ -39,21 +39,25 @@
 
   }
 ?>
+
 <html>
 <head>
 	<title>Login</title>
+
 </head>
 
 	<h2>Login</h2>
+	<script src="login.js"></script>
+
 
 <body>
 <!-- a HTML form that allows the user to enter their username and password for log in.-->
-<form action="login.php" method="post">
+<form action="Login.html" method="post">
 
 	<label>User Name</label>
-	<input type="text" name="username" size="15" maxlength="25" />
+	<input type="text" name="username" id="username" size="15" maxlength="25" />
     <label>Password:</label>
-	<input type="password" name="password" size="15" maxlength="25" />
+	<input type="password" name="password" id = "password" size="15" maxlength="25" />
 
 	<input type="submit" value="Login" />
 	<input type="reset" value="clear"/>
