@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - School Inventory</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <img src="logo.png" alt="School Logo">
+        <br><br>
+
+        <u><a href="index.html">Home Page</a></u>
+        <u><a href="contact.html">Contact</a></u>
+        <u><a href="about.html">About Us</a></u>
+        <u><a href="login.html">Login</a></u>
+        <u><a href="cart.html">Cart</a></u>
+    </header>
+
+    <!-- SEARCH BAR -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search products...">
+    </div>
+
+    <!-- CATEGORY BUTTONS -->
+    <div class="category-buttons">
+        <button onclick="filterCategory('all')" class="cat-btn">All</button>
+        <button onclick="filterCategory('classroom')" class="cat-btn">Classroom Technology</button>
+        <button onclick="filterCategory('computing')" class="cat-btn">Computing Equipment</button>
+        <button onclick="filterCategory('networking')" class="cat-btn">Networking & Connectivity</button>
+        <button onclick="filterCategory('audiovisual')" class="cat-btn">Audio-Visual & Presentation</button>
+        <button onclick="filterCategory('office')" class="cat-btn">Office & Administrative</button>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <div id="productsContainer" class="product-grid"></div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2024 School Inventory. All rights reserved.</p>
+        <p>
+            <a href="">Privacy Policy</a> | 
+            <a href="">Terms and Conditions</a>
+        </p>
+    </footer>
+
+    <!-- PRODUCT DETAILS MODAL -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+
+            <img id="modalImage" src="" alt="">
+
+            <div class="modal-info">
+                <h2 id="modalName"></h2>
+                <p class="price" id="modalPrice"></p>
+                <p id="modalDesc"></p>
+
+                <label>Quantity:</label><br>
+                <input type="number" id="modalQty" min="1" value="1">
+
+                <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script>
+        // ---------- PRODUCT DATA ----------
+        // Single authoritative list of 25 products
+        const products = [
+            // Classroom Technology
+            { id: 1, name: "Epson EB-X49 Classroom Projector", price: 599,
+              description: "Bright 3,600-lumen projector designed for classrooms.",
+              category: "classroom", image: "images/epson-projector.jpg" },
+
+            { id: 2, name: "Promethean ActivPanel 65\"", price: 2499,
+              description: "65-inch interactive classroom display.",
+              category: "classroom", image: "images/activpanel-65.jpg" },
+
+            { id: 3, name: "IPEVO V4K Document Camera", price: 119,
+              description: "Ultra-HD document camera for lessons.",
+              category: "classroom", image: "images/ipevo-v4k.jpg" },
+
+            { id: 4, name: "Logitech R400 Wireless Presenter", price: 39,
+              description: "Wireless clicker with 15m range.",
+              category: "classroom", image: "images/logitech-r400.jpg" },
+
+            { id: 5, name: "FrontRow Juno Audio System", price: 799,
+              description: "Classroom speaker + teacher mic system.",
+              category: "classroom", image: "images/frontrow-juno.jpg" },
+
+            // Computing Equipment
+            { id: 6, name: "Dell OptiPlex 7010 Desktop", price: 799,
+              description: "Fast i5 desktop for school use.",
+              category: "computing", image: "images/optiplex-7010.jpg" },
+
+            { id: 7, name: "Lenovo ThinkPad E15", price: 899,
+              description: "Durable teacher laptop.",
+              category: "computing", image: "images/thinkpad-e15.jpg" },
+
+            { id: 8, name: "Acer Chromebook Spin 311", price: 249,
+              description: "Student touchscreen Chromebook.",
+              category: "computing", image: "images/chromebook-spin311.jpg" },
+
+            { id: 9, name: "Apple iPad 9th Gen", price: 329,
+              description: "Portable tablet for education.",
+              category: "computing", image: "images/ipad-9.jpg" },
+
+            { id: 10, name: "Synology DS220+ NAS Server", price: 319,
+              description: "2-bay storage server for backups.",
+              category: "computing", image: "images/synology-ds220.jpg" },
+
+            // Networking & Connectivity
+            { id: 11, name: "Ubiquiti UniFi U6-Lite", price: 99,
+              description: "Wi-Fi 6 school access point.",
+              category: "networking", image: "images/unifi-u6lite.jpg" },
+
+            { id: 12, name: "TP-Link 24-Port PoE Switch", price: 249,
+              description: "Managed PoE switch for APs and cameras.",
+              category: "networking", image: "images/tplink-24port.jpg" },
+
+            { id: 13, name: "Logitech C920 HD Webcam", price: 59,
+              description: "HD webcam for meetings and streaming.",
+              category: "networking", image: "images/logitech-c920.jpg" },
+
+            { id: 14, name: "Poly Studio Video Bar", price: 799,
+              description: "All-in-one conferencing bar.",
+              category: "networking", image: "images/poly-studio.jpg" },
+
+            { id: 15, name: "Netgear Nighthawk AX5400", price: 179,
+              description: "Wi-Fi 6 router for offices.",
+              category: "networking", image: "images/nighthawk-ax5400.jpg" },
+
+            // Audio-Visual & Presentation
+            { id: 16, name: "JBL EON712 Speaker", price: 499,
+              description: "Portable PA speaker.",
+              category: "audiovisual", image: "images/jbl-eon712.jpg" },
+
+            { id: 17, name: "Shure BLX14 Lavalier Mic", price: 299,
+              description: "Wireless lapel mic system.",
+              category: "audiovisual", image: "images/shure-blx14.jpg" },
+
+            { id: 18, name: "Elite Screens 100\" Electric Screen", price: 269,
+              description: "Motorized projector screen.",
+              category: "audiovisual", image: "images/elite-100in.jpg" },
+
+            { id: 19, name: "Samsung 75\" LED Display", price: 1399,
+              description: "Large commercial-grade display.",
+              category: "audiovisual", image: "images/samsung-75.jpg" },
+
+            { id: 20, name: "AVer CAM520 Pro2 Camera", price: 799,
+              description: "PTZ camera for classrooms.",
+              category: "audiovisual", image: "images/aver-cam520.jpg" },
+
+            // Office & Administrative
+            { id: 21, name: "HP LaserJet Pro M428fdw", price: 459,
+              description: "Multifunction school printer.",
+              category: "office", image: "images/hp-m428.jpg" },
+
+            { id: 22, name: "Fellowes 99Ci Shredder", price: 229,
+              description: "Heavy-duty office shredder.",
+              category: "office", image: "images/fellowes-99ci.jpg" },
+
+            { id: 23, name: "Zebra ZD220 Label Printer", price: 159,
+              description: "Compact barcode label printer.",
+              category: "office", image: "images/zebra-zd220.jpg" },
+
+            { id: 24, name: "AccuTouch RFID Terminal", price: 199,
+              description: "RFID attendance system.",
+              category: "office", image: "images/rfid-terminal.jpg" },
+
+            { id: 25, name: "GBC Fusion 3000L Laminator", price: 89,
+              description: "Fast laminator for schools.",
+              category: "office", image: "images/gbc-3000l.jpg" },
+        ];
+
+
+
+        // Save to localStorage so detail page can read the same list
+        localStorage.setItem("productsData", JSON.stringify(products));
+
+        // ---------- DISPLAY ----------
+        const container = document.getElementById("productsContainer");
+        let activeCategory = "all";
+
+        function displayProducts(list) {
+            container.innerHTML = "";
+
+            if (list.length === 0) {
+                container.innerHTML = "<p>No products found.</p>";
+                return;
+            }
+
+            list.forEach(p => {
+                container.innerHTML += `
+                    <div class="product-card">
+                        <img src="${p.image}" alt="${p.name}">
+                        <h3>${p.name}</h3>
+                        <p class="price">₦${p.price.toLocaleString()}</p>
+                        <a class="details-btn" href="product_detail.html?id=${p.id}">
+                            View Details
+                        </a>
+                    </div>
+                `;
+            });
+        }
+
+        // Initial show
+        displayProducts(products);
+
+        // ---------- FILTER BY CATEGORY ----------
+        function filterCategory(cat) {
+            activeCategory = cat;
+            applyFilters();
+        }
+
+        // ---------- SEARCH + CATEGORY ----------
+        function applyFilters() {
+            const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+            let filtered = products.filter(p => p.name.toLowerCase().includes(searchTerm));
+            if (activeCategory !== "all") {
+                filtered = filtered.filter(p => p.category === activeCategory);
+            }
+            displayProducts(filtered);
+        }
+
+        // Search event
+        document.getElementById("searchInput").addEventListener("input", applyFilters);
+
+        // ===================== MODAL LOGIC =========================
+
+// Get modal element
+const modal = document.getElementById("productModal");
+
+// Elements inside modal
+const modalImage = document.getElementById("modalImage");
+const modalName = document.getElementById("modalName");
+const modalPrice = document.getElementById("modalPrice");
+const modalDesc = document.getElementById("modalDesc");
+const modalQty = document.getElementById("modalQty");
+
+// ---------- OPEN MODAL ----------
+function openModal(id) {
+    const product = products.find(p => p.id === id);
+
+    if (!product) return;
+
+    modalImage.src = product.image;
+    modalName.textContent = product.name;
+    modalPrice.textContent = "₦" + product.price.toLocaleString();
+    modalDesc.textContent = product.description;
+    modalQty.value = 1;
+
+    modal.style.display = "block";
+    document.body.style.overflow = "hidden";
+    
+    // Save selected product ID temporarily
+    modal.dataset.productId = id;
+}
+
+// ---------- CLOSE MODAL ----------
+function closeModal() {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto";
+}
+
+// Click outside closes modal
+window.onclick = function(event) {
+    if (event.target === modal) {
+        closeModal();
+    }
+};
+
+// =============== ADD TO CART =================
+
+function addToCart() {
+    const id = parseInt(modal.dataset.productId);
+    const qty = parseInt(modalQty.value);
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const product = products.find(p => p.id === id);
+
+    // Check if already in cart
+    const existing = cart.find(item => item.id === id);
+
+    if (existing) {
+        existing.quantity += qty;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            quantity: qty
+        });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Added to cart!");
+    closeModal();
+}
+        
+    </script>
+
+</body>
+</html>
