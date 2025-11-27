@@ -7,7 +7,7 @@
 	    }
 		// connect DB
 		session_start();
-		require_once ("config.php");
+		require_once ("Config.php");
 		try {
 			$stat = $db->prepare('SELECT uid, password FROM user WHERE username = ?');
 			$stat->execute(array($_POST['username']));
