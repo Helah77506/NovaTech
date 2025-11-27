@@ -38,11 +38,6 @@ function validateInputs(){
     }   
 }
 
-//function which creates a login request and submits it to the backend 
-function submitLogin(){
-
-}
-
 //function to handle backend responses 
 function handleBackend(){
     //if login is sucessful extract and store token and redirect user

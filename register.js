@@ -46,11 +46,6 @@ function validateInputs(){
     }   
 }
 
-//submit to backend 
-function sumbitreg(){
-
-}
-
 //function to handle backend responses 
 function handleBackend(){
     //if registration is sucessful extract and store token and redirect user
