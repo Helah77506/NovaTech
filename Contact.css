@@ -5,7 +5,6 @@ body {
     background: #f3f5fa;
 }
 
-/* Top header with logo + navigation */
 .top-header {
     display: flex;
     justify-content: space-between;
@@ -15,13 +14,11 @@ body {
     color: #fff;
 }
 
-/* Placeholder for your logo */
 .logo-placeholder {
     font-size: 28px;
     font-weight: bold;
 }
 
-/* Navigation buttons */
 .nav-buttons .nav-btn {
     text-decoration: none;
     color: white;
@@ -36,13 +33,11 @@ body {
     background: #0f2f8c;
 }
 
-/* Page header */
 .page-header {
     text-align: center;
     padding: 40px 20px;
 }
 
-/* Contact layout */
 .contact-container {
     display: flex;
     gap: 30px;
@@ -51,7 +46,6 @@ body {
     padding: 20px;
 }
 
-/* Contact info box */
 .contact-info {
     flex: 1;
     background: white;
@@ -60,7 +54,6 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Contact form box */
 .contact-form {
     flex: 2;
     background: white;
@@ -83,7 +76,6 @@ input, textarea {
     border-radius: 6px;
 }
 
-/* Send button */
 .send-btn {
     margin-top: 20px;
     padding: 12px;
@@ -100,7 +92,6 @@ input, textarea {
     background: #0f297e;
 }
 
-/* Responsive */
 @media (max-width: 900px) {
     .contact-container {
         flex-direction: column;
