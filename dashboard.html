@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | NovaTech</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="dashboard.js"></script>
+
+</head>
+
+<body>
+
+<header class="header">
+    <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
+    <nav class="nav">
+        <a href="Home.html">Home</a>
+        <a href="product.html">Products</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <div class="nav-icons">
+            <img src="Assets/Home/user.svg" alt="User" />
+            <a href="login.html">Login</a>
+        </div>
+    </nav>
+</header>
+
+<div class="header2">
+    <nav class="nav2">
+        <a href="#">Shop All</a>
+        <a href="#">Computers</a>
+        <a href="#">Projectors</a>
+        <a href="#">Smart Boards</a>
+        <a href="#">Classroom Audio</a>
+    </nav>
+</div>
+
+<section class="hero">
+    <img src="Assets/Home/Hero.png" alt="Dashboard Banner">
+    <div class="hero-text">
+        <h1>Your Dashboard</h1>
+        <p>Quick access to your content and saved items.</p>
+    </div>
+</section>
+
+<main>
+    <section class="icon-bar">
+        <div class="icon">
+            <img src="Assets/Home/info.svg">
+            <a href="product.html">Browse Products</a>
+        </div>
+        <div class="icon">
+            <img src="Assets/Home/sale.svg">
+            <a href="#saved">Saved Items</a>
+        </div>
+        <div class="icon">
+            <img src="Assets/Home/calender.svg">
+            <span>Order History (coming soon)</span>
+        </div>
+    </section>
+
+    <section id="saved" class="saved-section">
+        <h2>Saved Items</h2>
+        <div id="savedContainer" class="product-grid"></div>
+        <p id="noSavedMessage" class="empty-msg">You have no saved items yet.</p>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="col">
+        <h4>Store Location</h4>
+        <p>Aston University<br>Birmingham</p>
+        <p>NovaTech@gmail.com<br></p>
+    </div>
+    <div class="col">
+        <h4>Shop</h4>
+        <a href="#">Shop All</a>
+        <a href="#">Computers</a>
+        <a href="#">Projectors</a>
+        <a href="#">Smart Boards</a>
+    </div>
+    <div class="col">
+        <h4>Support</h4>
+        <a href="#">Contact Us</a>
+        <a href="#">Help Center</a>
+        <a href="#">About Us</a>
+    </div>
+</footer>
+
+<script>
+function loadSaved() {
+    const saved = JSON.parse(localStorage.getItem("savedItems") || "[]");
+    const container = document.getElementById("savedContainer");
+    const noMsg = document.getElementById("noSavedMessage");
+
+    container.innerHTML = "";
+    if (!saved.length) {
+        noMsg.style.display = "block";
+        return;
+    }
+
+    noMsg.style.display = "none";
+
+    saved.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+            <img src="${item.image}" alt="${item.name}">
+            <h3>${item.name}</h3>
+            <div class="price">£${item.price.toLocaleString()}</div>
+            <button class="details-btn" onclick="window.location.href='product.html'">View Product</button>
+        `;
+        container.appendChild(card);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", loadSaved);
+</script>
+
+</body>
+</html>
