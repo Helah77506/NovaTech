@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Products - School Inventory</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- header -->
+  <header class="header">
+    <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
+    <div class="links">
+      <a href="Home.html">Home</a>
+      <a href="ContactUs.html">Contact</a>
+      <a href="about.html">About</a>
+      <a href="login.html">Login</a>
+      <a href="cart.html" class="cart-link">Cart <span id="cartCount">0</span></a>
+    </div>
+  </header>
+
+  <!-- search -->
+  <div class="search-container">
+    <input id="searchInput" type="search" placeholder="Search products..." />
+  </div>
+
+  <!-- categories -->
+  <div class="category-buttons">
+    <button class="cat-btn" onclick="filterCategory('all')">All</button>
+    <button class="cat-btn" onclick="filterCategory('classroom')">Classroom Technology</button>
+    <button class="cat-btn" onclick="filterCategory('computing')">Computing Equipment</button>
+    <button class="cat-btn" onclick="filterCategory('networking')">Networking & Connectivity</button>
+    <button class="cat-btn" onclick="filterCategory('audiovisual')">Audio-Visual & Presentation</button>
+    <button class="cat-btn" onclick="filterCategory('office')">Office & Administrative</button>
+  </div>
+
+  <!-- products -->
+  <main>
+    <div id="productsContainer" class="product-grid"></div>
+  </main>
+
+  <!-- footer -->
+  <footer>
+    <p>© 2024 School Inventory. All rights reserved.</p>
+  </footer>
+
+  <!-- product modal -->
+  <div id="productModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalName">
+      <button class="close-btn" aria-label="Close" onclick="closeModal()">×</button>
+
+      <div class="modal-preview">
+        <img id="modalImage" src="" alt="Product image" />
+      </div>
+
+      <div class="modal-info">
+        <h2 id="modalName"></h2>
+        <div class="price" id="modalPrice"></div>
+        <p id="modalDesc"></p>
+
+        <label for="modalQty">Quantity</label>
+        <input id="modalQty" type="number" min="1" value="1" />
+
+        <button class="add-cart-btn" onclick="addToCart()">Add to cart</button>
+      </div>
+    </div>
+  </div>
+
+  
+  <script src="product.js"></script>
+</body>
+</html>

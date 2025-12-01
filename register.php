@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'config.php';     // connect to database
+require 'Config.php';     // connect to database
 
 $errors  = [];
 $success = '';
