@@ -1,0 +1,238 @@
+/* Back to Home as Image with Text */
+#back-home-link {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-decoration: none;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.back-home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.home-icon {
+  width: 50px; /* Adjust size as needed */
+  height: 50px; /* Adjust size as needed */
+  border-radius: 50%;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.back-home-text {
+  font-size: 12px;
+  color: white;
+  font-weight: 500;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+#back-home-link:hover .home-icon {
+  background: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+#back-home-link:hover .back-home-text {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-2px);
+}
+
+/* If you want a circular icon with a home symbol (in case you don't have an image) */
+/* You can use this CSS to create a simple home icon */
+.home-icon-simple {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+/* Rest of your existing CSS remains the same */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0D6BC9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+}
+
+.container {
+  width: 900px;
+  height: 610px;
+  background: #fff;
+  display: flex;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(8, 8, 8, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.left {
+  width: 50%;
+  background-image: url(/Assets/Home/reg\ banner.jpeg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: white;
+}
+
+.left-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.right {
+  width: 50%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto 10px auto;
+  width: 200px;
+  height: auto;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Form styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  display: block;
+}
+
+.form-group input {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 12px;
+  width: 90%;
+  background: #0D6BC9;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #000000;
+}
+
+input[type="reset"] {
+  margin-top: 10px;
+  padding: 12px;
+  width: 90%;
+  background: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+input[type="reset"]:hover {
+  background: #e0e0e0;
+}
+
+.login-text {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
+.login-text a {
+  color: #0D6BC9;
+  text-decoration: none;
+}
+
+.login-text a:hover {
+  text-decoration: underline;
+}
+
+#infolabel {
+  display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1000px) {
+  #back-home-link {
+    left: 15px;
+  }
+}
+
+@media (max-width: 950px) {
+  #back-home-link {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+  }
+  
+  body {
+    flex-direction: column;
+    padding: 20px;
+    height: auto;
+    min-height: 100vh;
+  }
+}
