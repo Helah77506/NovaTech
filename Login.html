@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>Login</title>
+
+</head>
+
+	<h2>Login</h2>
+	<script src="login.js"></script>
+
+
+<body>
+<!-- a HTML form that allows the user to enter their username and password for log in.-->
+<form action="Login.html" method="post">
+
+	<label>User Name</label>
+	<input type="text" name="username" id="username" size="15" maxlength="25" />
+    <label>Password:</label>
+	<input type="password" name="password" id = "password" size="15" maxlength="25" />
+
+	<input type="submit" value="Login" />
+	<input type="reset" value="clear"/>
+    <input type="hidden" name="submitted" value="TRUE" />
+	<p>
+		Not a registered user? <a href="register.php">Register</a>
+	</p>
+	<label id="infolabel" hidden>.</label>
+
+</form>
+</body>
+</html>
