@@ -1,26 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NovaTech Registration</title>
+  <script src="register.js"></script>
+  <link rel="stylesheet" href="register.css">
+</head>
 
-
-    <head>
-        <title>Registartion System </title>
-        <script src="register.js"></script>
-        </head>
 <body>
-  <div class = "container"></div>
-  <h2>Register to become a customer</h2>
-  <form method = "post" action="register.php">
-	Username: <input type="text" name="username" id="username" /><br>
-	Password: <input type="password" name="password" id="password"/><br>
-    Email:    <input type="email" name="email" id="email" /> <br><br>
+  <!-- Back to Home button as image with text -->
+  <a href="index.html" id="back-home-link">
+    <div class="back-home-container">
+      <img src="/Assets/Home/arrow.png" alt="Home" class="home-icon">
+      <span class="back-home-text">Back to Home</span>
+    </div>
+  </a>
 
-	<input type="submit" value="Register" /> 
-	<input type="reset" value="clear"/>
-	<input type="hidden" name="submitted" value="true"/>
-  <!-- label for telling the user if they got inputs wrong -->
-  <label id="infolabel" hidden>.</label> 
-  </form>  
-  <p> Already a customer? <a href="login.html">Log in</a>  </p>
-</div>
+  <div class="container">
+
+    <!-- Left Side Image Section -->
+    <div class="left">
+      <div class="left-text">
+        <!-- You can put some text or illustration here -->
+      </div>
+    </div>
+
+    <!-- Right Side Registration Form -->
+    <div class="right">
+      <!-- Logo -->
+      <img src="/Assets/Home/Logo.png" alt="Traveler Logo" class="logo">
+
+      <h1>Create Your Account</h1>
+      <p>Join NovaTech and get amazing deals</p>
+
+      <!-- Registration Form -->
+      <form method="post" action="register.php">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" placeholder="Enter your username" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" placeholder="Create password" required>
+        </div>
+
+        <!-- Hidden field to detect submission -->
+        <input type="hidden" name="submitted" value="true">
+
+        <!-- Label for input validation messages -->
+        <label id="infolabel" hidden>.</label>
+
+        <!-- Form buttons -->
+        <button type="submit">Create Account</button>
+        
+      </form>
+
+      <!-- Login Link -->
+      <p class="login-text">
+        Already have an account? <a href="login.html">Login</a>
+      </p>
+    </div>
+  </div>
 </body>
 </html>
