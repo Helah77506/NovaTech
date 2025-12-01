@@ -93,7 +93,7 @@ body {
 
 .left {
   width: 50%;
-  background-image: url(/Assets/Home/reg\ banner.jpeg);
+  background-image: url(Assets/Home/reg\ banner.jpeg);
   background-size: cover;
   background-position: center;
   position: relative;
