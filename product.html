@@ -8,24 +8,24 @@
 </head>
 <body>
 
-  <!-- HEADER -->
+  <!-- header -->
   <header class="header">
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
     <div class="links">
       <a href="Home.html">Home</a>
-      <a href="contact.html">Contact</a>
+      <a href="ContactUs.html">Contact</a>
       <a href="about.html">About</a>
       <a href="login.html">Login</a>
       <a href="cart.html" class="cart-link">Cart <span id="cartCount">0</span></a>
     </div>
   </header>
 
-  <!-- SEARCH -->
+  <!-- search -->
   <div class="search-container">
     <input id="searchInput" type="search" placeholder="Search products..." />
   </div>
 
-  <!-- CATEGORIES -->
+  <!-- categories -->
   <div class="category-buttons">
     <button class="cat-btn" onclick="filterCategory('all')">All</button>
     <button class="cat-btn" onclick="filterCategory('classroom')">Classroom Technology</button>
@@ -35,17 +35,17 @@
     <button class="cat-btn" onclick="filterCategory('office')">Office & Administrative</button>
   </div>
 
-  <!-- PRODUCTS -->
+  <!-- products -->
   <main>
     <div id="productsContainer" class="product-grid"></div>
   </main>
 
-  <!-- FOOTER -->
+  <!-- footer -->
   <footer>
     <p>© 2024 School Inventory. All rights reserved.</p>
   </footer>
 
-  <!-- PRODUCT MODAL -->
+  <!-- product modal -->
   <div id="productModal" class="modal" aria-hidden="true">
     <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalName">
       <button class="close-btn" aria-label="Close" onclick="closeModal()">×</button>
@@ -67,7 +67,7 @@
     </div>
   </div>
 
-  <!-- product.js: all product logic -->
+  
   <script src="product.js"></script>
 </body>
 </html>

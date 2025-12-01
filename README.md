@@ -13,6 +13,15 @@ Members Contribution: https://trello.com/invite/b/6911c7c2c6265beb5cf08fb1/ATTI0
 Ali Ahmad 240082563
 Abdikhaliq Hassan - 240206262
 Yusuf-Saddique - 230204755
+
+
+
+
+
+
+
+
+Adam Khan-240121356
 Helah - Najim - 240119962
 Adam Khan - 240121356
 Abdullah Alkorbi - 230437261

@@ -1,6 +1,6 @@
-// ===============================
-// PRODUCT LIST (25 ITEMS)
-// ===============================
+
+// PRODUCT LIST 
+
 const products = [
   { id: 1, name: "Epson EB-X49 Classroom Projector", price: 599,
     description: "Bright 3,600-lumen projector designed for classrooms.",
@@ -103,16 +103,15 @@ const products = [
     category: "office", image: "Assets/product/gbc-3000l.jpg" },
 ];
 
-// persist product data (useful for other pages)
 localStorage.setItem('productsData', JSON.stringify(products));
 
-// DOM refs
+
 const container = document.getElementById('productsContainer');
 const searchInput = document.getElementById('searchInput');
 const cartCountEl = document.getElementById('cartCount');
 let activeCategory = 'all';
 
-// ---------- display products ----------
+// display products
 function displayProducts(list) {
   container.innerHTML = '';
   if (!list || list.length === 0) {
@@ -132,7 +131,7 @@ function displayProducts(list) {
     container.appendChild(card);
   });
 
-  // attach listeners for detail buttons
+ 
   document.querySelectorAll('.details-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const id = parseInt(btn.dataset.id, 10);
@@ -141,19 +140,19 @@ function displayProducts(list) {
   });
 }
 
-// ---------- helpers ----------
+
 function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
-// initial render
+
 displayProducts(products);
 
-// ---------- category filter ----------
+// category filter
 function filterCategory(cat) {
   activeCategory = cat;
   applyFilters();
 }
 
-// ---------- search + filter ----------
+
 function applyFilters() {
   const q = (searchInput.value || '').trim().toLowerCase();
   let filtered = products.filter(p => p.name.toLowerCase().includes(q) || (p.description || '').toLowerCase().includes(q));
@@ -162,7 +161,7 @@ function applyFilters() {
 }
 searchInput.addEventListener('input', applyFilters);
 
-// ---------- modal logic ----------
+// modal  
 const modal = document.getElementById('productModal');
 const modalImage = document.getElementById('modalImage');
 const modalName = document.getElementById('modalName');
@@ -195,7 +194,7 @@ window.addEventListener('keydown', (e)=> {
   if (e.key === 'Escape') closeModal();
 });
 
-// ---------- cart operations ----------
+//  cart 
 function updateCartCount() {
   const cart = JSON.parse(localStorage.getItem('cart') || '[]');
   const total = cart.reduce((s,i)=> s + (i.quantity || 0), 0);
@@ -221,5 +220,5 @@ function addToCart() {
   setTimeout(()=> alert('Added to cart'), 50);
 }
 
-// init cart count on load
+// unit cart count
 updateCartCount();
