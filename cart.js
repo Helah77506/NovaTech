@@ -10,7 +10,7 @@ function loadCart() {
 
 function saveCart(cart) {
   localStorage.setItem('cart', JSON.stringify(cart));
-  // update global cart count (if product page open later)
+  // update global cart count )
   try { window.parent && window.parent.updateCartCount && window.parent.updateCartCount(); } catch(e){}
 }
 
