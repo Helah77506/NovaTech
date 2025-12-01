@@ -1,4 +1,4 @@
-/* Back to Home as Image with Text */
+
 #back-home-link {
   position: absolute;
   left: 30px;
@@ -20,8 +20,8 @@
 }
 
 .home-icon {
-  width: 50px; /* Adjust size as needed */
-  height: 50px; /* Adjust size as needed */
+  width: 50px; 
+  height: 50px; 
   border-radius: 50%;
   padding: 8px;
   background: rgba(255, 255, 255, 0.9);
@@ -52,8 +52,7 @@
   transform: translateY(-2px);
 }
 
-/* If you want a circular icon with a home symbol (in case you don't have an image) */
-/* You can use this CSS to create a simple home icon */
+
 .home-icon-simple {
   width: 40px;
   height: 40px;
@@ -68,7 +67,7 @@
   transition: all 0.3s ease;
 }
 
-/* Rest of your existing CSS remains the same */
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -94,7 +93,7 @@ body {
 
 .left {
   width: 50%;
-  background-image: url(/Assets/Home/reg\ banner.jpeg);
+  background-image: url(Assets/Home/reg\ banner.jpeg);
   background-size: cover;
   background-position: center;
   position: relative;
@@ -139,7 +138,7 @@ p {
   text-align: center;
 }
 
-/* Form styling */
+
 .form-group {
   margin-bottom: 20px;
 }
@@ -211,7 +210,7 @@ input[type="reset"]:hover {
   display: none;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 1000px) {
   #back-home-link {
     left: 15px;
