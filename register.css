@@ -1,4 +1,4 @@
-
+/* Back to Home button */
 #back-home-link {
   position: absolute;
   left: 30px;
@@ -52,22 +52,7 @@
   transform: translateY(-2px);
 }
 
-
-.home-icon-simple {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  color: #333;
-  transition: all 0.3s ease;
-}
-
-
+/* Page layout */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -79,6 +64,7 @@ body {
   position: relative;
 }
 
+/* Main container */
 .container {
   width: 900px;
   height: 610px;
@@ -91,9 +77,10 @@ body {
   z-index: 1;
 }
 
+/* Left Banner Section */
 .left {
   width: 50%;
-  background-image: url(Assets/Home/reg\ banner.jpeg);
+  background-image: url("Assets/Home/reg-banner.jpeg"); /* UPDATED */
   background-size: cover;
   background-position: center;
   position: relative;
@@ -111,6 +98,7 @@ body {
   line-height: 1.4;
 }
 
+/* Right Side */
 .right {
   width: 50%;
   padding: 20px;
@@ -125,6 +113,7 @@ body {
   height: auto;
 }
 
+/* Form Text */
 h1 {
   font-size: 28px;
   margin-bottom: 10px;
@@ -137,7 +126,6 @@ p {
   margin-bottom: 20px;
   text-align: center;
 }
-
 
 .form-group {
   margin-bottom: 20px;
@@ -158,6 +146,7 @@ p {
   font-size: 14px;
 }
 
+/* Buttons */
 button {
   margin-top: 10px;
   padding: 12px;
@@ -174,22 +163,7 @@ button:hover {
   background: #000000;
 }
 
-input[type="reset"] {
-  margin-top: 10px;
-  padding: 12px;
-  width: 90%;
-  background: #f0f0f0;
-  color: #333;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-input[type="reset"]:hover {
-  background: #e0e0e0;
-}
-
+/* Login text */
 .login-text {
   margin-top: 20px;
   font-size: 14px;
@@ -210,7 +184,7 @@ input[type="reset"]:hover {
   display: none;
 }
 
-
+/* Responsiveness */
 @media (max-width: 1000px) {
   #back-home-link {
     left: 15px;
