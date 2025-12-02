@@ -20,7 +20,6 @@
 
             if (!productId) return;
 
-            // products[] comes from product.js
             const product = products.find(p => p.id === productId);
 
             if (!product) {
@@ -28,11 +27,10 @@
                 return;
             }
 
-            // Fill details
-            document.getElementById("modalName").textContent = modal.name;
-            document.getElementById("modalPrice").textContent = "£" + modal.price;
-            document.getElementById("modalImage").src = modal.image;
-            document.getElementById("modalDescription").textContent = modal.description;
+            document.getElementById("modalName").textContent = product.name;
+            document.getElementById("modalPrice").textContent = "£" + product.price;
+            document.getElementById("modalImage").src = product.image;
+            document.getElementById("modalDescription").textContent = product.description;
         });
     </script>
  
@@ -45,7 +43,7 @@
         <a href="ContactUs.html">Contact</a>
         <a href="about.html">About Us</a>
         <a href="product.html"> Products</a>
-	    <a href="review.html"> Review</a>
+	    <a href="#"> Review</a>
 
         <div class="nav-icons">
             <img src="Assets/Home/user.png" alt="User" />
@@ -59,10 +57,10 @@
     <div class="container">
 
         <div class="product-header">
-            <img id="productImage" src="" alt="Product Image">
-            <div class="product-info">
-                <h2 id="productName"></h2>
-                <p class="price" id="productPrice"></p>
+            <img id="modalImage" src="" alt="Modal Image">
+            <div class="modalDescription">
+                <h2 id="modalName"></h2>
+                <p class="price" id="modalPrice"></p>
                 <p class="desc">Share your experience with this product.</p>
             </div>
         </div>
@@ -85,12 +83,10 @@
 
         <h3 class="section-title">Customer Reviews</h3>
 
-        <!-- Reviews go here (dynamic later via PHP or JS) -->
         <div class="reviews-container" id="reviewList"></div>
 
     </div>
 
-    <!-- SCRIPT: Load product data from URL parameters -->
 
 </body>
 </html>
