@@ -83,11 +83,11 @@ body {
 }
 
 .contact-hero-text {
-    position: absolute;
+   position: absolute;
     top: 30%;
     left: 10%;
-    color: white;
-    text-shadow: 0 3px 5px rgba(0,0,0,0.4);
+    color: rgb(255, 255, 255);
+    text-shadow: 0 3px 5px rgb(15, 15, 15);
 }
 
 .contact-hero-text h1 {
@@ -102,7 +102,7 @@ body {
 
 .contact-hero-text button {
     margin-top: 10px;
-    background: #7f3ef1;    
+    background: #0d6bcb;    
     border: none;
     padding: 14px 40px;
     color: white;
@@ -180,4 +180,22 @@ body {
 
 .footer a:hover {
     color: var(--accent);
+}
+
+/* Payments */
+.payment-options {
+    padding: 30px 0;
+    text-align: center;
+}
+
+.payment-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+ margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.payment-icons img {
+    height: 35px;
 }
