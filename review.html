@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rate & Review</title>
+    <link rel="stylesheet" href="review.css" />
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+
+   <script src="product.js" defer></script>
+
+    <script defer>
+        document.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+            const productId = parseInt(params.get("id"));
+
+            if (!productId) return;
+
+            const product = products.find(p => p.id === productId);
+
+            if (!product) {
+                document.getElementById("modalName").textContent = "Product not found";
+                return;
+            }
+
+            document.getElementById("modalName").textContent = product.name;
+            document.getElementById("modalPrice").textContent = "£" + product.price;
+            document.getElementById("modalImage").src = product.image;
+            document.getElementById("modalDescription").textContent = product.description;
+        
+        });
+    </script>
+ 
+<body>
+<header class="header">
+    <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
+
+    <nav class="navbar">
+        <a href="Home.html">Home</a>
+        <a href="ContactUs.html">Contact</a>
+        <a href="about.html">About Us</a>
+        <a href="product.html"> Products</a>
+	    <a href="#"> Review</a>
+
+        <div class="nav-icons">
+            <img src="Assets/Home/user.png" alt="User" />
+            <a href="Login.html" class="login">Login</a>
+
+            <img src="Assets/Home/cart .png" alt="Cart" />
+        </div>
+    </nav>
+</header>
+
+    <div class="container">
+
+        <div class="product-header">
+            <img id="modalImage" src="" alt="Modal Image">
+            <div class="modalDescription">
+                <h2 id="modalName"></h2>
+                <p class="price" id="modalPrice"></p>
+                 <p class="desc" id="modalDescription"></p>
+            </div>
+        </div>
+
+        <div class="review-form">
+            <h3>Rate this product</h3>
+
+            <div class="stars">
+                <input type="radio" name="rating" id="star5"><label for="star5">★</label>
+                <input type="radio" name="rating" id="star4"><label for="star4">★</label>
+                <input type="radio" name="rating" id="star3"><label for="star3">★</label>
+                <input type="radio" name="rating" id="star2"><label for="star2">★</label>
+                <input type="radio" name="rating" id="star1"><label for="star1">★</label>
+            </div>
+
+            <textarea placeholder="Write your review..."></textarea>
+
+            <button class="submit-btn">Submit Review</button>
+        </div>
+
+        <h3 class="section-title">Customer Reviews</h3>
+
+        <div class="reviews-container" id="reviewList"></div>
+
+    </div>
+</body>
+</html>

@@ -3,7 +3,7 @@
 session_start();
 
 // connect to the database
-require 'config.php';
+require 'Config.php';
 
 // place to store any error messages
 $errors = [];
