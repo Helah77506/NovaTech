@@ -31,6 +31,7 @@
             document.getElementById("modalPrice").textContent = "£" + product.price;
             document.getElementById("modalImage").src = product.image;
             document.getElementById("modalDescription").textContent = product.description;
+        
         });
     </script>
  
@@ -61,7 +62,7 @@
             <div class="modalDescription">
                 <h2 id="modalName"></h2>
                 <p class="price" id="modalPrice"></p>
-                <p class="desc">Share your experience with this product.</p>
+                 <p class="desc" id="modalDescription"></p>
             </div>
         </div>
 
@@ -86,7 +87,5 @@
         <div class="reviews-container" id="reviewList"></div>
 
     </div>
-
-
 </body>
 </html>
