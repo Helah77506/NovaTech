@@ -17,15 +17,16 @@
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
 
     <nav class="nav">
-        <a href="Home.html">Home</a>
+        <a class="active" href="Home.html">Home</a>
         <a href="ContactUs.html">Contact</a>
         <a href="about.html">About Us</a>
         <a href="product.html"> Products</a>
 
         <div class="nav-icons">
-            <img src="Assets/Home/user.png" alt="User" />
-            <a href="Login.html" class="login">Login</a>
-
+            <a href="Login.html">Log in</a>
+            <img src="Assets/Home/user.png" alt="Login" />
+            
+            <a href="cart.html">Cart</a>
             <img src="Assets/Home/cart .png" alt="Cart" />
         </div>
     </nav>
@@ -34,11 +35,7 @@
 <!-- Category Bar -->
 <div class="header2">
     <nav class="nav2">
-        <a href="#">Shop All</a>
-        <a href="#">Computers</a>
-        <a href="#">Projectors</a>
-        <a href="#">Smart Boards</a>
-        <a href="#">Classroom Audio</a>
+        
     </nav>
 </div>
 
@@ -110,7 +107,9 @@
     <div class="contact-left">
         <h1>Have any questions?</h1>
         <h2>Contact us or use our friendly chatbot.</h2>
-        <button>Contact Us</button>
+        <a href="ContactUs.html">
+            <button>Contact Us</button>
+        </a>
     </div>
 
     <div class="contact-right">
@@ -142,8 +141,8 @@
 
     <div class="col">
         <h4>Support</h4>
-        <a href="Contact.html">Contact Us</a>
-        <a href="Contact.html">Help Center</a>
+        <a href="ContactUs.html">Contact Us</a>
+        <a href="ContactUs.html">Help Center</a>
         <a href="about.html">About Us</a>
     </div>
 </footer>
@@ -151,6 +150,7 @@
 <!-- Payments -->
 <section class="payment-options">
     <h4>We accept the following paying methods:</h4>
+   
     <div class="payment-icons">
         <img src="Assets/Home/visa.svg">
         <img src="Assets/Home/mastercard.svg">
