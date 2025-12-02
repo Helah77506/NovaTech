@@ -1,30 +1,147 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - NovaTech</title>
 
+    <link rel="stylesheet" href="Home.css" />
+
+    <script src="Login.js" defer></script>
+
+    <style>
+        .auth-page {
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 16px;
+            background: var(--background);
+        }
+
+        .auth-card {
+            background: #ffffff;
+            padding: 32px 40px;
+            border-radius: var(--radius);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .auth-card h2 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .auth-card label {
+            display: block;
+            margin-top: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .auth-card input {
+            width: 100%;
+            margin-top: 6px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        .auth-card button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: var(--radius);
+            background: var(--accent);
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .auth-card button:hover {
+            opacity: 0.95;
+        }
+
+        .auth-info {
+            margin-top: 10px;
+            color: #b00020;
+            white-space: pre-line;
+        }
+
+        .auth-extra {
+            margin-top: 18px;
+            font-size: 0.9rem;
+        }
+
+        .auth-extra a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .header nav a {
+            margin-right: 20px;
+        }
+
+        .header .nav-icons {
+            display: none;
+        }
+
+    </style>
 </head>
 
-	<h2>Login</h2>
-	<script src="login.js"></script>
-
-
 <body>
-<!-- a HTML form that allows the user to enter their username and password for log in.-->
-<form action="Login.php" method="post">
 
-	<label>User Name</label>
-	<input type="text" name="username" id="username" size="15" maxlength="25" />
-    <label>Password:</label>
-	<input type="password" name="password" id = "password" size="15" maxlength="25" />
+    <header class="header">
+        <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
 
-	<input type="submit" value="Login" />
-	<input type="reset" value="clear"/>
-    <input type="hidden" name="submitted" value="TRUE" />
-	<p>
-		Not a registered user? <a href="register.html">Register</a>
-	</p>
-	<label id="infolabel" hidden>.</label>
+        <nav class="nav">
+            <a href="Home.html">Home</a>
+        </nav>
+    </header>
 
-</form>
+    <main class="auth-page">
+        <section class="auth-card">
+
+            <h2>Login to NovaTech</h2>
+
+            <p id="infolabel" class="auth-info" hidden></p>
+
+            <p id="serverError" class="auth-info" hidden></p>
+
+            </p>
+
+            <form action="Login.php" method="post" id="loginForm">
+                <label for="email">Email</label>
+                <input 
+                    type="email" 
+                    name="email" 
+                    id="email"
+                />
+
+                <label for="password">Password</label>
+                <input 
+                    type="password" 
+                    name="password" 
+                    id="password"
+                />
+
+                <button type="submit">Login</button>
+
+                <p class="auth-extra">
+                    Not registered?
+                    <a href="Register.html">Create an account</a>
+                </p>
+            </form>
+
+        </section>
+    </main>
+
 </body>
 </html>
