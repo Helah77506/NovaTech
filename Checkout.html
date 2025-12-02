@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+        <script src="Checkout.js"></script>
     </head>
     <body>
         <div class="checkout-container">
-
+<form>
   <h1>Checkout</h1>
 
   <!-- Cart Summary -->
@@ -22,19 +22,19 @@
     <h2>Shipping Details</h2>
     <label>
       Full Name:
-      <input type="text" name="full-name">
+      <input id="full-name" type="text" name="full-name">
     </label>
     <label>
       Address:
-      <input type="text" name="address">
+      <input id="address" type="text" name="address">
     </label>
     <label>
       City:
-      <input type="text" name="city">
+      <input id="city" type="text" name="city">
     </label>
     <label>
-      ZIP Code:
-      <input type="text" name="zip">
+      Post Code:
+      <input id="zip" type="text" name="zip">
     </label>
     <label>
       Country:
@@ -44,6 +44,7 @@
         <option>United Kingdom</option>
       </select>
     </label>
+    <label id="infolabel" hidden>.</label>
   </section>
 
   <!-- Payment Info -->
@@ -51,16 +52,17 @@
     <h2>Payment</h2>
     <label>
       Card Number:
-      <input type="text" name="card-number">
+      <input id="card-number"type="text" name="card-number">
     </label>
     <label>
       Expiration Date:
-      <input type="text" name="exp-date" placeholder="MM/YY">
+      <input id="expiry"type="text" name="exp-date" placeholder="MM/YY">
     </label>
     <label>
       CVC:
-      <input type="text" name="cvc">
+      <input id="cvc" type="text" name="cvc">
     </label>
+     <label id="infolabel2" hidden>.</label>
   </section>
 
   <button type="submit">Place Order</button>
@@ -68,4 +70,5 @@
 </div>
 
     </body>
+  </form>
 </html>
