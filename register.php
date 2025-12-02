@@ -1,19 +1,21 @@
 <?php
 session_start();
-require 'Config.php';     // connect to database
 
-$errors  = [];
-$success = '';
+// connect to database
+require 'Config.php';
 
-// Handle POST request from register form
+// array to store any errors
+$errors = [];
+
+// run this only when form is submitted via POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // Get form inputs
+    // Get form inputs safely
     $username = trim($_POST['username'] ?? '');
     $email    = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
 
-    // Basic validation
+    // Validation
     if ($username === '' || $email === '' || $password === '') {
         $errors[] = "Please fill in all fields.";
     }
@@ -26,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = "Password must be at least 8 characters.";
     }
 
-    // Check if email is already used
+    // Check if email already exists
     if (empty($errors)) {
         $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
@@ -40,13 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->close();
     }
 
-    // If everything is valid, insert new user
+    // If no errors insert new user 
     if (empty($errors)) {
-
-        // Hash password before saving
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
-        // Map values to database columns
+        // adjust these if you later add more fields
         $institution_name = '';
         $full_name        = $username;
 
@@ -57,58 +57,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("ssss", $institution_name, $full_name, $email, $hash);
 
         if ($stmt->execute()) {
-            $success = "Account created successfully.";
+            $stmt->close();
+
+            header("Location: Home.html");
+            exit;
         } else {
             $errors[] = "Error creating account.";
+            $stmt->close();
         }
-
-        $stmt->close();
     }
 }
-?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Register</title>
-    <script src="register.js"></script>
-</head>
-<body>
 
-<h2>Register</h2>
-
-<!-- Error messages -->
-<?php if (!empty($errors)): ?>
-    <ul style="color:red;">
-        <?php foreach ($errors as $e): ?>
-            <li><?php echo htmlspecialchars($e); ?></li>
-        <?php endforeach; ?>
-    </ul>
-<?php endif; ?>
-
-<!-- Success message -->
-<?php if ($success): ?>
-    <p style="color:green;"><?php echo htmlspecialchars($success); ?></p>
-<?php endif; ?>
-
-<!-- Registration form -->
-<form method="post" action="register.php">
-    Username:
-    <input type="text" name="username" id="username"><br>
-
-    Password:
-    <input type="password" name="password" id="password"><br>
-
-    Email:
-    <input type="email" name="email" id="email"><br><br>
-
-    <input type="submit" value="Register">
-    <input type="reset" value="clear">
-
-    <!-- This label is used by your JS for messages -->
-    <label id="infolabel" hidden>.</label>
-</form>
-
-<p>Already have an account? <a href="login.php">Log in</a></p>
-
-</body>
-</html>
+header("Location: register.html");
+exit;
