@@ -1,147 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - NovaTech</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NovaTech Login</title>
 
-    <link rel="stylesheet" href="Home.css" />
+  
+  <link rel="preload" href="Assets/Home/login banner.jpg" as="image">
 
-    <script src="Login.js" defer></script>
-
-    <style>
-        .auth-page {
-            min-height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 16px;
-            background: var(--background);
-        }
-
-        .auth-card {
-            background: #ffffff;
-            padding: 32px 40px;
-            border-radius: var(--radius);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-            max-width: 420px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .auth-card h2 {
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-
-        .auth-card label {
-            display: block;
-            margin-top: 12px;
-            text-align: left;
-            font-weight: 600;
-        }
-
-        .auth-card input {
-            width: 100%;
-            margin-top: 6px;
-            padding: 10px 12px;
-            border-radius: 6px;
-            border: 1px solid #ddd;
-            font-size: 1rem;
-            box-sizing: border-box;
-        }
-
-        .auth-card button {
-            margin-top: 20px;
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: var(--radius);
-            background: var(--accent);
-            color: #fff;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .auth-card button:hover {
-            opacity: 0.95;
-        }
-
-        .auth-info {
-            margin-top: 10px;
-            color: #b00020;
-            white-space: pre-line;
-        }
-
-        .auth-extra {
-            margin-top: 18px;
-            font-size: 0.9rem;
-        }
-
-        .auth-extra a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .header nav a {
-            margin-right: 20px;
-        }
-
-        .header .nav-icons {
-            display: none;
-        }
-
-    </style>
+  <script src="Login.js"></script>
+  <link rel="stylesheet" href="Login.css">
 </head>
 
 <body>
 
-    <header class="header">
-        <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
+  <!-- Back to Home -->
+  <a href="Home.html" id="back-home-link">
+    <div class="back-home-container">
+      <img src="Assets/Home/arrow.png" alt="Home" class="home-icon">
+      <span class="back-home-text">Back to Home</span>
+    </div>
+  </a>
 
-        <nav class="nav">
-            <a href="Home.html">Home</a>
-        </nav>
-    </header>
+  
+  <div class="container">
 
-    <main class="auth-page">
-        <section class="auth-card">
+    <div class="left"></div>
 
-            <h2>Login to NovaTech</h2>
+    <div class="right">
+      <img src="Assets/Home/Logo.png" alt="NovaTech Logo" class="logo">
 
-            <p id="infolabel" class="auth-info" hidden></p>
+      <h1>Welcome Back</h1>
+      <p>Log in to access bulk educational tech and support your institution. We’re providing for the future.</p>
 
-            <p id="serverError" class="auth-info" hidden></p>
+     
+      <form action="login.php" method="post">
 
-            </p>
+        <div class="form-group">
+          <label for="username">Username or Email</label>
+          <input type="text" id="username" name="username" placeholder="Enter your username or email" required>
+        </div>
 
-            <form action="Login.php" method="post" id="loginForm">
-                <label for="email">Email</label>
-                <input 
-                    type="email" 
-                    name="email" 
-                    id="email"
-                />
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
 
-                <label for="password">Password</label>
-                <input 
-                    type="password" 
-                    name="password" 
-                    id="password"
-                />
+        <input type="hidden" name="submitted" value="true">
 
-                <button type="submit">Login</button>
+        <label id="infolabel" hidden>.</label>
 
-                <p class="auth-extra">
-                    Not registered?
-                    <a href="Register.html">Create an account</a>
-                </p>
-            </form>
+        <button type="submit">Login</button>
+      </form>
 
-        </section>
-    </main>
+      <p class="login-text">
+        Don't have an account? <a href="Register.html">Register</a>
+      </p>
+    </div>
 
+  </div>
 </body>
 </html>
