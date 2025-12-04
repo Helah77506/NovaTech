@@ -314,3 +314,109 @@ footer { text-align:center; padding:26px 5%; color:var(--muted); font-size:0.95r
     text-decoration: none;
     font-weight: 500;
 }
+
+
+/* checkout */
+/* ====================================
+   COMPACT CHECKOUT STYLING
+==================================== */
+.checkout-container {
+    max-width: 580px;
+    background: #fff;
+    margin: 28px auto;
+    padding: 22px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.checkout-container h1 {
+    font-size: 1.45rem;
+    margin-bottom: 16px;
+    text-align: center;
+    font-weight: 800;
+}
+
+/* Sections */
+.checkout-container section {
+    margin-bottom: 22px;
+    background: var(--bg-light);
+    padding: 14px 16px;
+    border-radius: var(--radius);
+    border: 1px solid #e4e6ed;
+}
+
+.checkout-container section h2 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: var(--accent-dark);
+}
+
+/* Labels + Inputs */
+.checkout-container label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.checkout-container input,
+.checkout-container select {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: var(--radius);
+    background: #fff;
+    font-size: 0.9rem;
+    transition: border-color .2s;
+}
+
+.checkout-container input:focus,
+.checkout-container select:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+/* Order Summary Small Row */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Button */
+.checkout-container button[type="submit"] {
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--accent);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .2s ease;
+    margin-top: 8px;
+}
+
+.checkout-container button[type="submit"]:hover {
+    background: var(--accent-dark);
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+    .checkout-container {
+        padding: 18px;
+        margin: 16px;
+    }
+
+    .checkout-container section {
+        padding: 12px;
+    }
+}
