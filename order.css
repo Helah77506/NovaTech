@@ -1,23 +1,86 @@
 @import url('home.css');
 
-.saved-section {
-    padding: 40px 10%;
+.order-main {
+  padding: 40px 10%;
 }
 
-.saved-section h2 {
-    margin-bottom: 20px;
+.order-main h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
 }
 
-.empty-msg {
-    display: none;
-    color: #555;
-    margin-top: 20px;
-    font-size: 1rem;
-    text-align: center;
+.order-header {
+  display: grid;
+  grid-template-columns: 100px 2fr 100px 100px 120px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  background: #f0f0f0;
+  padding: 10px;
+  border-radius: 8px;
 }
 
-.icon a {
-    text-decoration: none;
-    color: #000;
-    font-weight: 600;
+.cart-row {
+  display: grid;
+  grid-template-columns: 100px 2fr 100px 100px 120px;
+  align-items: center;
+  background: #fff;
+  padding: 14px 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.cart-img img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+}
+
+.cart-name strong {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.cart-name p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.cart-unit, .cart-qty, .cart-sub {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.total-price {
+  text-align: right;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0d6bcb;
+}
+
+.order-btn-container {
+  text-align: right;
+  margin-top: 30px;
+}
+
+.order-btn {
+  background: #0d6bcb;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.order-btn:hover {
+  background: #094f9d;
 }

@@ -42,22 +42,23 @@ function validatePaymentInputs(){
         infolabel2.textContent = "Please ensure a valid 16 digit card number is entered"
         infolabel2.hidden = false
         return false
+    } 
+    else if(!expiryRegex.test(expiryV)){
+        infolabel2.textContent = "Please ensure a valid expiry is entered in the format MM/YY"
+        infolabel2.hidden = false
+        return false
     }
     else if (cvcV.length < 3 || cvcV.length > 4) {
         infolabel2.textContent = "Please ensure a valid CVC is entered"
         infolabel2.hidden = false
         return false
     }
-    else if(!expiryRegex.test(expiryV)){
-        infolabel2.textContent = "Please ensure a valid expiry is entered in the format MM/YY"
-        infolabel2.hidden = false
-        
-        return false
-    }
     infolabel2.hidden = true
     infolabel2.style.display = "none"
     return true 
 }
+    
+    
 
 function listen_Sumbission(){
     const form = document.querySelector("form")
@@ -68,7 +69,10 @@ function listen_Sumbission(){
 
         if (!shippingOK || !paymentOK) {
             e.preventDefault()
-        }
+        } 
+        else {
+            // redirect to another page
+            window.location.href = "order.html";}
     })
 }
 

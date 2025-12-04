@@ -1,5 +1,3 @@
-// order.js
-
 function renderOrderSummary() {
     const container = document.getElementById('orderContainer');
     const totalBox = document.getElementById('orderTotal');
@@ -25,10 +23,10 @@ function renderOrderSummary() {
             <div class="cart-img"><img src="${item.image}" alt="${item.name}" /></div>
             <div class="cart-name">
                 <strong>${item.name}</strong>
-                <p>${item.description || ""}</p>
+                <p>${item.description || "No description available."}</p>
             </div>
             <div class="cart-unit">£${item.price.toLocaleString()}</div>
-            <div class="cart-qty"><span>${item.quantity}</span></div>
+            <div class="cart-qty">${item.quantity}</div>
             <div class="cart-sub">£${subtotal.toLocaleString()}</div>
         `;
 
