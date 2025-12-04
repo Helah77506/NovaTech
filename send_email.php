@@ -33,7 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "Message:\n$message";
 
         $mail->send();
-        echo "Message sent successfully!";
+        header)("Location: MessageSent.html");
+        exit();
     } 
 
     catch (Exception $e) {
