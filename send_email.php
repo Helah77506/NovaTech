@@ -7,10 +7,12 @@ require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     $name    = htmlspecialchars($_POST['name']);
     $email   = htmlspecialchars($_POST['email']);
     $subject = htmlspecialchars($_POST['subject']);
     $message = htmlspecialchars($_POST['message']);
+
     $mail = new PHPMailer(true);
 
     try {
@@ -21,9 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Password   = 'gdgxhunkjduephvb';
         $mail->SMTPSecure = 'tls';
         $mail->Port       = 587;
+
         $mail->setFrom('novatech2025nt@gmail.com', 'NovaTech Contact Form');
         $mail->addAddress('novatech2025nt@gmail.com');
         $mail->addReplyTo($email, $name);
+
         $mail->Subject = "Contact Form Message: $subject";
         $mail->Body =
             "You received a new message from the contact form:\n\n" .
@@ -33,11 +37,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "Message:\n$message";
 
         $mail->send();
+
+        // Redirect to thank-you page
         header("Location: MessageSent.html");
         exit();
-    } 
 
-    catch (Exception $e) {
+    } catch (Exception $e) {
         echo "Message could not be sent. Error: {$mail->ErrorInfo}";
     }
 }
