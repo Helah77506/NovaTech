@@ -12,14 +12,26 @@
 <header class="header">
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
     <nav class="nav">
+        <!-- Keep these as .html for now if your other pages are still HTML.
+             Later you can change them to .php when you convert those pages. -->
         <a href="Home.html">Home</a>
         <a href="product.html">Products</a>
-        <a href="dashboard.html">Dashboard</a>
+        <a href="dashboard.php">Dashboard</a>
         <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="ContactUs.html">Contact</a>
+
         <div class="nav-icons">
             <img src="Assets/Home/user.svg" alt="User" />
-            <a href="login.html">Login</a>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <!-- If logged in, show user name and logout -->
+                <span style="margin-left: 8px; font-weight: 500;">
+                    <?php echo htmlspecialchars($userName); ?>
+                </span>
+                <a href="logout.php" style="margin-left: 12px;">Logout</a>
+            <?php else: ?>
+                <!-- If not logged in, show Login link -->
+                <a href="Login.html">Login</a>
+            <?php endif; ?>
         </div>
     </nav>
 </header>
@@ -65,9 +77,9 @@
     </div>
     <div class="col">
         <h4>Support</h4>
-        <a href="#">Contact Us</a>
-        <a href="#">Help Center</a>
-        <a href="#">About Us</a>
+        <a href="ContactUs.html">Contact Us</a>
+        <a href="ContactUs.html">Help Center</a>
+        <a href="about.html">About Us</a>
     </div>
 </footer>
 
