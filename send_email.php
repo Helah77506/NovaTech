@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "Message:\n$message";
 
         $mail->send();
-        header)("Location: MessageSent.html");
+        header("Location: MessageSent.html");
         exit();
     } 
 
