@@ -10,7 +10,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 40px;
+    padding: 14px 5%;
 }
 
 /* Logo section */
@@ -20,8 +20,7 @@ body {
 }
 
 .logo {
-    height: 50px;
-    width: 100px;
+    height: 70px;
 }
 
 
@@ -41,6 +40,10 @@ body {
     text-decoration: none;
     color: #000;
     font-weight: 500;
+}
+
+.nav-icons img {
+    height: 26px;
 }
 
 .main-nav a.active {
@@ -107,4 +110,16 @@ body {
 .about-content ul li {
     font-size: 17px;
     margin-bottom: 10px;
+}
+
+.payment-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+ margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.footer a:hover {
+    color: var(--accent);
 }
