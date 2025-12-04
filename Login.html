@@ -1,22 +1,30 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NovaTech Login</title>
 
+    <script src="Login.js"></script>
+    <link rel="stylesheet" href="Login.css" />
+
+    <link rel="preload" href="Assets/Home/login_banner.jpg" as="image" />
 </head>
-
-	<h2>Login</h2>
-	<script src="login.js"></script>
-
-
 <body>
+<<<<<<< HEAD
 <!-- a HTML form that allows the user to enter their username and password for log in.-->
 <form action="Login.html" method="post">
+=======
+>>>>>>> main
 
-	<label>User Name</label>
-	<input type="text" name="username" id="username" size="15" maxlength="25" />
-    <label>Password:</label>
-	<input type="password" name="password" id = "password" size="15" maxlength="25" />
+    <a href="Home.html" id="back-home-link">
+        <div class="back-home-container">
+            <img src="Assets/Home/arrow.png" class="home-icon" />
+            <span class="back-home-text">Back to Home</span>
+        </div>
+    </a>
 
+<<<<<<< HEAD
 	<input type="submit" value="Login" />
 	<input type="reset" value="clear"/>
     <input type="hidden" name="submitted" value="TRUE" />
@@ -24,7 +32,67 @@
 		Not a registered user? <a href="register.php">Register</a>
 	</p>
 	<label id="infolabel" hidden>.</label>
+=======
+    <div class="container">
+        <div class="left"></div>
+>>>>>>> main
 
-</form>
+        <div class="right">
+            <img src="Assets/Home/Logo.png" class="logo" />
+
+            <h1>Welcome Back</h1>
+            <p>Log in to access NovaTech services.</p>
+
+            <!-- server error from login.php -->
+            <p id="serverError" style="display:none;" class="auth-info"></p>
+
+            <!-- js error -->
+            <label id="infolabel" hidden class="auth-info"></label>
+
+            <form action="login.php" method="post" id="loginForm">
+
+                <div class="form-group">
+                    <label>Username or Email</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="identifier"
+                        placeholder="Enter your username or email"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                    />
+                </div>
+
+                <input type="hidden" name="submitted" value="true" />
+
+                <button type="submit">Login</button>
+            </form>
+
+            <p class="login-text">
+                Don't have an account?
+                <a href="Register.html">Register</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // shows error message 
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("error") === "wrong") {
+            const msg = document.getElementById("serverError");
+            msg.textContent = "Incorrect username/email or password.";
+            msg.style.display = "block";
+        }
+    </script>
 </body>
 </html>

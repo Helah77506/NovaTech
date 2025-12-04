@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
+=======
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NovaTech Registration</title>
+
+  <!-- Preload Banner Image -->
+  <link rel="preload" href="Assets/Home/reg-banner.jpeg" as="image">
+
+  <script src="register.js"></script>
+  <link rel="stylesheet" href="register.css">
+</head>
+>>>>>>> main
 
 
     <head>
@@ -14,6 +28,7 @@
 	Password: <input type="password" name="password" id="password"/><br>
     Email:    <input type="email" name="email" id="email" /> <br><br>
 
+<<<<<<< HEAD
 	<input type="submit" value="Register" /> 
 	<input type="reset" value="clear"/>
 	<input type="hidden" name="submitted" value="true"/>
@@ -22,5 +37,49 @@
   </form>  
   <p> Already a customer? <a href="login.html">Log in</a>  </p>
 </div>
+=======
+  <div class="container">
+
+    <div class="left">
+      <div class="left-text"></div>
+    </div>
+
+    <div class="right">
+      <img src="Assets/Home/Logo.png" alt="Traveler Logo" class="logo">
+
+      <h1>Create Your Account</h1>
+      <p>Create your Novatech account to access bulk educational technology, manage institutional orders, and join us in providing for the future.</p>
+
+      <!-- Registration Form -->
+      <form method="post" action="register.php">
+        
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" placeholder="Enter your username" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" placeholder="Create password" required>
+        </div>
+
+        <input type="hidden" name="submitted" value="true">
+
+        <label id="infolabel" hidden>.</label>
+
+        <button type="submit">Create Account</button>
+      </form>
+
+      <p class="login-text">
+        Already have an account? <a href="Login.html">Login</a>
+      </p>
+    </div>
+  </div>
+>>>>>>> main
 </body>
 </html>

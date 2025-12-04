@@ -7,7 +7,7 @@
     --background: #f1f1f1;
 }
 
-/* Reset */
+
 * {
     margin: 0;
     padding: 0;
@@ -52,7 +52,11 @@ body {
 }
 
 .nav-icons img {
-    width: 26px;
+    height: 26px;
+}
+
+.nav a.active {
+    color: var(--accent);
 }
 
 .header2 {
@@ -70,6 +74,7 @@ body {
     text-decoration: none;
     font-weight: 500;
 }
+
 
 /* Hero */
 .hero {
@@ -222,6 +227,10 @@ body {
     margin-bottom: 6px;
 }
 
+.footer a:hover {
+    color: var(--accent);
+}
+
 /* Payments */
 .payment-options {
     padding: 30px 0;
@@ -231,7 +240,8 @@ body {
 .payment-icons {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
+ margin-top: 20px;
     flex-wrap: wrap;
 }
 

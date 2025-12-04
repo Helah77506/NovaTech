@@ -43,6 +43,10 @@ body {
     font-weight: 500;
 }
 
+.nav-icons img {
+    height: 26px;
+}
+
 .main-nav a.active {
     font-weight: 700;
     text-decoration: underline;
@@ -107,4 +111,16 @@ body {
 .about-content ul li {
     font-size: 17px;
     margin-bottom: 10px;
+}
+
+.payment-icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+ margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.footer a:hover {
+    color: var(--accent);
 }
