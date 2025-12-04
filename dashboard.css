@@ -1,23 +1,50 @@
 @import url('home.css');
 
-.saved-section {
+.dashboard-section {
     padding: 40px 10%;
 }
 
-.saved-section h2 {
-    margin-bottom: 20px;
+.orders-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.order-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+}
+
+.order-card h4 {
+    margin-bottom: 10px;
+}
+
+.order-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.order-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
 }
 
 .empty-msg {
-    display: none;
-    color: #555;
-    margin-top: 20px;
-    font-size: 1rem;
     text-align: center;
-}
-
-.icon a {
-    text-decoration: none;
-    color: #000;
-    font-weight: 600;
+    color: #777;
+    margin-top: 20px;
 }
