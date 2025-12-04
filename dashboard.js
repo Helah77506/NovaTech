@@ -1,30 +1,47 @@
 // dashboard.js
 
-function loadSavedItems() {
-    const saved = JSON.parse(localStorage.getItem("savedItems") || "[]");
-    const container = document.getElementById("savedContainer");
-    const noMsg = document.getElementById("noSavedMessage");
+function loadPastOrders() {
+    const orders = JSON.parse(localStorage.getItem("pastOrders") || "[]");
+    const container = document.getElementById("ordersContainer");
+    const noMsg = document.getElementById("noOrdersMessage");
 
     container.innerHTML = "";
 
-    if (saved.length === 0) {
+    if (!orders.length) {
         noMsg.style.display = "block";
         return;
     }
 
     noMsg.style.display = "none";
 
-    saved.forEach(item => {
+    orders.reverse().forEach((order, index) => {
         const card = document.createElement("div");
-        card.className = "product-card";
-        card.innerHTML = `
-            <img src="${item.image}" alt="${item.name}">
-            <h3>${item.name}</h3>
-            <div class="price">£${item.price.toLocaleString()}</div>
-            <button class="details-btn" onclick="window.location.href='product.html'">View Product</button>
-        `;
+        card.className = "order-card";
+
+        const date = new Date(order.timestamp).toLocaleString();
+
+        card.innerHTML = `<h4>Order #${orders.length - index} - <span style="font-weight:normal">${date}</span></h4>`;
+
+        const itemsContainer = document.createElement("div");
+        itemsContainer.className = "order-items";
+
+        order.items.forEach(item => {
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "order-item";
+            itemDiv.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" />
+                <div>
+                    <strong>${item.name}</strong><br>
+                    Qty: ${item.quantity} — £${(item.price * item.quantity).toLocaleString()}
+                </div>
+            `;
+            itemsContainer.appendChild(itemDiv);
+        });
+
+        card.appendChild(itemsContainer);
         container.appendChild(card);
     });
 }
 
-document.addEventListener("DOMContentLoaded", loadSavedItems);
+document.addEventListener("DOMContentLoaded", loadPastOrders);
+
