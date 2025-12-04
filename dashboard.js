@@ -43,9 +43,8 @@ function loadPastOrders() {
                 container.appendChild(card);
             });
         })
-        .catch(err => {
-            document.getElementById("ordersContainer").innerHTML = `<p style="color:red;">${err.message}</p>`;
-        });
+  
+   
 }
 
 document.addEventListener("DOMContentLoaded", loadPastOrders);

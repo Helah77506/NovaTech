@@ -4,7 +4,6 @@ require_once 'config.php';
 
 header('Content-Type: application/json');
 
-// Ensure user is logged in
 if (!isset($_SESSION['uid'])) {
     http_response_code(403);
     echo json_encode(['error' => 'User not logged in']);
@@ -13,7 +12,7 @@ if (!isset($_SESSION['uid'])) {
 
 $uid = $_SESSION['uid'];
 
-// Get orders for the user
+
 $sql = "SELECT o.id AS order_id, o.created_at, oi.product_id, oi.quantity, p.name, p.image, p.price
         FROM orders o
         JOIN order_items oi ON o.id = oi.order_id

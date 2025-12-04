@@ -10,7 +10,6 @@ function listen_Sumbission(){
     })
 }
 
-
 //function to validate inputs
 function validateInputs(){ 
     const username = document.getElementById("username")
@@ -29,6 +28,7 @@ function validateInputs(){
         label.hidden = false
         label.textContent = "Please ensure the password meets the requirements\n-8 or more characters"+
         " \n-at least one uppercase character \n-at least one lowercase character\n-at least one number "
+        console.log("pw error")
         return false
 
     }
