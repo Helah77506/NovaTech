@@ -1,94 +1,86 @@
 @import url('home.css');
 
-
 .order-main {
   padding: 40px 10%;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .order-main h2 {
-  font-size: 1.8rem;
   margin-bottom: 20px;
-  text-align: left;
+  font-size: 1.8rem;
 }
 
-.total-price {
-  font-size: 1.2rem;
+.order-header {
+  display: grid;
+  grid-template-columns: 100px 2fr 100px 100px 120px;
   font-weight: bold;
-  margin-top: 20px;
-  text-align: right;
-}
-
-.order-btn-container {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 30px;
-}
-
-.order-btn {
-  background-color: var(--accent);
-  color: white;
-  padding: 12px 24px;
-  font-size: 1rem;
-  border: none;
+  margin-bottom: 10px;
+  background: #f0f0f0;
+  padding: 10px;
   border-radius: 8px;
-  cursor: pointer;
-}
-
-.order-btn:hover {
-  background-color: var(--accent-dark);
-}
-
-
-.cart-img img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background: #fff;
-  padding: 6px;
 }
 
 .cart-row {
   display: grid;
-  grid-template-columns: 100px 1.6fr 130px 100px 120px;
+  grid-template-columns: 100px 2fr 100px 100px 120px;
   align-items: center;
-  gap: 16px;
-  padding: 16px;
-  border-bottom: 1px solid #eee;
+  background: #fff;
+  padding: 14px 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.cart-img img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
 }
 
 .cart-name strong {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
+  color: #333;
 }
 
-.cart-sub,
-.cart-unit {
-  font-weight: 600;
-  color: var(--accent);
+.cart-name p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 4px;
 }
 
-.cart-qty span {
-  display: inline-block;
-  font-weight: 600;
+.cart-unit, .cart-qty, .cart-sub {
+  text-align: center;
   font-size: 1rem;
 }
 
-@media (max-width: 768px) {
-  .cart-row {
-    grid-template-columns: 100px 1fr;
-    grid-template-areas:
-      "img name"
-      "img unit"
-      "img qty"
-      "img sub";
-  }
-  .cart-img { grid-area: img; }
-  .cart-name { grid-area: name; }
-  .cart-unit { grid-area: unit; }
-  .cart-qty { grid-area: qty; }
-  .cart-sub { grid-area: sub; }
+.total-price {
+  text-align: right;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0d6bcb;
+}
+
+.order-btn-container {
+  text-align: right;
+  margin-top: 30px;
+}
+
+.order-btn {
+  background: #0d6bcb;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.order-btn:hover {
+  background: #094f9d;
 }
