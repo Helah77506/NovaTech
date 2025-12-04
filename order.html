@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Order Review | NovaTech</title>
-  <link rel="stylesheet" href="home.css" />
   <link rel="stylesheet" href="order.css" />
   <script src="order.js" defer></script>
 </head>
@@ -45,8 +44,18 @@
 
 <main class="order-main">
   <h2>Order Summary</h2>
+
+  <div class="order-header">
+    <div>Product</div>
+    <div>Details</div>
+    <div>Price</div>
+    <div>Quantity</div>
+    <div>Subtotal</div>
+  </div>
+
   <div id="orderContainer"></div>
   <div id="orderTotal" class="total-price"></div>
+
   <div class="order-btn-container">
     <button onclick="placeOrder()" class="order-btn">Place Order</button>
   </div>
@@ -60,22 +69,19 @@
   </div>
   <div class="col">
     <h4>Shop</h4>
-       <a href="product.html">Shop All</a>
-        <a href="product.html">Computers</a>
-        <a href="product.html">Projectors</a>
-        <a href="product.html">Smart Boards</a>
-        <a href="product.html">Classroom Audio</a>
-        <a href="product.html">Wireless Presentation Clickers</a>
-        <a href="product.html">Chromebooks</a>
-        <a href="product.html">Tablets</a>
-        <a href="product.html">Printers and Scanners</a>
+    <a href="#">Shop All</a>
+    <a href="#">Computers</a>
+    <a href="#">Projectors</a>
+    <a href="#">Smart Boards</a>
   </div>
   <div class="col">
     <h4>Support</h4>
-    <a href="ContactUs.html">Contact Us</a>
-    <a href="about.html">About Us</a>
+    <a href="#">Contact Us</a>
+    <a href="#">Help Center</a>
+    <a href="#">About Us</a>
   </div>
 </footer>
 
 </body>
 </html>
+
