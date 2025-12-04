@@ -1,71 +1,81 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="Checkout.js"></script>
-    </head>
-    <body>
-        <div class="checkout-container">
-       <link rel="stylesheet" href="style.css" />
-  
-       <h1>Checkout</h1>
-
+<head>
+    <script src="Checkout.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-  <!-- Shipping Info -->
-  <section>
-    <h2>Shipping Details</h2>
-    <label>
-      Full Name:
-      <input id="full-name" type="text" name="full-name">
-    </label>
-    <label>
-      Address:
-      <input id="address" type="text" name="address">
-    </label>
-    <label>
-      City:
-      <input id="city" type="text" name="city">
-    </label>
-    <label>
-      Post Code:
-      <input id="zip" type="text" name="zip">
-    </label>
-    <label>
-      Country:
-      <select name="country">
-        <option>United States</option>
-        <option>Canada</option>
-        <option>United Kingdom</option>
-      </select>
-    </label>
-    <label id="infolabel" hidden>.</label>
-  </section>
+<form id="checkout-form" action="order.html">
 
-  <!-- Payment Info -->
-  <section>
-    <h2>Payment</h2>
-    <label>
-      Card Number:
-      <input id="card-number"type="text" name="card-number">
-    </label>
-    <label>
-      Expiration Date:
-      <input id="expiry"type="text" name="exp-date" placeholder="MM/YY">
-    </label>
-    <label>
-      CVC:
-      <input id="cvc" type="text" name="cvc">
-    </label>
-     <label id="infolabel2" hidden>.</label>
-  </section>
+<div class="checkout-container">
 
- <button type="button" onclick="window.location.href='order.html'">Place Order</button>
+    <h1>Checkout</h1>
 
+    <!-- Shipping Info -->
+    <section>
+        <h2>Shipping Details</h2>
+
+        <label>
+            Full Name:
+            <input id="full-name" type="text" name="full-name">
+        </label>
+
+        <label>
+            Address:
+            <input id="address" type="text" name="address">
+        </label>
+
+        <label>
+            City:
+            <input id="city" type="text" name="city">
+        </label>
+
+        <label>
+            Post Code:
+            <input id="zip" type="text" name="zip">
+        </label>
+
+        <label>
+            Country:
+            <select name="country">
+                <option>United States</option>
+                <option>Canada</option>
+                <option>United Kingdom</option>
+            </select>
+        </label>
+
+        <label id="infolabel" hidden></label>
+    </section>
+
+    <!-- Payment Info -->
+    <section>
+        <h2>Payment</h2>
+
+        <label>
+            Card Number:
+            <input id="card-number" type="text" name="card-number">
+        </label>
+
+        <label>
+            Expiration Date:
+            <input id="expiry" type="text" name="exp-date" placeholder="MM/YY">
+        </label>
+
+        <label>
+            CVC:
+            <input id="cvc" type="text" name="cvc">
+        </label>
+
+        <label id="infolabel2" hidden></label>
+    </section>
+
+    <button type="submit">Place Order</button>
 
 </div>
+
 </form>
 
-    </body>
-  </form>
+</body>
 </html>
