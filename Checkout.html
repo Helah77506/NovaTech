@@ -1,81 +1,157 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-    <script src="Checkout.js" defer></script>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script type="text/javascript" src="./javascript/darkmode.js" defer></script>
 </head>
 
-<body>
+<body class="checkout-page">
 
-<form id="checkout-form" action="order.html">
+<!-- Header -->
+<header class="header">
+    <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
+    
+    <button id="theme-switch">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-760v-160h80v160h-80Zm266 110-55-55 112-115 56 57-113 113Zm54 210v-80h160v80H760ZM440-40v-160h80v160h-80ZM254-652 140-763l57-56 113 113-56 54Zm508 512L651-255l54-54 114 110-57 59ZM40-440v-80h160v80H40Zm157 300-56-57 112-112 29 27 29 28-114 114Zm283-100q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm0-80q66 0 113-47t47-113q0-66-47-113t-113-47q-66 0-113 47t-47 113q0 66 47 113t113 47Zm0-160Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/></svg>
+    </button>
+    
+    <nav class="nav">
+        <a href="Home.html">Home</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About Us</a>
+        <a href="product.html">Products</a>
 
-<div class="checkout-container">
+        <div class="nav-icons">
+            <a href="Login.html" class="login">Log in</a>
+            <img src="Assets/Home/user.png" alt="User" />
+            <a class="active" href="cart.html">Cart</a>
+            <img src="Assets/Home/cart.png" alt="Cart" />
+        </div>
+    </nav>
+</header>
 
-    <h1>Checkout</h1>
-
-    <!-- Shipping Info -->
-    <section>
-        <h2>Shipping Details</h2>
-
-        <label>
-            Full Name:
-            <input id="full-name" type="text" name="full-name">
-        </label>
-
-        <label>
-            Address:
-            <input id="address" type="text" name="address">
-        </label>
-
-        <label>
-            City:
-            <input id="city" type="text" name="city">
-        </label>
-
-        <label>
-            Post Code:
-            <input id="zip" type="text" name="zip">
-        </label>
-
-        <label>
-            Country:
-            <select name="country">
-                <option>United States</option>
-                <option>Canada</option>
-                <option>United Kingdom</option>
-            </select>
-        </label>
-
-        <label id="infolabel" hidden></label>
-    </section>
-
-    <!-- Payment Info -->
-    <section>
-        <h2>Payment</h2>
-
-        <label>
-            Card Number:
-            <input id="card-number" type="text" name="card-number">
-        </label>
-
-        <label>
-            Expiration Date:
-            <input id="expiry" type="text" name="exp-date" placeholder="MM/YY">
-        </label>
-
-        <label>
-            CVC:
-            <input id="cvc" type="text" name="cvc">
-        </label>
-
-        <label id="infolabel2" hidden></label>
-    </section>
-
-    <button type="submit">Place Order</button>
-
+<div class="header2">
+    <nav class="nav2"></nav>
 </div>
 
-</form>
+<!-- Checkout Form -->
+<div class="checkout-wrapper">
+    <h1>Checkout</h1>
+
+    <form id="checkoutForm">
+        <!-- Shipping Details -->
+        <div class="checkout-section">
+            <h2>Shipping Details</h2>
+            
+            <div class="form-group">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" name="full-name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+
+            <div class="form-group">
+                <label for="post-code">Post Code:</label>
+                <input type="text" id="post-code" name="post-code" required>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <select id="country" name="country" required>
+                    <option value="">Select Country</option>
+                    <option value="United States">United States</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Germany">Germany</option>
+                    <option value="France">France</option>
+                    <option value="Australia">Australia</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Payment -->
+        <div class="checkout-section">
+            <h2>Payment</h2>
+
+            <div class="form-group">
+                <label for="card-number">Card Number:</label>
+                <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+            </div>
+
+            <div class="form-group">
+                <label for="exp-date">Expiration Date:</label>
+                <input type="text" id="exp-date" name="exp-date" placeholder="MM/YY" maxlength="5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cvc">CVC:</label>
+                <input type="text" id="cvc" name="cvc" placeholder="123" maxlength="4" required>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="back-to-cart-btn" type="button" onclick="window.location.href='cart.html'">Back to Cart</button>
+            <button class="place-order-btn" type="submit">Place Order</button>
+        </div>
+    </form>
+</div>
+
+<script>
+// Card number formatting
+document.getElementById('card-number').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\s/g, '');
+    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+    e.target.value = formattedValue;
+});
+
+// Expiration date formatting
+document.getElementById('exp-date').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length >= 2) {
+        value = value.slice(0, 2) + '/' + value.slice(2, 4);
+    }
+    e.target.value = value;
+});
+
+// CVC - numbers only
+document.getElementById('cvc').addEventListener('input', function(e) {
+    e.target.value = e.target.value.replace(/\D/g, '');
+});
+
+// Form submission
+document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get cart from localStorage
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    
+    if (cart.length === 0) {
+        alert('Your cart is empty!');
+        window.location.href = 'product.html';
+        return;
+    }
+    
+    // Here you would normally send the order to a server
+    alert('Order placed successfully! Thank you for your purchase.');
+    
+    // Clear the cart
+    localStorage.removeItem('cart');
+    
+    // Redirect to home page
+    window.location.href = 'Home.html';
+});
+</script>
 
 </body>
 </html>

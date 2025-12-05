@@ -1,27 +1,29 @@
-//this file is for the javascript logic which will take place in the login page
+//javascript logic for registration page
 
-//this function will listen for submission on the login page
+//listens for the submission
 function listen_Submission() {
     const form = document.querySelector("form");
 
     form.addEventListener("submit", function (e) {
         const ok = validateInputs();
-        if (!ok) e.preventDefault(); // stop submit if password/user is wrong format
+        if (!ok) e.preventDefault(); // stop form if something is wrong
     });
 }
 
-//function to validate inputs
+//validate inputs function
 function validateInputs() {
     const username = document.getElementById("username");
     const password = document.getElementById("password");
+    const email = document.getElementById("email");
     const label = document.getElementById("infolabel");
 
-    const user = username.value.trim();
+    //these values should be used
     const pw = password.value.trim();
+    const em = email.value.trim();
+    const user = username.value.trim();
 
     //ensure there are no empty fields
-    if (user === "" || pw === "") {
-        //console.log("validate input test run ")
+    if (user === "" || pw === "" || em === "") {
         label.hidden = false;
         label.style.display = "block";
         label.textContent = "Please ensure all fields are filled out";
@@ -36,7 +38,8 @@ function validateInputs() {
         !/[0-9]/.test(pw)      // no number
     ) {
         label.hidden = false;
-        label.style.display = "block";
+        label.style.display = "grid";
+        label.style.whiteSpace = "pre-line"; // Add this line
         label.textContent =
             "Please ensure the password meets the requirements:\n" +
             "- 8 or more characters\n" +
@@ -46,7 +49,15 @@ function validateInputs() {
         return false;
     }
 
-    //everything is fine -> allow form to go to login.php
+    //ensure email is in a correct format (simple @ check)
+    else if (!/@/.test(em)) {
+        label.hidden = false;
+        label.style.display = "block";
+        label.textContent = "Please enter a valid email";
+        return false;
+    }
+
+    //everything is fine
     else {
         label.hidden = true;
         label.style.display = "none";
@@ -56,22 +67,10 @@ function validateInputs() {
 
 //function to handle backend responses
 function handleBackend() {
-    //if login is sucessful extract and store token and redirect user
+    //if registration is sucessful extract and store token and redirect user
 
     //if fails display sutible error message
 }
 
-//Ui Improvement
-//function to toggle password visibility
-//not vital
-function showPassword() {
-
-}
-
-//function to show loading button when its processing
-function showLoading() {
-
-}
-
-//start the listener when page loads
+//listens for submission
 document.addEventListener("DOMContentLoaded", listen_Submission);
