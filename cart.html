@@ -3,40 +3,57 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cart - NovaTech</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Cart - School Inventory</title>
+  <link rel="stylesheet" href="./styles/styles.css" />
+  <script type="text/javascript" src="./javascript/darkmode.js" defer></script>
 </head>
-<body>
-  <header class="header">
-    <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
-    <div class="links">
-      <a href="product.html">Products</a>
+<body class="cart-page">
+  
+<!-- Header -->
+<header class="header">
+  <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
+  <button id="theme-switch">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-760v-160h80v160h-80Zm266 110-55-55 112-115 56 57-113 113Zm54 210v-80h160v80H760ZM440-40v-160h80v160h-80ZM254-652 140-763l57-56 113 113-56 54Zm508 512L651-255l54-54 114 110-57 59ZM40-440v-80h160v80H40Zm157 300-56-57 112-112 29 27 29 28-114 114Zm283-100q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm0-80q66 0 113-47t47-113q0-66-47-113t-113-47q-66 0-113 47t-47 113q0 66 47 113t113 47Zm0-160Z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/></svg>
+          </button>
+  <nav class="nav">
       <a href="Home.html">Home</a>
-    </div>
-  </header>
+      <a href="contact.html">Contact</a>
+      <a href="about.html">About Us</a>
+      <a href="product.html"> Products</a>
 
-  <!-- Category Bar -->
+      <div class="nav-icons">
+          <a href="Login.html">Log in</a>
+          <img src="Assets/Home/user.png" alt="Login" />
+          
+          <a class="active" href="cart.html">Cart</a>
+          <img src="Assets/Home/cart.png" alt="Cart" />
+      </div>
+  </nav>
+</header>
+
+<!-- Category Bar -->
 <div class="header2">
-    <nav class="nav2">
-        
-    </nav>
+  <nav class="nav2">
+      
+  </nav>
 </div>
 
-  <main style="padding:28px 5%; max-width:1100px; margin:0 auto;">
-    <h1 style="margin-bottom:18px;">Your Cart</h1>
+  <main class="cart-main">
+    <h1>Your Cart</h1>
 
     <div id="cartContainer"></div>
 
-    <div id="cartSummary" style="margin-top:20px; text-align:right;"></div>
+    <div id="cartSummary" class="cart-summary"></div>
 
-    <div style="margin-top:20px; display:flex; gap:12px; justify-content:flex-end;">
-      <button id="clearCartBtn" style="padding:10px 14px; border-radius:8px; border:1px solid #ddd;background:#fff; cursor:pointer;">Clear cart</button>
-      <button id="checkoutBtn" style="padding:12px 18px; border-radius:8px; border:none; background:var(--accent); color:#fff; cursor:pointer;">Checkout</button>
+    <div class="cart-actions">
+      <button id="clearCartBtn" class="clear-cart-btn">Clear cart</button>
+      <button id="checkoutBtn" class="checkout-btn">Checkout</button>
     </div>
   </main>
 
-  
+  <footer class="cart-footer">© 2025 School Inventory</footer>
 
-  <script src="cart.js"></script>
+  <script src="./javascript/cart.js"></script>
 </body>
 </html>
