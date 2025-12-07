@@ -21,7 +21,6 @@ if (!isset($conn)) {
     die("Database connection failed");
 }
 
-// Login with email only (no username column in database)
 $stmt = $conn->prepare(
     "SELECT id, full_name, email, password_hash 
      FROM users 
