@@ -1,63 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NovaTech Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NovaTech Login</title>
 
-  
-  <link rel="preload" href="Assets/Home/login banner.jpg" as="image">
+    <script src="javascript/Login.js"></script>
+    <link rel="stylesheet" href="Styles/Login.css" />
 
-  <script src="javascript/login.js"></script>
-  <link rel="stylesheet" href="styles/logress.css">
+    <link rel="preload" href="Assets/Home/login_banner.jpg" as="image" />
 </head>
-
 <body>
 
-  <!-- Back to Home -->
-  <a href="Home.html" id="back-home-link">
-    <div class="back-home-container">
-      <img src="Assets/Home/arrow.png" alt="Home" class="home-icon">
-      <span class="back-home-text">Back to Home</span>
-    </div>
-  </a>
-
-  
-  <div class="container">
-
-    <div class="left"></div>
-
-    <div class="right">
-      <img src="Assets/Home/Logo.png" alt="NovaTech Logo" class="logo">
-
-      <h1>Welcome Back</h1>
-      <p>Log in to access bulk educational tech and support your institution. We’re providing for the future.</p>
-
-     
-      <form action="login.php" method="post">
-
-        <div class="form-group">
-          <label for="username">Username or Email</label>
-          <input type="text" id="username" name="username" placeholder="Enter your username or email" required>
+    <a href="Home.html" id="back-home-link">
+        <div class="back-home-container">
+            <img src="Assets/Home/arrow.png" class="home-icon" />
+            <span class="back-home-text">Back to Home</span>
         </div>
+    </a>
 
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+    <div class="container">
+        <div class="left"></div>
+
+        <div class="right">
+            <img src="Assets/Home/Logo.png" class="logo" />
+
+            <h1>Welcome Back</h1>
+            <p>Log in to access NovaTech services.</p>
+
+            <!-- server error from login.php -->
+            <p id="serverError" style="display:none;" class="auth-info"></p>
+
+            <!-- js error -->
+            <!-- js error -->
+            <p id="infolabel" hidden class="auth-info"></p>
+
+
+            <form action="login.php" method="post" id="loginForm">
+
+                <div class="form-group">
+                    <label>Username or Email</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="identifier"
+                        placeholder="Enter your username or email"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                    />
+                </div>
+
+                <input type="hidden" name="submitted" value="true" />
+
+                <button type="submit">Login</button>
+            </form>
+
+            <p class="login-text">
+                Don't have an account?
+                <a href="Register.html">Register</a>
+            </p>
         </div>
-
-        <input type="hidden" name="submitted" value="true">
-
-        <label id="infolabel" hidden>.</label>
-
-        <button type="submit">Login</button>
-      </form>
-
-      <p class="login-text">
-        Don't have an account? <a href="Register.html">Register</a>
-      </p>
     </div>
 
-  </div>
+    <script>
+        // shows error message 
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("error") === "wrong") {
+            const msg = document.getElementById("serverError");
+            msg.textContent = "Incorrect username/email or password.";
+            msg.style.display = "block";
+        }
+    </script>
 </body>
 </html>
