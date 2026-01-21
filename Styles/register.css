@@ -54,7 +54,7 @@
 
 /* Page layout */
 body {
-  margin: 1;
+  margin: 0;
   font-family: Arial, sans-serif;
   background: #084A8E;
   display: flex;
@@ -67,7 +67,7 @@ body {
 /* Main container */
 .container {
   width: 900px;
-  height: 710px;
+  height: 610px;
   background: #fff;
   display: flex;
   border-radius: 12px;
@@ -80,17 +80,7 @@ body {
 /* Left Banner Section */
 .left {
   width: 50%;
-  background-image: url("login banner.jpg"); 
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  color: white;
-}
-
-/* Left Banner Section */
-.left2 {
-  width: 50%;
-  background-image: url("reg banner.jpeg"); 
+  background-image: url("Assets/Home/reg-banner.jpeg"); /* UPDATED */
   background-size: cover;
   background-position: center;
   position: relative;
@@ -155,6 +145,7 @@ p {
   border-radius: 6px;
   font-size: 14px;
 }
+
 
 /* Buttons */
 button {

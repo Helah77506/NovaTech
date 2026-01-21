@@ -28,9 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = "Password must be at least 8 characters.";
     }
 
-    // Check if email already exists (using correct column name from database)
+    // Check if email already exists
     if (empty($errors)) {
-        $stmt = $conn->prepare("SELECT ID FROM users WHERE Email = ?");
+        $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $stmt->store_result();
@@ -50,16 +50,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $institution_name = '';
         $full_name        = $username;
 
-        // Using correct column names from database schema
         $stmt = $conn->prepare(
-            "INSERT INTO users (institution_Name, Full_Name, Email, Password_Hash)
+            "INSERT INTO users (institution_name, full_name, email, password_hash)
              VALUES (?, ?, ?, ?)"
         );
         $stmt->bind_param("ssss", $institution_name, $full_name, $email, $hash);
 
         if ($stmt->execute()) {
             $stmt->close();
-            // Success - redirect to login
+
             header("Location: Login.html");
             exit;
         } else {
@@ -67,16 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->close();
         }
     }
-
-    // If we reach here, there were errors
-    // Store errors in session and redirect back to form
-    $_SESSION['registration_errors'] = $errors;
-    $_SESSION['old_username'] = $username;
-    $_SESSION['old_email'] = $email;
-    header("Location: register.html");
-    exit;
 }
 
-// If not POST request, redirect to registration form
 header("Location: register.html");
 exit;
