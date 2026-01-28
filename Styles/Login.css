@@ -1,4 +1,4 @@
-/* Back to Home button */
+
 #back-home-link {
   position: absolute;
   left: 30px;
@@ -20,8 +20,8 @@
 }
 
 .home-icon {
-  width: 50px; 
-  height: 50px; 
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   padding: 8px;
   background: rgba(255, 255, 255, 0.9);
@@ -38,7 +38,6 @@
   padding: 4px 8px;
   border-radius: 4px;
   transition: all 0.3s ease;
-  white-space: nowrap;
 }
 
 #back-home-link:hover .home-icon {
@@ -52,9 +51,9 @@
   transform: translateY(-2px);
 }
 
-/* Page layout */
+
 body {
-  margin: 1;
+  margin: 0;
   font-family: Arial, sans-serif;
   background: #084A8E;
   display: flex;
@@ -64,10 +63,10 @@ body {
   position: relative;
 }
 
-/* Main container */
+
 .container {
   width: 900px;
-  height: 710px;
+  height: 610px;
   background: #fff;
   display: flex;
   border-radius: 12px;
@@ -77,38 +76,17 @@ body {
   z-index: 1;
 }
 
-/* Left Banner Section */
+/* Left Banner */
 .left {
   width: 50%;
-  background-image: url("login banner.jpg"); 
+  background-image: url("../Assets/Home/login\ banner.jpg");
   background-size: cover;
   background-position: center;
   position: relative;
   color: white;
 }
 
-/* Left Banner Section */
-.left2 {
-  width: 50%;
-  background-image: url("reg banner.jpeg"); 
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  color: white;
-}
 
-.left-text {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
-  padding: 15px;
-  border-radius: 10px;
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-/* Right Side */
 .right {
   width: 50%;
   padding: 20px;
@@ -123,7 +101,7 @@ body {
   height: auto;
 }
 
-/* Form Text */
+
 h1 {
   font-size: 28px;
   margin-bottom: 10px;
@@ -173,7 +151,7 @@ button:hover {
   background: #000000;
 }
 
-/* Login text */
+
 .login-text {
   margin-top: 20px;
   font-size: 14px;
@@ -194,7 +172,7 @@ button:hover {
   display: none;
 }
 
-/* Responsiveness */
+
 @media (max-width: 1000px) {
   #back-home-link {
     left: 15px;

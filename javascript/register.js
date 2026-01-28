@@ -38,8 +38,7 @@ function validateInputs() {
         !/[0-9]/.test(pw)      // no number
     ) {
         label.hidden = false;
-        label.style.display = "grid";
-        label.style.whiteSpace = "pre-line"; // Add this line
+        label.style.display = "block";
         label.textContent =
             "Please ensure the password meets the requirements:\n" +
             "- 8 or more characters\n" +
