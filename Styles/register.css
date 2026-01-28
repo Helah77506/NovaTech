@@ -80,7 +80,7 @@ body {
 /* Left Banner Section */
 .left {
   width: 50%;
-  background-image: url("Assets/Home/reg-banner.jpeg"); /* UPDATED */
+  background-image: url("../Assets/Home/reg-banner.jpeg"); /* UPDATED */
   background-size: cover;
   background-position: center;
   position: relative;
@@ -145,6 +145,7 @@ p {
   border-radius: 6px;
   font-size: 14px;
 }
+
 
 /* Buttons */
 button {
