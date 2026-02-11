@@ -42,6 +42,8 @@ if ($stmt->num_rows === 1) {
         exit();
     }
 }
+//setting session variables
+$_SESSION['id'] = $id;
 
 // wrong login
 header('Location: Login.html?error=wrong');
