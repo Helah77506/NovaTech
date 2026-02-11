@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | NovaTech</title>
+
+    <link rel="stylesheet" href="Styles/Home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Header -->
+<header class="header">
+    <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
+
+    <nav class="nav">
+        <a href="Home.html">Home</a>
+        <a href="ContactUs.html">Contact</a>
+        <a class="active" href="about.html">About Us</a>
+        <a href="product.html"> Products</a>
+
+        <div class="nav-icons">
+            <a href="Login.html" class="login">Log in</a>
+            <img src="Assets/Home/user.png" alt="User" />
+            
+
+             <a href="cart.html">Cart</a>
+            <img src="Assets/Home/cart .png" alt="Cart" />
+
+        </div>
+    </nav>
+</header>
+
+<!-- Navigation Bar -->
+<div class="header2">
+    <nav class="nav2">
+        
+    </nav>
+</div>
+
+<!-- Hero Section -->
+<section class="hero">
+    <img src="Assets/Home/hero.png" alt="Hero">
+    <div class="hero-text">
+        <h1>About NovaTech</h1>
+        <p>Empowering education through modern technology</p>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section" style="padding: 60px 10%; font-family: Inter;">
+    <h1 style="font-size: 36px; margin-bottom: 20px;">Who We Are</h1>
+    <p style="font-size: 18px; line-height: 1.7; max-width: 900px;">
+        NovaTech is committed to supporting educational institutions by providing 
+        high-quality technology designed to improve teaching and learning environments. 
+        We supply laptops, projectors, smart boards, tablets, and other essential 
+        classroom tools that help educators deliver modern learning experiences.
+    </p>
+
+    <h1 style="font-size: 32px; margin-top: 50px;">Our Mission</h1>
+    <p style="font-size: 18px; line-height: 1.7; max-width: 900px;">
+        Our mission is to ensure that every school, college, and university has access 
+        to reliable, affordable technology. We believe that access to modern tools is 
+        essential for student success in today’s digital world.
+    </p>
+
+    <h1 style="font-size: 32px; margin-top: 50px;">Why Choose NovaTech?</h1>
+    <ul style="font-size: 18px; line-height: 1.7;">
+        <p>✔ Affordable bulk deals for institutions</p>
+        <p>✔ High-quality and durable products</p>
+        <p>✔ Fast delivery and dedicated support</p>
+        <p>✔ Technology tailored for educational use</p>
+    </ul>
+</section>
+
+<section class="icon-bar">
+
+    <div class="icon">
+        <img src="Assets/Home/sale.svg">
+        <span>Low prices guaranteed</span>
+    </div>
+
+    <div class="icon">
+        <img src="Assets/Home/info.svg">
+        <span>Free shipping over £50</span>
+    </div>
+
+    <div class="icon">
+        <img src="Assets/Home/calender.svg">
+        <span>24/7 Availability</span>
+    </div>
+</section>
+
+<!-- Contact section -->
+<section class="contact-section">
+    <div class="contact-left">
+        <h1>Have any questions?</h1>
+        <h2>Contact us or use our friendly chatbot.</h2>
+        <a href="ContactUs.html">
+            <button>Contact Us</button>
+        </a>
+    </div>
+
+    <div class="contact-right">
+        <img src="Assets/Home/img_botright.png" alt="">
+    </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="col">
+        <h4>Store Location</h4>
+        <p>Aston University<br>Birmingham</p>
+        <p>NovaTech@gmail.com<br>07378867181</p>
+    </div>
+
+    <div class="col">
+        <h4>Shop</h4>
+        <a href="product.html">Shop All</a>
+        <a href="product.html">Computers</a>
+        <a href="product.html">Projectors</a>
+        <a href="product.html">Smart Boards</a>
+        <a href="product.html">Classroom Audio</a>
+        <a href="product.html">Wireless Presentation Clickers</a>
+        <a href="product.html">Chromebooks</a>
+        <a href="product.html">Tablets</a>
+        <a href="product.html">Printers and Scanners</a>
+    </div>
+
+    <div class="col">
+        <h4>Support</h4>
+        <a href="ContactUs.html">Contact Us</a>
+        <a href="ContactUs.html">Help Center</a>
+        <a href="about.html">About Us</a>
+    </div>
+</footer>
+
+<!-- Payments -->
+<section class="payment-options">
+    <h4>We accept the following paying methods:</h4>
+    <div class="payment-icons">
+        <img src="Assets/Home/visa.svg">
+        <img src="Assets/Home/mastercard.svg">
+        <img src="Assets/Home/paypal.svg">
+        <img src="Assets/Home/amex.svg">
+        <img src="Assets/Home/jcb.svg">
+        <img src="Assets/Home/unionpay.svg">
+        <img src="Assets/Home/googlepay.svg">
+        <img src="Assets/Home/applepay.svg">
+    </div>
+</section>
+
+</body>
+</html>
