@@ -99,6 +99,7 @@ ALTER TABLE `users`
 
 --
 -- AUTO_INCREMENT for table `orders`
+--
 ALTER TABLE `orders`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
