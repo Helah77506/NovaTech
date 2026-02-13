@@ -58,23 +58,104 @@ function validatePaymentInputs(){
     return true 
 }
     
-    
 
-function listen_Sumbission(){
-    const form = document.querySelector("form")
-    
-    form.addEventListener("submit", function(e){
-        const shippingOK = validateUserInputs()
-        const paymentOK = validatePaymentInputs()
-
-        if (!shippingOK || !paymentOK) {
-            e.preventDefault()
-        } 
-        else {
-            // redirect to another page
-            window.location.href = "order.html";}
-    })
+// CHECK STOCK BEFORE ORDER
+// ======================================
+function validateStock(cart, products) {
+    for (let item of cart) {
+        const product = products.find(p => p.id === item.id);
+        if (!product || product.stock < item.quantity) {
+            alert(`Insufficient stock for ${item.name}`);
+            return false;
+        }
+    }
+    return true;
 }
 
-//listens for sumbission 
-document.addEventListener("DOMContentLoaded", listen_Sumbission);
+
+// UPDATE STOCK AFTER ORDER
+// ======================================
+function updateStockFromCart(cart) {
+    let products = JSON.parse(localStorage.getItem("productsData") || "[]");
+
+    cart.forEach(item => {
+        const product = products.find(p => p.id === item.id);
+        if (product) {
+            product.stock -= item.quantity;
+            if (product.stock < 0) product.stock = 0;
+        }
+    });
+
+    localStorage.setItem("productsData", JSON.stringify(products));
+}
+
+
+// SAVE ORDER
+// ======================================
+function saveOrder(cart) {
+    const orders = JSON.parse(localStorage.getItem("orders") || "[]");
+
+    orders.push({
+        id: Date.now(),
+        items: cart,
+        date: new Date().toISOString(),
+        status: "Pending"
+    });
+
+    localStorage.setItem("orders", JSON.stringify(orders));
+}
+
+// function listen_Sumbission(){
+//     const form = document.querySelector("form")
+    
+//     form.addEventListener("submit", function(e){
+//         const shippingOK = validateUserInputs()
+//         const paymentOK = validatePaymentInputs()
+
+//         if (!shippingOK || !paymentOK) {
+//             e.preventDefault()
+//         } 
+//         else {
+//             // redirect to another page
+//             window.location.href = "order.html";}
+//     })
+// }
+// this is the old funcion just incase
+
+function listen_Submission(){
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function(e){
+        e.preventDefault();
+
+        const shippingOK = validateUserInputs();
+        const paymentOK = validatePaymentInputs();
+
+        if (!shippingOK || !paymentOK) return;
+
+        const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        let products = JSON.parse(localStorage.getItem("productsData") || "[]");
+
+        if (cart.length === 0) {
+            alert("Your cart is empty.");
+            return;
+        }
+
+        // Validate stock before reducing
+        if (!validateStock(cart, products)) return;
+
+        // Update stock
+        updateStockFromCart(cart);
+
+        // Save order
+        saveOrder(cart);
+
+        // Clear cart
+        localStorage.removeItem("cart");
+
+        // Redirect
+        window.location.href = "order.html";
+    });
+}
+
+document.addEventListener("DOMContentLoaded", listen_Submission);

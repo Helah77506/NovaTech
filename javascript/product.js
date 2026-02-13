@@ -2,103 +2,103 @@
 // PRODUCT LIST 
 
 const products = [
-  { id: 1, name: "Epson EB-X49 Classroom Projector", price: 599,
+  { id: 1, name: "Epson EB-X49 Classroom Projector", price: 599, stock: 1000,
     description: "Bright 3,600-lumen projector designed for classrooms.",
     category: "classroom", image: "Assets/product/epson-projector.jpg" },
 
-  { id: 2, name: "Promethean ActivPanel 65\"", price: 2499,
+  { id: 2, name: "Promethean ActivPanel 65\"", price: 2499, stock: 1000,
     description: "65-inch interactive classroom display.",
     category: "classroom", image: "Assets/product/activpanel-65.jpg" },
 
-  { id: 3, name: "IPEVO V4K Document Camera", price: 119,
+  { id: 3, name: "IPEVO V4K Document Camera", price: 119, stock: 1000,
     description: "Ultra-HD document camera for lessons.",
     category: "classroom", image: "Assets/product/ipevo-v4k.jpg" },
 
-  { id: 4, name: "Logitech R400 Wireless Presenter", price: 39,
+  { id: 4, name: "Logitech R400 Wireless Presenter", price: 39, stock: 1000,
     description: "Wireless clicker with 15m range.",
     category: "classroom", image: "Assets/product/logitech-r400.jpg" },
 
-  { id: 5, name: "FrontRow Juno Audio System", price: 799,
+  { id: 5, name: "FrontRow Juno Audio System", price: 799, stock: 1000,
     description: "Classroom speaker + teacher mic system.",
     category: "classroom", image: "Assets/product/frontrow-juno.jpg" },
 
-  { id: 6, name: "Dell OptiPlex 7010 Desktop", price: 799,
+  { id: 6, name: "Dell OptiPlex 7010 Desktop", price: 799, stock: 1000,
     description: "Fast i5 desktop for school use.",
     category: "computing", image: "Assets/product/optiplex-7010.jpg" },
 
-  { id: 7, name: "Lenovo ThinkPad E15", price: 899,
+  { id: 7, name: "Lenovo ThinkPad E15", price: 899, stock: 1000,
     description: "Durable teacher laptop.",
     category: "computing", image: "Assets/product/thinkpad-e15.jpg" },
 
-  { id: 8, name: "Acer Chromebook Spin 311", price: 249,
+  { id: 8, name: "Acer Chromebook Spin 311", price: 249, stock: 1000,
     description: "Student touchscreen Chromebook.",
     category: "computing", image: "Assets/product/chromebook-spin311.jpg" },
 
-  { id: 9, name: "Apple iPad 9th Gen", price: 329,
+  { id: 9, name: "Apple iPad 9th Gen", price: 329, stock: 1000,
     description: "Portable tablet for education.",
     category: "computing", image: "Assets/product/ipad-9.jpg" },
 
-  { id: 10, name: "Synology DS220+ NAS Server", price: 319,
+  { id: 10, name: "Synology DS220+ NAS Server", price: 319, stock: 1000,
     description: "2-bay storage server for backups.",
     category: "computing", image: "Assets/product/synology-ds220.jpg" },
 
-  { id: 11, name: "Ubiquiti UniFi U6-Lite", price: 99,
+  { id: 11, name: "Ubiquiti UniFi U6-Lite", price: 99, stock: 1000,
     description: "Wi-Fi 6 school access point.",
     category: "networking", image: "Assets/product/unifi-u6lite.jpg" },
 
-  { id: 12, name: "TP-Link 24-Port PoE Switch", price: 249,
+  { id: 12, name: "TP-Link 24-Port PoE Switch", price: 249, stock: 1000,
     description: "Managed PoE switch for APs and cameras.",
     category: "networking", image: "Assets/product/tplink-24port.jpg" },
 
-  { id: 13, name: "Logitech C920 HD Webcam", price: 59,
+  { id: 13, name: "Logitech C920 HD Webcam", price: 59, stock: 1000,
     description: "HD webcam for meetings and streaming.",
     category: "networking", image: "Assets/product/logitech-c920.jpg" },
 
-  { id: 14, name: "Poly Studio Video Bar", price: 799,
+  { id: 14, name: "Poly Studio Video Bar", price: 799, stock: 1000,
     description: "All-in-one conferencing bar.",
     category: "networking", image: "Assets/product/poly-studio.jpg" },
 
-  { id: 15, name: "Netgear Nighthawk AX5400", price: 179,
+  { id: 15, name: "Netgear Nighthawk AX5400", price: 179, stock: 1000,
     description: "Wi-Fi 6 router for offices.",
     category: "networking", image: "Assets/product/nighthawk-ax5400.jpg" },
 
-  { id: 16, name: "JBL EON712 Speaker", price: 499,
+  { id: 16, name: "JBL EON712 Speaker", price: 499, stock: 1000,
     description: "Portable PA speaker.",
     category: "audiovisual", image: "Assets/product/jbl-eon712.jpg" },
 
-  { id: 17, name: "Shure BLX14 Lavalier Mic", price: 299,
+  { id: 17, name: "Shure BLX14 Lavalier Mic", price: 299, stock: 1000,
     description: "Wireless lapel mic system.",
     category: "audiovisual", image: "Assets/product/shure-blx14.jpg" },
 
-  { id: 18, name: "Elite Screens 100\" Electric Screen", price: 269,
+  { id: 18, name: "Elite Screens 100\" Electric Screen", price: 269, stock: 1000,
     description: "Motorized projector screen.",
     category: "audiovisual", image: "Assets/product/elite-100in.jpg" },
 
-  { id: 19, name: "Samsung 75\" LED Display", price: 1399,
+  { id: 19, name: "Samsung 75\" LED Display", price: 1399, stock: 1000,
     description: "Large commercial-grade display.",
     category: "audiovisual", image: "Assets/product/samsung-75.jpg" },
 
-  { id: 20, name: "AVer CAM520 Pro2 Camera", price: 799,
+  { id: 20, name: "AVer CAM520 Pro2 Camera", price: 799, stock: 1000,
     description: "PTZ camera for classrooms.",
     category: "audiovisual", image: "Assets/product/aver-cam520.jpg" },
 
-  { id: 21, name: "HP LaserJet Pro M428fdw", price: 459,
+  { id: 21, name: "HP LaserJet Pro M428fdw", price: 459, stock: 1000,
     description: "Multifunction school printer.",
     category: "office", image: "Assets/product/hp-m428.jpg" },
 
-  { id: 22, name: "Fellowes 99Ci Shredder", price: 229,
+  { id: 22, name: "Fellowes 99Ci Shredder", price: 229, stock: 1000,
     description: "Heavy-duty office shredder.",
     category: "office", image: "Assets/product/fellowes-99ci.jpg" },
 
-  { id: 23, name: "Zebra ZD220 Label Printer", price: 159,
+  { id: 23, name: "Zebra ZD220 Label Printer", price: 159, stock: 1000,
     description: "Compact barcode label printer.",
     category: "office", image: "Assets/product/zebra-zd220.jpg" },
 
-  { id: 24, name: "AccuTouch RFID Terminal", price: 199,
+  { id: 24, name: "AccuTouch RFID Terminal", price: 199, stock: 1000,
     description: "RFID attendance system.",
     category: "office", image: "Assets/product/rfid-terminal.jpg" },
 
-  { id: 25, name: "GBC Fusion 3000L Laminator", price: 89,
+  { id: 25, name: "GBC Fusion 3000L Laminator", price: 89, stock: 1000,
     description: "Fast laminator for schools.",
     category: "office", image: "Assets/product/gbc-3000l.jpg" },
 ];
@@ -121,12 +121,20 @@ function displayProducts(list) {
 
   list.forEach(p => {
     const card = document.createElement('div');
+    const status = getStockStatus(p.stock);
     card.className = 'product-card';
     card.innerHTML = `
       <img src="${p.image}" alt="${escapeHtml(p.name)}" />
       <h3>${escapeHtml(p.name)}</h3>
       <div class="price">£${p.price.toLocaleString()}</div>
-      <button class="details-btn" data-id="${p.id}">View Details</button>
+      <span class="stock ${status}">
+    ${
+      status === "out" ? "Out of Stock" :
+      status === "low" ? "Low Stock" :
+      "In Stock"
+    }
+  </span>
+      <button class="details-btn" data-id="${p.id}" ${status === "out" ? "disabled" : ""}>View Details</button>
     `;
     container.appendChild(card);
   });
@@ -143,6 +151,11 @@ function displayProducts(list) {
 
 function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
+function getStockStatus(stock) {
+  if (stock === 0) return "out";
+  if (stock <= 499) return "low";
+  return "in";
+}
 
 displayProducts(products);
 
