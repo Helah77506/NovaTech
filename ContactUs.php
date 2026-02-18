@@ -12,20 +12,7 @@
 
 <header class="header">
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
-    <nav class="nav">
-        <a href="Home.html">Home</a>
-        <a href="contact.html" class="active">Contact</a>
-        <a href="about.html">About Us</a>
-        <a href="product.html">Products</a>
-
-        <div class="nav-icons">
-            <a href="Login.html">Log in</a>
-            <img src="Assets/Home/user.png" alt="Login" />
-            
-            <a href="cart.html">Cart</a>
-            <img src="Assets/Home/cart .png" alt="Cart" />
-        </div>
-    </nav>
+    <?php require_once __DIR__ . '/topbar.php';?>
 </header>
 
 

@@ -15,23 +15,7 @@
 <!-- Header -->
 <header class="header">
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
-
-    <nav class="nav">
-        <a href="Home.html">Home</a>
-        <a href="ContactUs.html">Contact</a>
-        <a class="active" href="about.html">About Us</a>
-        <a href="product.html"> Products</a>
-
-        <div class="nav-icons">
-            <a href="Login.html" class="login">Log in</a>
-            <img src="Assets/Home/user.png" alt="User" />
-            
-
-             <a href="cart.html">Cart</a>
-            <img src="Assets/Home/cart .png" alt="Cart" />
-
-        </div>
-    </nav>
+    <?php require_once __DIR__ . '/topbar.php';?>
 </header>
 
 <!-- Navigation Bar -->
