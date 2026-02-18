@@ -1,34 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Products - School Inventory</title>
-  <link rel="stylesheet" href="Styles/style.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Products - School Inventory</title>
+    <link rel="stylesheet" href="Styles/Home.css">
+    <link rel="stylesheet" href="Styles/style.css" />
 </head>
 <body>
 
 <!-- header -->
 <header class="header">
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
-    
-    <div class="links">
-        <a href="Home.html">Home</a>
-        <a href="ContactUs.html">Contact</a>
-        <a href="about.html">About Us</a>
-        <a class="active" href="product.html">Products</a>
-
-        <!-- Icons container (match home) -->
-        <div class="nav-icons">
-            <a href="login.html">Login</a>
-            <img src="Assets/Home/user.png" alt="Login" />
-
-            <a href="cart.html" class="cart-link">Cart <span id="cartCount">0</span></a>
-            
-        </div>
-    </div>
+    <?php require_once __DIR__ . '/topbar.php';?>
 </header>
-
 <!-- Category Bar -->
 <div class="header2">
     <nav class="nav2">

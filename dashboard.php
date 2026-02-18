@@ -11,16 +11,7 @@
 
 <header class="header">
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
-    <nav class="nav">
-        <a href="Home.html">Home</a>      
-         <a href="ContactUs.html">Contact</a>
-        <a href="about.html">About</a>       
-         <a href="product.html">Products</a>
-        <div class="nav-icons">
-            <img src="Assets/Home/user.svg" alt="User" />
-            <a href="login.html">Login</a>
-        </div>
-    </nav>
+    <?php require_once __DIR__ . '/topbar.php';?>
 </header>
 
 <div class="header2">
