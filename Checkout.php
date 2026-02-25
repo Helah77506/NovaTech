@@ -12,11 +12,11 @@
 
 <body>
 
-<form id="checkout-form" action="order.html">
+<form id="checkout-form" action="order.php">
 
 <div class="checkout-container">
 
- <button type="button" onclick="window.location.href='order.html'">Place Order</button>
+ <button type="button" onclick="window.location.href='order.php'">Place Order</button>
     <h1>Checkout</h1>
 
     <form id="checkoutForm">
@@ -106,9 +106,11 @@
             </div>
         </div>
         <label id="infolabel" hidden></label>
+        <button type="submit">Place Order</button>
+
     </section>
 
-    <!-- Payment Info -->
+    <!-- Payment Info
     <section>
         <h2>Payment</h2>
 
@@ -128,10 +130,9 @@
         </label>
 
         <label id="infolabel2" hidden></label>
-    </section>
+    </section> -->
 
-    <button type="submit">Place Order</button>
-
+    
 </div>
 
 </form>

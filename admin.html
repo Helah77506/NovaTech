@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - NovaTech</title>
+    <link rel="stylesheet" href="styles/admin.css">
+</head>
+<body>
+
+<header>
+    <h1>NovaTech Admin Panel</h1>
+    <button onclick="logout()">Logout</button>
+</header>
+
+<div class="admin-container">
+
+    <aside class="sidebar">
+        <button onclick="loadSection('products')">Manage Products</button>
+        <button onclick="loadSection('inventory')">Inventory</button>
+        <button onclick="loadSection('orders')">Orders</button>
+        <button onclick="loadSection('customers')">Customers</button>
+        <button onclick="loadSection('reviews')">Reviews</button>
+        <button onclick="loadSection('returns')">Returns</button>
+    </aside>
+
+    <main id="admin-content">
+        <h2>Welcome Admin</h2>
+        <p>Select a section from the sidebar.</p>
+    </main>
+
+</div>
+
+<script src="javascript/admin.js"></script>
+</body>
+</html>

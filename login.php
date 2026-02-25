@@ -1,50 +1,85 @@
-<?php
-session_start();
-require 'Config.php'; 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NovaTech Login</title>
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: Login.html');
-    exit();
-}
+    <script src="javascript/Login.js"></script>
+    <link rel="stylesheet" href="Styles/Login.css" />
 
-$identifier = trim($_POST['identifier'] ?? '');
-$password   = $_POST['password'] ?? '';
+    <link rel="preload" href="Assets/Home/login_banner.jpg" as="image" />
+</head>
+<body>
 
-// basic check
-if ($identifier === '' || $password === '') {
-    header('Location: Login.html?error=wrong');
-    exit();
-}
+    <a href="Home.php" id="back-home-link">
+        <div class="back-home-container">
+            <img src="Assets/Home/arrow.png" class="home-icon" />
+            <span class="back-home-text">Back to Home</span>
+        </div>
+    </a>
 
-// look for a user with this email or username
-$stmt = $conn->prepare(
-    "SELECT id, full_name, email, password_hash 
-     FROM users 
-     WHERE email = ? OR full_name = ?"
-);
+    <div class="container">
+        <div class="left"></div>
 
-$stmt->bind_param("ss", $identifier, $identifier);
-$stmt->execute();
-$stmt->store_result();
+        <div class="right">
+            <img src="Assets/Home/Logo.png" class="logo" />
 
-// found exactly one user
-if ($stmt->num_rows === 1) {
-    $stmt->bind_result($id, $full_name, $email, $hash);
-    $stmt->fetch();
+            <h1>Welcome Back</h1>
+            <p>Log in to access NovaTech services.</p>
 
- // check password
-    if (password_verify($password, $hash)) {
-        $_SESSION['user_id']   = $id;
-        $_SESSION['full_name'] = $full_name;
-        $_SESSION['email']     = $email;
+            <!-- server error from login.php -->
+            <p id="serverError" style="display:none;" class="auth-info"></p>
 
-        header('Location: Home.html');
-        exit();
-    }
-}
-//setting session variables
-$_SESSION['id'] = $id;
+            <!-- js error -->
+            <!-- js error -->
+            <p id="infolabel" hidden class="auth-info"></p>
 
-// wrong login
-header('Location: Login.html?error=wrong');
-exit();
+
+            <form action="login.php" method="post" id="loginForm">
+
+                <div class="form-group">
+                    <label>Username or Email</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="identifier"
+                        placeholder="Enter your username or email"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                    />
+                </div>
+
+                <input type="hidden" name="submitted" value="true" />
+
+                <button type="submit">Login</button>
+            </form>
+
+            <p class="login-text">
+                Don't have an account?
+                <a href="Register.php">Register</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // shows error message 
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("error") === "wrong") {
+            const msg = document.getElementById("serverError");
+            msg.textContent = "Incorrect username/email or password.";
+            msg.style.display = "block";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaTech – Modern</title>
+
+    <link rel="stylesheet" href="Styles/Home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Header -->
+<header class="header">
+    <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
+
+    <nav class="nav">
+        <a class="active" href="Home.php">Home</a>
+        <a href="ContactUs.php">Contact</a>
+        <a href="about.php">About Us</a>
+        <a href="product.php"> Products</a>
+
+        <div class="nav-icons">
+            <a href="Login.php">Log in</a>
+            <img src="Assets/Home/user.png" alt="Login" />
+            
+            <a href="cart.php">Cart</a>
+            <img src="Assets/Home/cart .png" alt="Cart" />
+        </div>
+    </nav>
+</header>
+
+<!-- Category Bar -->
+<div class="header2">
+    <nav class="nav2">
+        
+    </nav>
+</div>
+
+<!-- Hero Section -->
+<section class="hero">
+    <img src="Assets/Home/hero.png" alt="Hero">
+    <div class="hero-text">
+        <h1>Providing for the Future starts with us</h1>
+        <p>Get bulk deals</p>
+        <a href="dashboard.php">
+        <button>Dashboard</button>
+        </a>
+    
+    </div>
+</section>
+
+<!-- Slider Section -->
+<div class="slider-container">
+    <div id="slider" class="slider"></div>
+</div>
+
+<div id="ads-template" style="display:none;">
+    <div class="ad">
+        <img src="Assets/Home/class room auid.webp">
+        <div class="text">Class room Audio </div>
+        <a href="product.php" class="btn">Shop</a>
+    </div>
+
+    <div class="ad">
+        <img src="Assets/Home/Ad2.png">
+        <div class="text">Always up to date with latest technology</div>
+        <a href="product.php" class="btn">Shop</a>
+    </div>
+
+    <div class="ad">
+        <img src="Assets/Home/Ad3.png">
+        <div class="text">Chromebooks with AI </div>
+        <a href="product.php" class="btn">Shop</a>
+    </div>
+
+    <div class="ad">
+        <img src="Assets/Home/talets.png">
+        <div class="text">Tablets made for students</div>
+        <a href="product.php" class="btn">Shop</a>
+    </div>
+</div>
+
+<!-- Icon Bar -->
+<section class="icon-bar">
+
+    <div class="icon">
+        <img src="Assets/Home/sale.svg">
+        <span>Low prices guaranteed</span>
+    </div>
+
+    <div class="icon">
+        <img src="Assets/Home/info.svg">
+        <span>Free shipping over £50</span>
+    </div>
+
+    <div class="icon">
+        <img src="Assets/Home/calender.svg">
+        <span>24/7 Availability</span>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="contact-section">
+    <div class="contact-left">
+        <h1>Have any questions?</h1>
+        <h2>Contact us or use our friendly chatbot.</h2>
+        <a href="ContactUs.php">
+            <button>Contact Us</button>
+        </a>
+    </div>
+
+    <div class="contact-right">
+        <img src="Assets/Home/img_botright.png" alt="">
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="col">
+        <h4>Store Location</h4>
+        <p>Aston University<br>Birmingham</p>
+        <p>NovaTech@gmail.com<br>07378867181</p>
+    </div>
+
+    <div class="col">
+        <h4>Shop</h4>
+        <a href="product.php">Shop All</a>
+        <a href="product.php">Computers</a>
+        <a href="product.php">Projectors</a>
+        <a href="product.php">Smart Boards</a>
+        <a href="product.php">Classroom Audio</a>
+        <a href="product.php">Wireless Presentation Clickers</a>
+        <a href="product.php">Chromebooks</a>
+        <a href="product.php">Tablets</a>
+        <a href="product.php">Printers and Scanners</a>
+
+    </div>
+
+    <div class="col">
+        <h4>Support</h4>
+        <a href="ContactUs.php">Contact Us</a>
+        <a href="ContactUs.php">Help Center</a>
+        <a href="about.php">About Us</a>
+    </div>
+</footer>
+
+<!-- Payments -->
+<section class="payment-options">
+    <h4>We accept the following paying methods:</h4>
+   
+    <div class="payment-icons">
+        <img src="Assets/Home/visa.svg">
+        <img src="Assets/Home/mastercard.svg">
+        <img src="Assets/Home/paypal.svg">
+        <img src="Assets/Home/amex.svg">
+        <img src="Assets/Home/jcb.svg">
+        <img src="Assets/Home/unionpay.svg">
+        <img src="Assets/Home/googlepay.svg">
+        <img src="Assets/Home/applepay.svg">
+    </div>
+</section>
+
+<script>
+const slider = document.getElementById("slider");
+let ads = Array.from(document.querySelectorAll("#ads-template .ad"));
+const STEP = 47.5;
+const INTERVAL = 5000;
+const PAUSE = 1000;
+
+function renderSlides(extra=false){
+    slider.innerHTML = "";
+    const count = extra ? 4 : 3;
+
+    for (let i=0;i<count;i++){
+        const ad = ads[i % ads.length].cloneNode(true);
+        ad.classList.add("slide");
+        slider.appendChild(ad);
+    }
+}
+
+function animate(){
+    renderSlides(true);
+
+    requestAnimationFrame(()=>{
+        slider.style.transition="transform 0.6s ease";
+        slider.style.transform=`translateX(-${STEP}%)`;
+    });
+
+    setTimeout(()=>{
+        slider.style.transition="none";
+        slider.style.transform="translateX(0)";
+        ads.push(ads.shift());
+        renderSlides();
+    },600 + PAUSE);
+}
+
+renderSlides();
+setInterval(animate,INTERVAL);
+</script>
+
+</body>
+</html>
