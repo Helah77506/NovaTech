@@ -3,7 +3,7 @@ session_start();
 require 'Config.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: Login.html');
+    header('Location: Loginpage.php');
     exit();
 }
 
@@ -12,7 +12,7 @@ $password   = $_POST['password'] ?? '';
 
 // basic check
 if ($identifier === '' || $password === '') {
-    header('Location: Login.html?error=wrong');
+    header('Location: Loginpage.php?error=wrong');
     exit();
 }
 
@@ -38,13 +38,11 @@ if ($stmt->num_rows === 1) {
         $_SESSION['full_name'] = $full_name;
         $_SESSION['email']     = $email;
 
-        header('Location: Home.html');
+        header('Location: Homepage.php');
         exit();
     }
 }
-//setting session variables
-$_SESSION['id'] = $id;
 
 // wrong login
-header('Location: Login.html?error=wrong');
+header('Location: Loginpage.php?error=wrong');
 exit();

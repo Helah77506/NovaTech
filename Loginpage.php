@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    <a href="Home.html" id="back-home-link">
+    <a href="Homepage.php" id="back-home-link">
         <div class="back-home-container">
             <img src="Assets/Home/arrow.png" class="home-icon" />
             <span class="back-home-text">Back to Home</span>

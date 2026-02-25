@@ -11,7 +11,7 @@
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
     <div class="links">
       <a href="product.html">Products</a>
-      <a href="Home.html">Home</a>
+      <a href="Homepage.php">Home</a>
     </div>
   </header>
 
