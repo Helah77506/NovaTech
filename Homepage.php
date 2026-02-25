@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -31,7 +32,7 @@
     <div class="hero-text">
         <h1>Providing for the Future starts with us</h1>
         <p>Get bulk deals</p>
-        <a href="dashboard.html">
+        <a href="dashboard.php">
         <button>Dashboard</button>
         </a>
     

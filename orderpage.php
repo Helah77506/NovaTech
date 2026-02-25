@@ -13,15 +13,15 @@
 <header class="header">
   <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
   <nav class="nav">
-    <a href="Home.html">Home</a>      
+    <a href="Homepage.php">Home</a>      
     <a href="ContactUs.html">Contact</a>
     <a href="about.html">About</a>       
     <a href="product.html">Products</a>
     <a href="cart.html">Cart</a>
-    <a href="dashboard.html">Dashboard</a>
+    <a href="dashboard.php">Dashboard</a>
     <div class="nav-icons">
       <img src="Assets/Home/user.svg" alt="User" />
-      <a href="login.html">Login</a>
+      <a href="Loginpage.php">Login</a>
     </div>
   </nav>
 </header>

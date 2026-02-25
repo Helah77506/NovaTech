@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->execute()) {
             $stmt->close();
 
-            header("Location: Login.html");
+            header("Location: Loginpage.php");
             exit;
         } else {
             $errors[] = "Error creating account.";
