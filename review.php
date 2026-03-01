@@ -83,7 +83,7 @@ $reviews = $review_stmt->get_result()
 
     <div class="container">
 
-        <div class="product-header">
+        <div class="product-box">
             <img src="<?= $product['Image']; ?>" alt="Product">
             <div>
                 <h2><?= $product['Product_Name']; ?></h2>
