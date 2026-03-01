@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <div class="checkout-container">
+       <link rel="stylesheet" href="style.css" />
+  
+       <h1>Checkout</h1>
+
+  <!-- Cart Summary -->
+  <section>
+    <h2>Order Summary</h2>
+    <div class="cart-item">
+      <span>Product x</span>
+      <span>price </span>
+    </div>
+  </section>
+
+  <!-- Shipping Info -->
+  <section>
+    <h2>Shipping Details</h2>
+    <label>
+      Full Name:
+      <input type="text" name="full-name">
+    </label>
+    <label>
+      Address:
+      <input type="text" name="address">
+    </label>
+    <label>
+      City:
+      <input type="text" name="city">
+    </label>
+    <label>
+      ZIP Code:
+      <input type="text" name="zip">
+    </label>
+    <label>
+      Country:
+      <select name="country">
+        <option>United States</option>
+        <option>Canada</option>
+        <option>United Kingdom</option>
+      </select>
+    </label>
+  </section>
+
+  <!-- Payment Info -->
+  <section>
+    <h2>Payment</h2>
+    <label>
+      Card Number:
+      <input type="text" name="card-number">
+    </label>
+    <label>
+      Expiration Date:
+      <input type="text" name="exp-date" placeholder="MM/YY">
+    </label>
+    <label>
+      CVC:
+      <input type="text" name="cvc">
+    </label>
+  </section>
+
+  <button type="submit">Place Order</button>
+
+</div>
+
+    </body>
+</html>
