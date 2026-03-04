@@ -1,26 +1,49 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = htmlspecialchars(trim($_POST['name']));
-    $email = htmlspecialchars(trim($_POST['email']));
-    $subject = htmlspecialchars(trim($_POST['subject']));
-    $message = htmlspecialchars(trim($_POST['message']));
 
-    $to = "novatech2025nt@gmail.com";
-    $email_subject = "Contact Form Submission: " . $subject;
-    $email_body = "You have received a new message from the contact form on your website.
+    $name    = htmlspecialchars($_POST['name']);
+    $email   = htmlspecialchars($_POST['email']);
+    $subject = htmlspecialchars($_POST['subject']);
+    $message = htmlspecialchars($_POST['message']);
 
-    Name: $name
-    Email: $email
-    Subject: $subject
-    Message:
-    $message
-    ";
-    $headers = "From: $email\r\n";
-    $headers .= "Reply-To: $email\r\n";
+    $mail = new PHPMailer(true);
 
-    if (mail($to, $email_subject, $email_body, $headers)) {
-        echo "Thank you for contacting us, $name. We will get back to you shortly.";
-    } else {
-        echo "Sorry, there was an error sending your message. Please try again later.";
+    try {
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'novatech2025nt@gmail.com';
+        $mail->Password   = 'gdgxhunkjduephvb';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port       = 587;
+
+        $mail->setFrom('novatech2025nt@gmail.com', 'NovaTech Contact Form');
+        $mail->addAddress('novatech2025nt@gmail.com');
+        $mail->addReplyTo($email, $name);
+
+        $mail->Subject = "Contact Form Message: $subject";
+        $mail->Body =
+            "You received a new message from the contact form:\n\n" .
+            "Name: $name\n" .
+            "Email: $email\n" .
+            "Subject: $subject\n\n" .
+            "Message:\n$message";
+
+        $mail->send();
+
+        // Redirect to thank-you page
+        header("Location: MessageSent.html");
+        exit();
+
+    } catch (Exception $e) {
+        echo "Message could not be sent. Error: {$mail->ErrorInfo}";
     }
-    ?>
+}
+?>
