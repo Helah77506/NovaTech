@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $user_id = $_SESSION['user_id'];
-    $rating = $_POST['rating'];
+    $rating = intval($_POST['rating']);
     $comment = trim($_POST['comment']);
 
     if (!empty($rating) && !empty($comment)) {
@@ -33,18 +33,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("iiis", $user_id, $product_id, $rating, $comment);
         $stmt->execute();
 
-        $success = "Review submitted successfully"
+        $success = "Review submitted successfully";
     }
 }
 
-$productResult = $conn->query("SELECT * FROM products WHERE id = $product_id");
-$product = $productResult->fetch_assoc();
+
 
 
 $review_stmt = $conn->prepare("SELECT * FROM reviews WHERE product_id = ? ORDER BY created_at DESC");
 $review_stmt->bind_param("i", $product_id);
 $review_stmt->execute();
-$reviews = $review_stmt->get_result()
+$reviews = $review_stmt->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -97,19 +96,19 @@ $reviews = $review_stmt->get_result()
     <?php endif; ?>
 
     <?php if(isset($_SESSION['user_id'])): ?>
-        <form method="POST" class="review-form"></form>
+        <form method="POST" class="review-form">
             <h3>Rate this product</h3>
 
             <div class="stars">
-                <input type="radio" name="rating" id="star5"><label for="star5">★</label>
-                <input type="radio" name="rating" id="star4"><label for="star4">★</label>
-                <input type="radio" name="rating" id="star3"><label for="star3">★</label>
-                <input type="radio" name="rating" id="star2"><label for="star2">★</label>
-                <input type="radio" name="rating" id="star1"><label for="star1">★</label>
+                <input type="radio" name="rating" value="5" id="star5"><label for="star5">★</label>
+                <input type="radio" name="rating" value="4" id="star4"><label for="star4">★</label>
+                <input type="radio" name="rating" value="3" id="star3"><label for="star3">★</label>
+                <input type="radio" name="rating" value="2" id="star2"><label for="star2">★</label>
+                <input type="radio" name="rating" value="1" id="star1"><label for="star1">★</label>
             </div>
 
             <textarea name = "comment" placeholder="Write your review..." required></textarea>
-            <button class="submit-btn">Submit Review</button>
+            <button type="submit" class="submit-btn">Submit Review</button>
         </form>
     <?php else: ?>
         <p>Please log in to leave a review.</p>
