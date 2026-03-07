@@ -7,6 +7,7 @@ body {
 .container {
     width: 70%;
     margin: 40px auto;
+    max-width: 900px;
 }
 
 .product-box {
@@ -21,6 +22,8 @@ body {
 .product-box img {
     width: 200px;
     border-radius: 6px;
+    height: auto;
+    object-fit: cover;
 }
 
 .price {
@@ -36,9 +39,19 @@ body {
     margin-bottom: 30px;
 }
 
+.stars {
+    display: flex;
+    gap: 5px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
 .stars label {
-    display: block;
-    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.stars input {
+    display: none;
 }
 
 textarea {
@@ -49,7 +62,7 @@ textarea {
     resize: none;
 }
 
-button {
+.submit-btn {
     margin-top: 15px;
     padding: 10px 20px;
     background: #1e4fa1;
@@ -59,15 +72,17 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.submit-btn:hover {
     background: #163d7a;
 }
+
 
 .review-box {
     background: white;
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 6px;
+    border-left: 4px solid #1e4fa1;
 }
 
 .success {
