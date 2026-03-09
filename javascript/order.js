@@ -42,7 +42,7 @@ function placeOrder() {
 
     alert("✅ Order placed successfully!\nYou’ll receive a confirmation email shortly.");
     localStorage.removeItem('cart');
-    window.location.href = "Home.php";
+    window.location.href = "Homepage.php";
 }
 
 document.addEventListener("DOMContentLoaded", renderOrderSummary);

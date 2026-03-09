@@ -12,13 +12,13 @@
 <header class="header">
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
     <nav class="nav">
-        <a href="Home.php">Home</a>
-        <a href="ContactUs.php" class="active">Contact</a>
-        <a href="about.php">About Us</a>
-        <a href="product.php">Products</a>
+        <a href="Home.html">Home</a>
+        <a href="ContactUs.html" class="active">Contact</a>
+        <a href="about.html">About Us</a>
+        <a href="product.html">Products</a>
 
         <div class="nav-icons">
-            <a href="Login.php">Log in</a>
+            <a href="Login.html">Log in</a>
             <img src="Assets/Home/user.png" alt="Login" />
             
             <a href="cart.php">Cart</a>
@@ -40,7 +40,7 @@
             Our support team will get back to you shortly.
         </p>
 
-        <a href="Home.php">
+        <a href="Home.html">
             <button style="width: auto; padding: 14px 40px; margin-top: 10px;">
                 Return to Home
             </button>

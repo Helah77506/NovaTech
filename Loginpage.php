@@ -5,20 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NovaTech Login</title>
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: Loginpage.php');
-    exit();
-}
+    <script src="javascript/Login.js"></script>
+    <link rel="stylesheet" href="Styles/Login.css" />
 
     <link rel="preload" href="Assets/Home/login_banner.jpg" as="image" />
 </head>
 <body>
 
-// basic check
-if ($identifier === '' || $password === '') {
-    header('Location: Loginpage.php?error=wrong');
-    exit();
-}
+    <a href="Homepage.php" id="back-home-link">
+        <div class="back-home-container">
+            <img src="Assets/Home/arrow.png" class="home-icon" />
+            <span class="back-home-text">Back to Home</span>
+        </div>
+    </a>
 
     <div class="container">
         <div class="left"></div>
@@ -68,7 +67,7 @@ if ($identifier === '' || $password === '') {
 
             <p class="login-text">
                 Don't have an account?
-                <a href="Register.php">Register</a>
+                <a href="Register.html">Register</a>
             </p>
         </div>
     </div>
