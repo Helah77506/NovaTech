@@ -17,7 +17,7 @@ session_start();
         <?php endif; ?>
 
         <img src="Assets/Home/user.png" alt="User" />
-        <a href="cartpage.php">Cart</a>
+        <a href="cart.php">Cart</a>
         <img src="Assets/Home/cart .png" alt="Cart" />
     </div>
 </nav>

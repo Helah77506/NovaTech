@@ -83,10 +83,10 @@ $reviews = $conn->query("
 <div class="sidebar">
     <h2>NovaTech Admin</h2>
     <ul>
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="#">products</a></li>
-        <li><a href="#">Inventory</a></li>
-        <li><a href="#">Orders</a></li>
+        <li><a href="admin.php">Dashboard</a></li>
+        <li><a href="admin_products.php">products</a></li>
+        <li><a href="admin_inventory.php">Inventory</a></li>
+        <li><a href="admin_orders.php">Orders</a></li>
         <li><a href="#">Customers</a></li>
         <li><a href="#">Reviews</a></li>
         <li><a href="#">Returns</a></li>

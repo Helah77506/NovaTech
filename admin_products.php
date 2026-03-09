@@ -9,22 +9,27 @@ $products = $conn->query("SELECT * FROM product");
 <html>
 <head>
     <title>Product Management</title>
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="Styles/admin.css">
 </head>
 <body>
 
+<!-- SIDEBAR -->
 <div class="sidebar">
     <h2>NovaTech Admin</h2>
     <ul>
         <li><a href="admin.php">Dashboard</a></li>
-        <li><a href="admin_orders.php">Orders</a></li>
+        <li><a href="admin_products.php">products</a></li>
         <li><a href="admin_inventory.php">Inventory</a></li>
-        <li><a href="admin_products.php">Products</a></li>
+        <li><a href="admin_orders.php">Orders</a></li>
+        <li><a href="#">Customers</a></li>
+        <li><a href="#">Reviews</a></li>
+        <li><a href="#">Returns</a></li>
     </ul>
 </div>
 
 <div class="main-content">
     <h1>Product Management</h1>
+    <br> 
 
     <h2>Add New Product</h2>
 
@@ -50,7 +55,7 @@ $products = $conn->query("SELECT * FROM product");
         <?php while($row = $products->fetch_assoc()): ?>
         <tr>
             <td><?= $row['ID']; ?></td>
-            <td><?= $row['Name']; ?></td>
+            <td><?= $row['Product_Name']; ?></td>
             <td><?= $row['Stock']; ?></td>
             <td>
                 <?php if($row['Image']): ?>
@@ -59,7 +64,9 @@ $products = $conn->query("SELECT * FROM product");
             </td>
             <td>
                 <a href="edit_product.php?id=<?= $row['ID']; ?>">Edit</a> |
-                <a href="delete_product.php?id=<?= $row['ID']; ?>">Delete</a>
+                <a href="delete_product.php?id=<?= $row['ID']; ?>" 
+                onclick="return confirm('Are you sure you want to delete this product?');">
+                Delete</a>
             </td>
         </tr>
         <?php endwhile; ?>

@@ -150,6 +150,17 @@ tr:hover {
 }
 
 /* ===============================
+PRODUCT IMAGES
+=================================*/
+.product-img{
+    width:50px;
+    height:50px;
+    object-fit:cover;
+    border-radius:6px;
+    border:1px solid #ddd;
+}
+
+/* ===============================
    STATUS BADGES
 =================================*/
 .badge {
@@ -176,6 +187,24 @@ tr:hover {
 }
 
 /* ===============================
+STOCK LEVEL COLORS
+=================================*/
+.stock-low{
+    color:#dc2626;
+    font-weight:bold;
+}
+
+.stock-medium{
+    color:#f59e0b;
+    font-weight:bold;
+}
+
+.stock-good{
+    color:#10b981;
+    font-weight:bold;
+}
+
+/* ===============================
    BUTTONS
 =================================*/
 button {
@@ -198,6 +227,66 @@ button.danger {
 
 button.danger:hover {
     background: #991b1b;
+}
+
+button.secondary{
+    background:#6b7280;
+}
+
+button.secondary:hover{
+    background:#4b5563;
+}
+
+/* ===============================
+FORMS
+=================================*/
+form input,
+form select{
+    padding:8px;
+    border:1px solid #d1d5db;
+    border-radius:6px;
+    margin-right:8px;
+}
+
+form input:focus{
+    outline:none;
+    border-color:#2563eb;
+}
+
+/* ===============================
+ADD PRODUCT FORM
+=================================*/
+.add-form{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+    margin-bottom:30px;
+}
+
+.add-form h2{
+    margin-bottom:15px;
+}
+
+/* ===============================
+SEARCH BAR
+=================================*/
+.search-bar{
+    margin-bottom:20px;
+}
+
+.search-bar input{
+    padding:8px;
+    width:250px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+
+/* ===============================
+PAGE TITLES
+=================================*/
+.page-title{
+    margin-bottom:20px;
 }
 
 /* ===============================
