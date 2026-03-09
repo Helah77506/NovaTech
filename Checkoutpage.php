@@ -16,7 +16,7 @@
 
 <div class="checkout-container">
 
- <button type="button" onclick="window.location.href='order.html'">Place Order</button>
+ <button type="button" onclick="window.location.href='orderpage.php'">Place Order</button>
     <h1>Checkout</h1>
 
     <form id="checkoutForm">
