@@ -16,11 +16,12 @@
 
 <div class="checkout-container">
 
-<<<<<<< HEAD:Checkout.php
+
  <button type="button" onclick="window.location.href='order.php'">Place Order</button>
-=======
  <button type="button" onclick="window.location.href='order.html'">Place Order</button>
->>>>>>> parent of cf7649b (removed duplicate files):Checkoutpage.php
+
+
+ <button type="button" onclick="window.location.href='order.html'">Place Order</button>
     <h1>Checkout</h1>
 
     <form id="checkoutForm">

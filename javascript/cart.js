@@ -143,7 +143,11 @@ function checkout() {
   const cart = loadCart();
   if (!cart.length) { alert('Cart is empty.'); return; }
 <<<<<<< HEAD
+<<<<<<< HEAD
   window.location.href='Checkout.php';
+=======
+  window.location.href='Checkout.html';
+>>>>>>> parent of cf7649b (removed duplicate files)
 =======
   window.location.href='Checkout.html';
 >>>>>>> parent of cf7649b (removed duplicate files)

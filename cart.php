@@ -10,8 +10,7 @@
   <header class="header">
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
     <div class="links">
-      <a href="product.html">Products</a>
-      <a href="Homepage.php">Home</a>
+          <?php require_once __DIR__ . '/topbar.php';?>
     </div>
   </header>
 
