@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NovaTech Login</title>
 
-    <script src="javascript/Login.js"></script>
-    <link rel="stylesheet" href="Styles/Login.css" />
+    <script src="Login.js"></script>
+    <link rel="stylesheet" href="Login.css" />
 
     <link rel="preload" href="Assets/Home/login_banner.jpg" as="image" />
 </head>
 <body>
 
-    <a href="Homepage.php" id="back-home-link">
+    <a href="Home.html" id="back-home-link">
         <div class="back-home-container">
             <img src="Assets/Home/arrow.png" class="home-icon" />
             <span class="back-home-text">Back to Home</span>
@@ -32,11 +32,9 @@
             <p id="serverError" style="display:none;" class="auth-info"></p>
 
             <!-- js error -->
-            <!-- js error -->
-            <p id="infolabel" hidden class="auth-info"></p>
+            <label id="infolabel" hidden class="auth-info"></label>
 
-
-            <form action="loginb.php" method="post" id="loginForm">
+            <form action="login.php" method="post" id="loginForm">
 
                 <div class="form-group">
                     <label>Username or Email</label>

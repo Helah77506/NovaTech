@@ -38,7 +38,7 @@ if ($stmt->num_rows === 1) {
         $_SESSION['full_name'] = $full_name;
         $_SESSION['email']     = $email;
 
-        header('Location: Home.php');
+        header('Location: Homepage.php');
         exit();
     }
 }
@@ -46,5 +46,5 @@ if ($stmt->num_rows === 1) {
 $_SESSION['id'] = $id;
 
 // wrong login
-header('Location: Login.php?error=wrong');
+header('Location: Loginpage.php?error=wrong');
 exit();
