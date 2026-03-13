@@ -1,0 +1,665 @@
+/* ─── NovaTech Admin Dashboard ─── */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ─── Theme Variables (matching main site) ─── */
+:root {
+    --accent:         #0d6bcb;
+    --accent-light:   #0d6bcb12;
+    --accent-hover:   #0b5db3;
+    --bg-light:       #fff;
+    --background:     #f1f1f1;
+    --black:          #000;
+    --text-dark:      #1f1f1f;
+    --text-secondary: #555;
+    --text-muted:     #999;
+    --border:         #e2e2e2;
+    --border-light:   #eaeaea;
+    --radius:         12px;
+    --sidebar-width:  240px;
+    --header-height:  64px;
+    --transition:     0.25s ease;
+}
+
+/* ─── Reset & Base ─── */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: var(--background);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+::selection {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* ─── Header ─── */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    background: var(--bg-light);
+    border-bottom: 1px solid var(--border-light);
+}
+
+header h1 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+header h1::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: var(--accent);
+    border-radius: 3px;
+}
+
+/* Header Buttons */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-actions button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 8px 22px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-change-pw {
+   background: var(--accent);
+    color: #fff;
+    border: none;
+}
+
+.btn-change-pw:hover {
+    background: var(--accent-hover);
+}
+
+.btn-logout {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+}
+
+.btn-logout:hover {
+    background: var(--accent-hover);
+}
+
+/* ─── Admin Container ─── */
+.admin-container {
+    display: flex;
+    margin-top: var(--header-height);
+    min-height: calc(100vh - var(--header-height));
+}
+
+/* ─── Sidebar ─── */
+.sidebar {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    bottom: 0;
+    width: var(--sidebar-width);
+    background: var(--bg-light);
+    border-right: 1px solid var(--border-light);
+    padding: 1.5rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow-y: auto;
+}
+
+.sidebar button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: left;
+    padding: 10px 14px;
+    color: var(--text-secondary);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+}
+
+.sidebar button::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) scaleY(0);
+    width: 3px;
+    height: 55%;
+    background: var(--accent);
+    border-radius: 0 3px 3px 0;
+    transition: var(--transition);
+}
+
+.sidebar button:hover {
+    color: var(--text-dark);
+    background: var(--background);
+}
+
+.sidebar button:hover::before {
+    transform: translateY(-50%) scaleY(1);
+}
+
+.sidebar button.active {
+    color: var(--accent);
+    background: var(--accent-light);
+    font-weight: 600;
+}
+
+.sidebar button.active::before {
+    transform: translateY(-50%) scaleY(1);
+}
+
+/* ─── Main Content ─── */
+#admin-content {
+    margin-left: var(--sidebar-width);
+    flex: 1;
+    padding: 2.5rem 3rem;
+    animation: fadeIn 0.35s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+#admin-content h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+#admin-content p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 520px;
+}
+
+/* ─── Tables ─── */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    background: var(--bg-light);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+thead {
+    background: var(--background);
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    text-align: left;
+    padding: 12px 16px;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+td {
+    padding: 12px 16px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-light);
+}
+
+tbody tr {
+    transition: var(--transition);
+}
+
+tbody tr:hover {
+    background: var(--accent-light);
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ─── Form Elements ─── */
+input,
+select,
+textarea {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    padding: 10px 14px;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    outline: none;
+    transition: var(--transition);
+    width: 100%;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-muted);
+}
+
+label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* ─── Action Buttons ─── */
+.btn {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.84rem;
+    font-weight: 600;
+    padding: 10px 24px;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: var(--accent-hover);
+    box-shadow: 0 4px 14px rgba(13, 107, 203, 0.25);
+}
+
+.btn-secondary {
+    background: var(--bg-light);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.btn-danger {
+    background: #fff;
+    color: #e53e3e;
+    border: 1px solid #e53e3e;
+}
+
+.btn-danger:hover {
+    background: #e53e3e;
+    color: #fff;
+}
+
+/* ─── Cards ─── */
+.card {
+    background: var(--bg-light);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 1.4rem;
+    transition: var(--transition);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* ─── Status Badges ─── */
+.badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.02em;
+}
+
+.badge-success {
+    background: #d4edda;
+    color: #1e7e34;
+}
+
+.badge-warning {
+    background: #fff3cd;
+    color: #b8860b;
+}
+
+.badge-danger {
+    background: #fde8e8;
+    color: #e53e3e;
+}
+
+/* ─── Password Modal ─── */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: var(--bg-light);
+    border-radius: var(--radius);
+    padding: 2rem;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+    transform: translateY(12px) scale(0.97);
+    transition: var(--transition);
+}
+
+.modal-overlay.active .modal {
+    transform: translateY(0) scale(1);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.modal-header h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.modal-close {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.modal-close:hover {
+    background: var(--border);
+    color: var(--text-dark);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    margin-bottom: 6px;
+}
+
+.form-group input {
+    margin-top: 2px;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 44px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 4px;
+    transition: var(--transition);
+}
+
+.toggle-password:hover {
+    color: var(--accent);
+}
+
+.password-requirements {
+    margin-top: 0.5rem;
+    padding: 0.8rem 1rem;
+    background: var(--background);
+    border-radius: 8px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+.password-requirements span {
+    display: block;
+    transition: var(--transition);
+}
+
+.password-requirements span.met {
+    color: #1e7e34;
+}
+
+.password-requirements span.met::before {
+    content: '✓ ';
+}
+
+.password-requirements span:not(.met)::before {
+    content: '○ ';
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 1.5rem;
+}
+
+.modal-actions button {
+    flex: 1;
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.84rem;
+    font-weight: 600;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.modal-actions .btn-cancel {
+    background: var(--background);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+}
+
+.modal-actions .btn-cancel:hover {
+    border-color: var(--text-muted);
+    color: var(--text-dark);
+}
+
+.modal-actions .btn-save {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+}
+
+.modal-actions .btn-save:hover {
+    background: var(--accent-hover);
+    box-shadow: 0 4px 14px rgba(13, 107, 203, 0.25);
+}
+
+.modal-actions .btn-save:disabled {
+    background: var(--border);
+    color: var(--text-muted);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.password-message {
+    margin-top: 0.8rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: none;
+}
+
+.password-message.success {
+    display: block;
+    background: #d4edda;
+    color: #1e7e34;
+}
+
+.password-message.error {
+    display: block;
+    background: #fde8e8;
+    color: #e53e3e;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 900px) {
+    .sidebar {
+        position: relative;
+        top: 0;
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 10px;
+        gap: 4px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-light);
+    }
+
+    .sidebar button {
+        white-space: nowrap;
+        font-size: 0.8rem;
+        padding: 8px 14px;
+    }
+
+    .sidebar button::before {
+        display: none;
+    }
+
+    .admin-container {
+        flex-direction: column;
+    }
+
+    #admin-content {
+        margin-left: 0;
+        padding: 1.5rem;
+    }
+
+    .modal {
+        margin: 1rem;
+    }
+}
+
+@media (max-width: 520px) {
+    header {
+        padding: 0 4%;
+    }
+
+    header h1 {
+        font-size: 1rem;
+    }
+
+    .header-actions button {
+        padding: 6px 14px;
+        font-size: 0.75rem;
+    }
+
+    #admin-content h2 {
+        font-size: 1.25rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
