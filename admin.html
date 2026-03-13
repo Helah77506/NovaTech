@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Dashboard - NovaTech</title>
-    <link rel="stylesheet" href="styles/admin.css">
+    <link rel="stylesheet" href="/Styles/adminlog.css">
 </head>
 <body>
 
 <header>
     <h1>NovaTech Admin Panel</h1>
-    <button onclick="logout()">Logout</button>
+    <div class="header-actions">
+        <button class="btn-change-pw" onclick="openPasswordModal()">Change Password</button>
+        <button class="btn-logout" onclick="logout()">Logout</button>
+    </div>
 </header>
 
 <div class="admin-container">
@@ -30,6 +33,152 @@
 
 </div>
 
+<!-- Change Password Modal -->
+<div class="modal-overlay" id="passwordModal">
+    <div class="modal">
+        <div class="modal-header">
+            <h3>Change Password</h3>
+            <button class="modal-close" onclick="closePasswordModal()">&times;</button>
+        </div>
+
+        <div class="form-group">
+            <label for="currentPassword">Current Password</label>
+            <div class="password-wrapper">
+                <input type="password" id="currentPassword" placeholder="Enter current password">
+                <button class="toggle-password" onclick="toggleVisibility('currentPassword', this)">Show</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="newPassword">New Password</label>
+            <div class="password-wrapper">
+                <input type="password" id="newPassword" placeholder="Enter new password" oninput="validatePassword()">
+                <button class="toggle-password" onclick="toggleVisibility('newPassword', this)">Show</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">Confirm New Password</label>
+            <div class="password-wrapper">
+                <input type="password" id="confirmPassword" placeholder="Confirm new password" oninput="validatePassword()">
+                <button class="toggle-password" onclick="toggleVisibility('confirmPassword', this)">Show</button>
+            </div>
+        </div>
+
+        <div class="password-requirements" id="requirements">
+            <span id="req-length">At least 8 characters</span>
+            <span id="req-upper">One uppercase letter</span>
+            <span id="req-lower">One lowercase letter</span>
+            <span id="req-number">One number</span>
+            <span id="req-special">One special character (!@#$%^&*)</span>
+            <span id="req-match">Passwords match</span>
+        </div>
+
+        <div class="password-message" id="passwordMessage"></div>
+
+        <div class="modal-actions">
+            <button class="btn-cancel" onclick="closePasswordModal()">Cancel</button>
+            <button class="btn-save" id="savePasswordBtn" onclick="savePassword()" disabled>Update Password</button>
+        </div>
+    </div>
+</div>
+
 <script src="javascript/admin.js"></script>
+<script>
+    /* ── Password Modal Logic ── */
+
+    function openPasswordModal() {
+        document.getElementById('passwordModal').classList.add('active');
+        document.getElementById('currentPassword').value = '';
+        document.getElementById('newPassword').value = '';
+        document.getElementById('confirmPassword').value = '';
+        resetRequirements();
+        hideMessage();
+    }
+
+    function closePasswordModal() {
+        document.getElementById('passwordModal').classList.remove('active');
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('passwordModal').addEventListener('click', function(e) {
+        if (e.target === this) closePasswordModal();
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closePasswordModal();
+    });
+
+    function toggleVisibility(inputId, btn) {
+        const input = document.getElementById(inputId);
+        if (input.type === 'password') {
+            input.type = 'text';
+            btn.textContent = 'Hide';
+        } else {
+            input.type = 'password';
+            btn.textContent = 'Show';
+        }
+    }
+
+    function validatePassword() {
+        const newPw = document.getElementById('newPassword').value;
+        const confirmPw = document.getElementById('confirmPassword').value;
+
+        const checks = {
+            'req-length':  newPw.length >= 8,
+            'req-upper':   /[A-Z]/.test(newPw),
+            'req-lower':   /[a-z]/.test(newPw),
+            'req-number':  /[0-9]/.test(newPw),
+            'req-special': /[!@#$%^&*]/.test(newPw),
+            'req-match':   newPw.length > 0 && newPw === confirmPw
+        };
+
+        let allMet = true;
+        for (const [id, met] of Object.entries(checks)) {
+            const el = document.getElementById(id);
+            el.classList.toggle('met', met);
+            if (!met) allMet = false;
+        }
+
+        document.getElementById('savePasswordBtn').disabled = !allMet;
+    }
+
+    function resetRequirements() {
+        document.querySelectorAll('.password-requirements span').forEach(el => {
+            el.classList.remove('met');
+        });
+        document.getElementById('savePasswordBtn').disabled = true;
+    }
+
+    function hideMessage() {
+        const msg = document.getElementById('passwordMessage');
+        msg.className = 'password-message';
+        msg.textContent = '';
+    }
+
+    function savePassword() {
+        const currentPw = document.getElementById('currentPassword').value;
+        const newPw = document.getElementById('newPassword').value;
+
+        if (!currentPw) {
+            showMessage('Please enter your current password.', 'error');
+            return;
+        }
+
+        // Simulate saving — replace with real API call
+        showMessage('Password updated successfully!', 'success');
+
+        setTimeout(() => {
+            closePasswordModal();
+        }, 1500);
+    }
+
+    function showMessage(text, type) {
+        const msg = document.getElementById('passwordMessage');
+        msg.textContent = text;
+        msg.className = 'password-message ' + type;
+    }
+</script>
 </body>
 </html>
