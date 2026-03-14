@@ -126,7 +126,10 @@ function displayProducts(list) {
       <img src="${p.image}" alt="${escapeHtml(p.name)}" />
       <h3>${escapeHtml(p.name)}</h3>
       <div class="price">£${p.price.toLocaleString()}</div>
+      
       <button class="details-btn" data-id="${p.id}">View Details</button>
+
+      <a href="review.php?id=${p.id}" class="review-btn">Review</a>
     `;
     container.appendChild(card);
   });
