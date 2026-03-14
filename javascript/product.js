@@ -135,7 +135,9 @@ function displayProducts(list) {
     }
   </span>
       <button class="details-btn" data-id="${p.id}" ${status === "out" ? "disabled" : ""}>View Details</button>
-    `;
+    
+    <a href="review.php?id=${p.id}" class="review-btn">Review</a>
+      `;
     container.appendChild(card);
   });
 

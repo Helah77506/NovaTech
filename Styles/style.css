@@ -132,6 +132,19 @@ body { background: var(--bg-light); color: var(--text-dark); -webkit-font-smooth
 .product-card img { width:100%; height:200px; object-fit:contain; border-radius:8px; }
 .product-card h3 { font-size:1.05rem; font-weight:700; color:var(--text-dark); }
 .product-card .price { font-weight:700; color:var(--accent); margin-top:6px; }
+.product-card .review-btn{
+  display:inline-block;
+  margin-top:8px;
+  padding:8px 12px;
+  background:#1e4fa1;
+  color:white;
+  text-decoration:none;
+  border-radius:5px;
+  font-size:14px;
+}
+.product-card .review-btn:hover{
+  background:#163d7a;
+} 
 /* ============ STOCK STATUS BADGE ============ */
 .stock {
     display: inline-block;
