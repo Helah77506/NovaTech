@@ -73,7 +73,7 @@ $reviews = $review_stmt->get_result();
         <a href="ContactUs.php">Contact</a>
         <a href="aboutpage.html">About Us</a>
         <a href="productpage.php"> Products</a>
-	    <a href="#"> Review</a>
+	      <a href="#"> Review</a>
 
         <div class="nav-icons">
             <img src="Assets/Home/user.png" alt="User" />

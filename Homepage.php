@@ -94,7 +94,7 @@
     <div class="contact-left">
         <h1>Have any questions?</h1>
         <h2>Contact us or use our friendly chatbot.</h2>
-        <a href="ContactUs.html">
+        <a href="ContactUs.php">
             <button>Contact Us</button>
         </a>
     </div>
@@ -128,8 +128,8 @@
 
     <div class="col">
         <h4>Support</h4>
-        <a href="ContactUs.html">Contact Us</a>
-        <a href="ContactUs.html">Help Center</a>
+        <a href="ContactUs.php">Contact Us</a>
+        <a href="ContactUs.php">Help Center</a>
         <a href="about.html">About Us</a>
     </div>
 </footer>

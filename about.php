@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | NovaTech</title>
 
-    <link rel="stylesheet" href="Home.css"> <!-- reusing same styling -->
+    <link rel="stylesheet" href="Styles/Home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -17,24 +17,24 @@
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
 
     <nav class="nav">
-        <a href="Home.html">Home</a>
+        <a href="Home.php">Home</a>
         <a href="ContactUs.php">Contact</a>
-        <a class="active" href="about.html">About Us</a>
-        <a href="product.html"> Products</a>
+        <a class="active" href="about.php">About Us</a>
+        <a href="product.php"> Products</a>
 
         <div class="nav-icons">
-            <a href="Login.html" class="login">Log in</a>
+            <a href="Login.php" class="login">Log in</a>
             <img src="Assets/Home/user.png" alt="User" />
             
 
-             <a href="cart.html">Cart</a>
+             <a href="cart.php">Cart</a>
             <img src="Assets/Home/cart .png" alt="Cart" />
 
         </div>
     </nav>
 </header>
 
-<!-- Category Bar -->
+<!-- Navigation Bar -->
 <div class="header2">
     <nav class="nav2">
         
@@ -76,7 +76,6 @@
     </ul>
 </section>
 
-<!-- Icon Bar (same as home page) -->
 <section class="icon-bar">
 
     <div class="icon">
@@ -95,7 +94,7 @@
     </div>
 </section>
 
-<!-- Contact CTA -->
+<!-- Contact section -->
 <section class="contact-section">
     <div class="contact-left">
         <h1>Have any questions?</h1>
@@ -121,22 +120,22 @@
 
     <div class="col">
         <h4>Shop</h4>
-        <a href="product.html">Shop All</a>
-        <a href="product.html">Computers</a>
-        <a href="product.html">Projectors</a>
-        <a href="product.html">Smart Boards</a>
-        <a href="product.html">Classroom Audio</a>
-        <a href="product.html">Wireless Presentation Clickers</a>
-        <a href="product.html">Chromebooks</a>
-        <a href="product.html">Tablets</a>
-        <a href="product.html">Printers and Scanners</a>
+        <a href="product.php">Shop All</a>
+        <a href="product.php">Computers</a>
+        <a href="product.php">Projectors</a>
+        <a href="product.php">Smart Boards</a>
+        <a href="product.php">Classroom Audio</a>
+        <a href="product.php">Wireless Presentation Clickers</a>
+        <a href="product.php">Chromebooks</a>
+        <a href="product.php">Tablets</a>
+        <a href="product.php">Printers and Scanners</a>
     </div>
 
     <div class="col">
         <h4>Support</h4>
         <a href="ContactUs.php">Contact Us</a>
         <a href="ContactUs.php">Help Center</a>
-        <a href="about.html">About Us</a>
+        <a href="about.php">About Us</a>
     </div>
 </footer>
 

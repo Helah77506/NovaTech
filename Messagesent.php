@@ -12,16 +12,16 @@
 <header class="header">
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
     <nav class="nav">
-        <a href="Homepage.php">Home</a>
-        <a href="ContactUs.html" class="active">Contact</a>
+        <a href="Home.html">Home</a>
+        <a href="ContactUs.php" class="active">Contact</a>
         <a href="about.html">About Us</a>
         <a href="product.html">Products</a>
 
         <div class="nav-icons">
-            <a href="Loginpage.php">Log in</a>
+            <a href="Login.html">Log in</a>
             <img src="Assets/Home/user.png" alt="Login" />
             
-            <a href="cart.html">Cart</a>
+            <a href="cart.php">Cart</a>
             <img src="Assets/Home/cart .png" alt="Cart" />
         </div>
     </nav>
@@ -40,14 +40,14 @@
             Our support team will get back to you shortly.
         </p>
 
-        <a href="Homepage.php">
+        <a href="Home.html">
             <button style="width: auto; padding: 14px 40px; margin-top: 10px;">
                 Return to Home
             </button>
         </a>
 
         <p style="margin-top: 20px; font-size: 1rem;">
-            <a href="ContactUs.html" style="color: var(--accent); font-weight: 600; text-decoration: none;">
+            <a href="ContactUs.php" style="color: var(--accent); font-weight: 600; text-decoration: none;">
                 ← Back to Contact Page
             </a>
         </p>
@@ -63,20 +63,20 @@
 
     <div class="col">
         <h4>Shop</h4>
-        <a href="product.html">Shop All</a>
-        <a href="product.html">Computers</a>
-        <a href="product.html">Projectors</a>
-        <a href="product.html">Smart Boards</a>
-        <a href="product.html">Classroom Audio</a>
-        <a href="product.html">Wireless Clickers</a>
-        <a href="product.html">Chromebooks</a>
-        <a href="product.html">Tablets</a>
+        <a href="product.php">Shop All</a>
+        <a href="product.php">Computers</a>
+        <a href="product.php">Projectors</a>
+        <a href="product.php">Smart Boards</a>
+        <a href="product.php">Classroom Audio</a>
+        <a href="product.php">Wireless Clickers</a>
+        <a href="product.php">Chromebooks</a>
+        <a href="product.php">Tablets</a>
     </div>
 
     <div class="col">
         <h4>Support</h4>
-        <a href="ContactUs.html">Contact Us</a>
-        <a href="about.html">About Us</a>
+        <a href="ContactUs.php">Contact Us</a>
+        <a href="about.php">About Us</a>
     </div>
 </footer>
 

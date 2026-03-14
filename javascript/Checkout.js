@@ -117,7 +117,7 @@ function saveOrder(cart) {
 //         } 
 //         else {
 //             // redirect to another page
-//             window.location.href = "order.html";}
+//             window.location.href = "order.php";}
 //     })
 // }
 // this is the old funcion just incase
@@ -154,7 +154,7 @@ function listen_Submission(){
         localStorage.removeItem("cart");
 
         // Redirect
-        window.location.href = "order.html";
+        window.location.href = "order.php";
     });
 }
 

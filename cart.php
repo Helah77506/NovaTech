@@ -3,15 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cart - School Inventory</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Cart - NovaTech</title>
+  <link rel="stylesheet" href="Styles/style.css" />
 </head>
 <body>
   <header class="header">
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
     <div class="links">
-      <a href="product.html">Products</a>
-      <a href="Home.html">Home</a>
+          <?php require_once __DIR__ . '/topbar.php';?>
     </div>
   </header>
 
@@ -37,6 +36,6 @@
 
   
 
-  <script src="cart.js"></script>
+  <script src="javascript/cart.js"></script>
 </body>
 </html>

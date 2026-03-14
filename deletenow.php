@@ -5,19 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NovaTech Login</title>
 
-    <script src="Login.js"></script>
-    <link rel="stylesheet" href="Login.css" />
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: Loginpage.php');
+    exit();
+}
 
     <link rel="preload" href="Assets/Home/login_banner.jpg" as="image" />
 </head>
 <body>
 
-    <a href="Home.html" id="back-home-link">
-        <div class="back-home-container">
-            <img src="Assets/Home/arrow.png" class="home-icon" />
-            <span class="back-home-text">Back to Home</span>
-        </div>
-    </a>
+// basic check
+if ($identifier === '' || $password === '') {
+    header('Location: Loginpage.php?error=wrong');
+    exit();
+}
 
     <div class="container">
         <div class="left"></div>
@@ -32,7 +33,9 @@
             <p id="serverError" style="display:none;" class="auth-info"></p>
 
             <!-- js error -->
-            <label id="infolabel" hidden class="auth-info"></label>
+            <!-- js error -->
+            <p id="infolabel" hidden class="auth-info"></p>
+
 
             <form action="login.php" method="post" id="loginForm">
 
@@ -65,7 +68,7 @@
 
             <p class="login-text">
                 Don't have an account?
-                <a href="Register.html">Register</a>
+                <a href="Register.php">Register</a>
             </p>
         </div>
     </div>

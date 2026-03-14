@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->send();
 
         // Redirect to thank-you page
-        header("Location: MessageSent.html");
+        header("Location: MessageSent.php");
         exit();
 
     } catch (Exception $e) {
