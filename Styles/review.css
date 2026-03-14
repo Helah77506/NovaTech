@@ -1,3 +1,18 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+
+
 body {
     font-family: Arial, sans-serif;
     background: #f4f6f9;
@@ -41,17 +56,21 @@ body {
 
 .stars {
     display: flex;
-    gap: 5px;
+    gap: 8px;
     font-size: 24px;
-    cursor: pointer;
-}
-
-.stars label {
     cursor: pointer;
 }
 
 .stars input {
     display: none;
+}
+
+.stars label {
+    color: #ccc;
+}
+
+.stars input:checked ~ label {
+    color: gold;
 }
 
 textarea {

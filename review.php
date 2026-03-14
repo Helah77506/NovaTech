@@ -71,16 +71,10 @@ $reviews = $review_stmt->get_result();
     <nav class="navbar">
         <a href="Homepage.php">Home</a>
         <a href="ContactUs.php">Contact</a>
-        <a href="aboutpage.html">About Us</a>
+        <a href="aboutpage.php">About Us</a>
         <a href="productpage.php"> Products</a>
-	      <a href="#"> Review</a>
-
-        <div class="nav-icons">
-            <img src="Assets/Home/user.png" alt="User" />
-            <a href="Loginpage.php" class="login">Login</a>
-
-            <img src="Assets/Home/cart .png" alt="Cart" />
-        </div>
+	     <a href="logout.php" class="logout">logout</a>
+        <a href="#"> Review</a>
     </nav>
 </header>
 
@@ -104,11 +98,11 @@ $reviews = $review_stmt->get_result();
             <h3>Rate this product</h3>
 
             <div class="stars">
-                <input type="radio" name="rating" value="5" id="star5"><label for="star5">★</label>
-                <input type="radio" name="rating" value="4" id="star4"><label for="star4">★</label>
-                <input type="radio" name="rating" value="3" id="star3"><label for="star3">★</label>
-                <input type="radio" name="rating" value="2" id="star2"><label for="star2">★</label>
-                <input type="radio" name="rating" value="1" id="star1"><label for="star1">★</label>
+                <input type="radio" name="rating" id="star5" value="5"><label for="star5">★</label>
+                <input type="radio" name="rating" id="star4" value="4"><label for="star4">★</label>
+                <input type="radio" name="rating" id="star3" value="3"><label for="star3">★</label>
+                <input type="radio" name="rating" id="star2" value="2"><label for="star2">★</label>
+                <input type="radio" name="rating" id="star1" value="1"><label for="star1">★</label>
             </div>
 
             <textarea name = "comment" placeholder="Write your review..." required></textarea>
