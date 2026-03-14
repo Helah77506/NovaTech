@@ -66,7 +66,7 @@ $reviews = $review_stmt->get_result();
 
     <nav class="navbar">
         <a href="Home.html">Home</a>
-        <a href="ContactUs.html">Contact</a>
+        <a href="ContactUs.php">Contact</a>
         <a href="about.html">About Us</a>
         <a href="product.html"> Products</a>
 	    <a href="#"> Review</a>

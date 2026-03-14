@@ -13,7 +13,7 @@
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
     <nav class="nav">
         <a href="Home.html">Home</a>
-        <a href="ContactUs.html" class="active">Contact</a>
+        <a href="ContactUs.php" class="active">Contact</a>
         <a href="about.html">About Us</a>
         <a href="product.html">Products</a>
 

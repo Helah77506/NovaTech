@@ -68,7 +68,7 @@
 
     <div class="col">
         <h4>Support</h4>
-        <a href="ContactUs.html">Contact Us</a>
+        <a href="ContactUs.php">Contact Us</a>
         <a href="about.html">About Us</a>
     </div>
 </footer>
