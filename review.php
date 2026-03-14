@@ -2,6 +2,10 @@
 session_start();
 include "Config.php";
 
+if(isset($_GET['id'])){
+    $_SESSION['product_id'] = $_GET['id'];
+}
+
 if (!isset($_SESSION['product_id'])) {
     echo "No product selected.";
     exit();
@@ -65,15 +69,15 @@ $reviews = $review_stmt->get_result();
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
 
     <nav class="navbar">
-        <a href="Home.html">Home</a>
-        <a href="ContactUs.html">Contact</a>
-        <a href="about.html">About Us</a>
-        <a href="product.html"> Products</a>
+        <a href="Homepage.php">Home</a>
+        <a href="ContactUs.php">Contact</a>
+        <a href="aboutpage.html">About Us</a>
+        <a href="productpage.php"> Products</a>
 	    <a href="#"> Review</a>
 
         <div class="nav-icons">
             <img src="Assets/Home/user.png" alt="User" />
-            <a href="Login.html" class="login">Login</a>
+            <a href="Loginpage.php" class="login">Login</a>
 
             <img src="Assets/Home/cart .png" alt="Cart" />
         </div>
