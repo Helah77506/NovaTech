@@ -40,8 +40,21 @@ if ($stmt->num_rows === 1) {
         $_SESSION['role']      =$role;
         //checks the role of the user 
         if($role=='admin'){
-            header('Location: admin.php');
-            exit();
+            //check whether they are on the first login 
+            $stmt2 = $conn->prepare("SELECT firstlogin FROM users where id = ?");
+            $stmt2->bind_param("i",$id);
+            $stmt2->execute();
+            $stmt2->bind_result($firstlogin);
+            $stmt2->fetch();
+            if($firstlogin==0){
+                //redirect to the admin change password 
+                header('Location: AuthenticationSec/adminchangepw.php?firstlogin=true');
+                exit();
+            }
+            else{
+                header('Location: admin.php');
+                exit();
+            }
         }
         header('Location: Homepage.php');
         exit();
