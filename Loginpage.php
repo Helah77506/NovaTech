@@ -36,7 +36,7 @@
             <p id="infolabel" hidden class="auth-info"></p>
 
 
-            <form action="login.php" method="post" id="loginForm">
+            <form action="loginb.php" method="post" id="loginForm">
 
                 <div class="form-group">
                     <label>Username or Email</label>

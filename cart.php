@@ -10,7 +10,7 @@
   <header class="header">
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
     <div class="links">
-      <?php require_once __DIR__ . '/topbar.php';?>
+          <?php require_once __DIR__ . '/topbar.php';?>
     </div>
   </header>
 
@@ -30,7 +30,7 @@
 
     <div style="margin-top:20px; display:flex; gap:12px; justify-content:flex-end;">
       <button id="clearCartBtn" style="padding:10px 14px; border-radius:8px; border:1px solid #ddd;background:#fff; cursor:pointer;">Clear cart</button>
-      <button id="checkoutBtn" style="padding:12px 18px; border-radius:8px; border:none; background:var(--accent); color:#fff; cursor:pointer;" href="Checkoutpage.php">Checkout</button>
+      <button id="checkoutBtn" style="padding:12px 18px; border-radius:8px; border:none; background:var(--accent); color:#fff; cursor:pointer;">Checkout</button>
     </div>
   </main>
 

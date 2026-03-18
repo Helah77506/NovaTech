@@ -1,12 +1,11 @@
-
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaTech – Modern</title>
+    <title>About Us | NovaTech</title>
 
-    <link rel="stylesheet" href="Styles/Home.css">
+    <link rel="stylesheet" href="Home.css"> <!-- reusing same styling -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -16,7 +15,23 @@
 <!-- Header -->
 <header class="header">
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
-    <?php require_once __DIR__ . '/topbar.php';?>
+
+    <nav class="nav">
+        <a href="Home.html">Home</a>
+        <a href="ContactUs.php">Contact</a>
+        <a class="active" href="about.html">About Us</a>
+        <a href="product.html"> Products</a>
+
+        <div class="nav-icons">
+            <a href="Login.html" class="login">Log in</a>
+            <img src="Assets/Home/user.png" alt="User" />
+            
+
+             <a href="cart.html">Cart</a>
+            <img src="Assets/Home/cart .png" alt="Cart" />
+
+        </div>
+    </nav>
 </header>
 
 <!-- Category Bar -->
@@ -30,47 +45,38 @@
 <section class="hero">
     <img src="Assets/Home/hero.png" alt="Hero">
     <div class="hero-text">
-        <h1>Providing for the Future starts with us</h1>
-        <p>Get bulk deals</p>
-        <a href="dashboard.php">
-        <button>Dashboard</button>
-        </a>
-    
+        <h1>About NovaTech</h1>
+        <p>Empowering education through modern technology</p>
     </div>
 </section>
 
-<!-- Slider Section -->
-<div class="slider-container">
-    <div id="slider" class="slider"></div>
-</div>
+<!-- About Section -->
+<section class="about-section" style="padding: 60px 10%; font-family: Inter;">
+    <h1 style="font-size: 36px; margin-bottom: 20px;">Who We Are</h1>
+    <p style="font-size: 18px; line-height: 1.7; max-width: 900px;">
+        NovaTech is committed to supporting educational institutions by providing 
+        high-quality technology designed to improve teaching and learning environments. 
+        We supply laptops, projectors, smart boards, tablets, and other essential 
+        classroom tools that help educators deliver modern learning experiences.
+    </p>
 
-<div id="ads-template" style="display:none;">
-    <div class="ad">
-        <img src="Assets/Home/class room auid.webp">
-        <div class="text">Class room Audio </div>
-        <a href="product.html" class="btn">Shop</a>
-    </div>
+    <h1 style="font-size: 32px; margin-top: 50px;">Our Mission</h1>
+    <p style="font-size: 18px; line-height: 1.7; max-width: 900px;">
+        Our mission is to ensure that every school, college, and university has access 
+        to reliable, affordable technology. We believe that access to modern tools is 
+        essential for student success in today’s digital world.
+    </p>
 
-    <div class="ad">
-        <img src="Assets/Home/Ad2.png">
-        <div class="text">Always up to date with latest technology</div>
-        <a href="product.html" class="btn">Shop</a>
-    </div>
+    <h1 style="font-size: 32px; margin-top: 50px;">Why Choose NovaTech?</h1>
+    <ul style="font-size: 18px; line-height: 1.7;">
+        <p>✔ Affordable bulk deals for institutions</p>
+        <p>✔ High-quality and durable products</p>
+        <p>✔ Fast delivery and dedicated support</p>
+        <p>✔ Technology tailored for educational use</p>
+    </ul>
+</section>
 
-    <div class="ad">
-        <img src="Assets/Home/Ad3.png">
-        <div class="text">Chromebooks with AI </div>
-        <a href="product.html" class="btn">Shop</a>
-    </div>
-
-    <div class="ad">
-        <img src="Assets/Home/talets.png">
-        <div class="text">Tablets made for students</div>
-        <a href="product.html" class="btn">Shop</a>
-    </div>
-</div>
-
-<!-- Icon Bar -->
+<!-- Icon Bar (same as home page) -->
 <section class="icon-bar">
 
     <div class="icon">
@@ -89,7 +95,7 @@
     </div>
 </section>
 
-<!-- Contact -->
+<!-- Contact CTA -->
 <section class="contact-section">
     <div class="contact-left">
         <h1>Have any questions?</h1>
@@ -103,6 +109,7 @@
         <img src="Assets/Home/img_botright.png" alt="">
     </div>
 </section>
+
 
 <!-- Footer -->
 <footer class="footer">
@@ -123,7 +130,6 @@
         <a href="product.html">Chromebooks</a>
         <a href="product.html">Tablets</a>
         <a href="product.html">Printers and Scanners</a>
-
     </div>
 
     <div class="col">
@@ -137,7 +143,6 @@
 <!-- Payments -->
 <section class="payment-options">
     <h4>We accept the following paying methods:</h4>
-   
     <div class="payment-icons">
         <img src="Assets/Home/visa.svg">
         <img src="Assets/Home/mastercard.svg">
@@ -149,44 +154,6 @@
         <img src="Assets/Home/applepay.svg">
     </div>
 </section>
-
-<script>
-const slider = document.getElementById("slider");
-let ads = Array.from(document.querySelectorAll("#ads-template .ad"));
-const STEP = 47.5;
-const INTERVAL = 5000;
-const PAUSE = 1000;
-
-function renderSlides(extra=false){
-    slider.innerHTML = "";
-    const count = extra ? 4 : 3;
-
-    for (let i=0;i<count;i++){
-        const ad = ads[i % ads.length].cloneNode(true);
-        ad.classList.add("slide");
-        slider.appendChild(ad);
-    }
-}
-
-function animate(){
-    renderSlides(true);
-
-    requestAnimationFrame(()=>{
-        slider.style.transition="transform 0.6s ease";
-        slider.style.transform=`translateX(-${STEP}%)`;
-    });
-
-    setTimeout(()=>{
-        slider.style.transition="none";
-        slider.style.transform="translateX(0)";
-        ads.push(ads.shift());
-        renderSlides();
-    },600 + PAUSE);
-}
-
-renderSlides();
-setInterval(animate,INTERVAL);
-</script>
 
 </body>
 </html>

@@ -63,6 +63,9 @@ if ($data) {
 
 <div class="checkout-container">
 
+
+ <button type="button" onclick="window.location.href='order.php'">Place Order</button>
+
     <h1>Checkout</h1>
 
     <!-- ONLY ONE FORM -->

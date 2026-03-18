@@ -42,7 +42,7 @@
             <input type="email" name="email" placeholder="Email" required>
             <input type="text" name="subject" placeholder="Subject" required>
             <textarea name="message" rows="6" placeholder="Message" required></textarea>
-              <a href="MessageSent.html"> <button type="button">Send Message</button></a>
+              <a href="MessageSent.php"> <button type="button">Send Message</button></a>
         </form>
     </div>
 </section>
@@ -68,7 +68,7 @@
 
     <div class="col">
         <h4>Support</h4>
-        <a href="ContactUs.html">Contact Us</a>
+        <a href="ContactUs.php">Contact Us</a>
         <a href="about.html">About Us</a>
     </div>
 </footer>

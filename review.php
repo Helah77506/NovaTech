@@ -2,6 +2,10 @@
 session_start();
 include "Config.php";
 
+if(isset($_GET['id'])){
+    $_SESSION['product_id'] = $_GET['id'];
+}
+
 if (!isset($_SESSION['product_id'])) {
     echo "No product selected.";
     exit();
@@ -52,9 +56,8 @@ $reviews = $review_stmt->get_result();
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rate & Review</title>
-    <link rel="stylesheet" href="review.css" />
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="styles/review.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
@@ -63,21 +66,7 @@ $reviews = $review_stmt->get_result();
 <body>
 <header class="header">
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
-
-    <nav class="navbar">
-        <a href="Home.html">Home</a>
-        <a href="ContactUs.html">Contact</a>
-        <a href="about.html">About Us</a>
-        <a href="product.html"> Products</a>
-	    <a href="#"> Review</a>
-
-        <div class="nav-icons">
-            <img src="Assets/Home/user.png" alt="User" />
-            <a href="Login.html" class="login">Login</a>
-
-            <img src="Assets/Home/cart .png" alt="Cart" />
-        </div>
-    </nav>
+    <?php require_once __DIR__ . '/topbar.php';?>
 </header>
 
     <div class="container">
@@ -100,11 +89,11 @@ $reviews = $review_stmt->get_result();
             <h3>Rate this product</h3>
 
             <div class="stars">
-                <input type="radio" name="rating" value="5" id="star5"><label for="star5">★</label>
-                <input type="radio" name="rating" value="4" id="star4"><label for="star4">★</label>
-                <input type="radio" name="rating" value="3" id="star3"><label for="star3">★</label>
-                <input type="radio" name="rating" value="2" id="star2"><label for="star2">★</label>
-                <input type="radio" name="rating" value="1" id="star1"><label for="star1">★</label>
+                <input type="radio" name="rating" id="star5" value="5"><label for="star5">★</label>
+                <input type="radio" name="rating" id="star4" value="4"><label for="star4">★</label>
+                <input type="radio" name="rating" id="star3" value="3"><label for="star3">★</label>
+                <input type="radio" name="rating" id="star2" value="2"><label for="star2">★</label>
+                <input type="radio" name="rating" id="star1" value="1"><label for="star1">★</label>
             </div>
 
             <textarea name = "comment" placeholder="Write your review..." required></textarea>
