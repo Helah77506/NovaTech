@@ -187,6 +187,6 @@ function animate(){
 renderSlides();
 setInterval(animate,INTERVAL);
 </script>
-
+<script src="javascript/cartCount.js"></script>
 </body>
 </html>

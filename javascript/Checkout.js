@@ -8,14 +8,13 @@ function validateUserInputs(){
     const zip = document.getElementById("zip");
     const infolabel = document.getElementById("infolabel");
 
-    const full_nameV = full_name.value.trim();
-    const addressV = address.value.trim();
-    const cityV = city.value.trim();
-    const zipV = zip.value.trim();
+    if (!full_name.value.trim() ||
+        !address.value.trim() ||
+        !city.value.trim() ||
+        !zip.value.trim()) {
 
-    if (full_nameV === "" || addressV === "" || cityV === "" || zipV === "") {
         infolabel.hidden = false;
-        infolabel.textContent = "Please ensure all shipping fields are entered";
+        infolabel.textContent = "Please fill in all shipping fields";
         return false;
     }
 
@@ -27,29 +26,27 @@ function validateUserInputs(){
 // VALIDATE PAYMENT INPUTS
 // ===============================
 function validatePaymentInputs(){
-    const card_number = document.getElementById("card-number");
+    const card = document.getElementById("card-number");
     const expiry = document.getElementById("expiry");
     const cvc = document.getElementById("cvc");
     const infolabel2 = document.getElementById("infolabel2");
 
-    const card_numberV = card_number.value.trim();
-    const expiryV = expiry.value.trim();
-    const cvcV = cvc.value.trim();
-
     const expiryRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
 
-    if(card_numberV.length !== 16){
+    if (card.value.trim().length !== 16){
         infolabel2.textContent = "Enter a valid 16-digit card number";
         infolabel2.hidden = false;
         return false;
     }
-    else if(!expiryRegex.test(expiryV)){
-        infolabel2.textContent = "Use MM/YY format for expiry";
+
+    if (!expiryRegex.test(expiry.value.trim())){
+        infolabel2.textContent = "Use MM/YY format";
         infolabel2.hidden = false;
         return false;
     }
-    else if (cvcV.length < 3 || cvcV.length > 4){
-        infolabel2.textContent = "Enter a valid CVC";
+
+    if (cvc.value.trim().length < 3 || cvc.value.trim().length > 4){
+        infolabel2.textContent = "Invalid CVC";
         infolabel2.hidden = false;
         return false;
     }
@@ -74,18 +71,15 @@ function validateStock(cart, products){
 }
 
 // ===============================
-// MAIN SUBMISSION HANDLER
+// MAIN SUBMISSION
 // ===============================
 function listen_Submission(){
-    const form = document.querySelector("form");
+    const form = document.getElementById("checkout-form");
 
     form.addEventListener("submit", function(e){
         e.preventDefault();
 
-        const shippingOK = validateUserInputs();
-        const paymentOK = validatePaymentInputs();
-
-        if (!shippingOK || !paymentOK) return;
+        if (!validateUserInputs() || !validatePaymentInputs()) return;
 
         const cart = JSON.parse(localStorage.getItem("cart") || "[]");
         const products = JSON.parse(localStorage.getItem("productsData") || "[]");
@@ -95,12 +89,9 @@ function listen_Submission(){
             return;
         }
 
-        // Frontend stock check
         if (!validateStock(cart, products)) return;
 
-        // ===============================
-        // SEND DATA TO PHP BACKEND
-        // ===============================
+        // SEND TO PHP
         fetch("checkout.php", {
             method: "POST",
             headers: {
@@ -114,23 +105,31 @@ function listen_Submission(){
                 zip: document.getElementById("zip").value
             })
         })
-        .then(response => response.text())
+        .then(res => res.text())
         .then(data => {
-            console.log(data);
 
-            alert("Order placed successfully!");
+            if (data === "success") {
 
-            // Clear cart AFTER successful order
-            localStorage.removeItem("cart");
+                alert("Order placed successfully!");
 
-            // Redirect to order page
-            window.location.href = "order.php";
+                // clear cart
+                localStorage.removeItem("cart");
+
+                // update cart count globally
+                if (window.updateCartCount) {
+                    window.updateCartCount();
+                }
+
+                window.location.href = "order.php";
+
+            } else {
+                alert("Order failed. Try again.");
+            }
         })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("Something went wrong. Please try again.");
+        .catch(err => {
+            console.error(err);
+            alert("Something went wrong.");
         });
-
     });
 }
 

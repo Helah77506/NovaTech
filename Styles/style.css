@@ -362,38 +362,45 @@ footer { text-align:center; padding:26px 5%; color:var(--muted); font-size:0.95r
    COMPACT CHECKOUT STYLING
 ==================================== */
 .checkout-container {
-    max-width: 580px;
+    max-width: 620px;
     background: #fff;
-    margin: 28px auto;
-    padding: 22px;
+    margin: 40px auto;
+    padding: 26px;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
 }
 
+/* TITLE */
 .checkout-container h1 {
-    font-size: 1.45rem;
-    margin-bottom: 16px;
+    font-size: 1.6rem;
+    margin-bottom: 18px;
     text-align: center;
     font-weight: 800;
 }
 
-/* Sections */
+/* SECTIONS */
 .checkout-container section {
     margin-bottom: 22px;
     background: var(--bg-light);
-    padding: 14px 16px;
+    padding: 16px;
     border-radius: var(--radius);
-    border: 1px solid #e4e6ed;
+    border: 1px solid #e6e8ef;
+    transition: 0.2s;
 }
 
+.checkout-container section:hover {
+    border-color: var(--accent);
+}
+
+/* SECTION HEADINGS */
 .checkout-container section h2 {
-    font-size: 1rem;
-    margin-bottom: 10px;
+    font-size: 1.05rem;
+    margin-bottom: 12px;
     font-weight: 700;
     color: var(--accent-dark);
 }
 
-/* Labels + Inputs */
+/* INPUT WRAPPER */
 .checkout-container label {
     display: flex;
     flex-direction: column;
@@ -403,23 +410,49 @@ footer { text-align:center; padding:26px 5%; color:var(--muted); font-size:0.95r
     font-size: 0.9rem;
 }
 
+/* INPUTS */
 .checkout-container input,
 .checkout-container select {
-    padding: 8px 10px;
+    padding: 10px 12px;
     border: 1px solid #ddd;
     border-radius: var(--radius);
     background: #fff;
-    font-size: 0.9rem;
-    transition: border-color .2s;
+    font-size: 0.92rem;
+    transition: all 0.2s ease;
 }
 
+/* INPUT FOCUS */
 .checkout-container input:focus,
 .checkout-container select:focus {
     border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
     outline: none;
 }
 
-/* Order Summary Small Row */
+/* INPUT ROW (side-by-side fields) */
+.checkout-row {
+    display: flex;
+    gap: 10px;
+}
+
+.checkout-row input {
+    flex: 1;
+}
+
+/* ERROR LABELS */
+#infolabel,
+#infolabel2 {
+    display: block;
+    margin-top: 6px;
+    padding: 8px 10px;
+    border-radius: var(--radius);
+    background: #ffecec;
+    color: #d93025;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* ORDER SUMMARY (if you add it later) */
 .cart-item {
     display: flex;
     justify-content: space-between;
@@ -429,12 +462,13 @@ footer { text-align:center; padding:26px 5%; color:var(--muted); font-size:0.95r
     border-radius: var(--radius);
     font-weight: 600;
     font-size: 0.9rem;
+    margin-bottom: 8px;
 }
 
-/* Button */
+/* BUTTON */
 .checkout-container button[type="submit"] {
     width: 100%;
-    padding: 10px 14px;
+    padding: 12px;
     background: var(--accent);
     border: none;
     border-radius: var(--radius);
@@ -442,22 +476,29 @@ footer { text-align:center; padding:26px 5%; color:var(--muted); font-size:0.95r
     color: #fff;
     font-weight: 700;
     cursor: pointer;
-    transition: background .2s ease;
-    margin-top: 8px;
+    transition: all 0.2s ease;
+    margin-top: 10px;
 }
 
 .checkout-container button[type="submit"]:hover {
     background: var(--accent-dark);
+    transform: translateY(-1px);
 }
 
-/* Responsive */
+/* SMALL POLISH */
+.checkout-container input::placeholder {
+    color: #999;
+    font-size: 0.85rem;
+}
+
+/* MOBILE */
 @media (max-width: 520px) {
     .checkout-container {
         padding: 18px;
         margin: 16px;
     }
 
-    .checkout-container section {
-        padding: 12px;
+    .checkout-row {
+        flex-direction: column;
     }
 }

@@ -1,56 +1,80 @@
 <?php
-
 require 'config.php';
 
-// Read JSON from JS
+// ===============================
+// HANDLE ORDER SUBMISSION (API)
+// ===============================
 $data = json_decode(file_get_contents("php://input"), true);
 
 if ($data) {
 
     $cart = $data['cart'];
-    $user_id = 1; // replace with session later
+    $user_id = 1; // TODO: replace with session later
 
     $total = 0;
-    foreach($cart as $item){
+    foreach ($cart as $item) {
         $total += $item['price'] * $item['quantity'];
     }
 
-    // Insert order
-    $conn->query("
-        INSERT INTO orders (User_ID, Total, Status)
-        VALUES ('$user_id', '$total', 'Pending')
-    ");
+    $conn->begin_transaction();
 
-    $order_id = $conn->insert_id;
+    try {
 
-    // Insert items + update stock
-    foreach($cart as $item){
-
-        $product_id = $item['id'];
-        $quantity = $item['quantity'];
-        $price = $item['price'];
-
-        // Save item
-        $conn->query("
-            INSERT INTO order_items (order_id, product_id, quantity, price)
-            VALUES ('$order_id', '$product_id', '$quantity', '$price')
+        // INSERT ORDER
+        $stmt = $conn->prepare("
+            INSERT INTO orders (User_ID, Total, Status)
+            VALUES (?, ?, 'Pending')
         ");
+        $stmt->bind_param("id", $user_id, $total);
+        $stmt->execute();
 
-        // Update stock
-        $conn->query("
-            UPDATE product
-            SET Stock = Stock - $quantity
-            WHERE ID = $product_id
-        ");
+        $order_id = $stmt->insert_id;
+
+        // LOOP ITEMS
+        foreach ($cart as $item) {
+
+            $product_id = $item['id'];
+            $quantity = $item['quantity'];
+            $price = $item['price'];
+
+            // CHECK STOCK
+            $res = $conn->query("SELECT Stock FROM product WHERE ID = $product_id");
+            $row = $res->fetch_assoc();
+
+            if (!$row || $row['Stock'] < $quantity) {
+                throw new Exception("Not enough stock for product ID $product_id");
+            }
+
+            // INSERT ORDER ITEM
+            $stmt = $conn->prepare("
+                INSERT INTO order_items (order_id, product_id, quantity, price)
+                VALUES (?, ?, ?, ?)
+            ");
+            $stmt->bind_param("iiid", $order_id, $product_id, $quantity, $price);
+            $stmt->execute();
+
+            // UPDATE STOCK
+            $stmt = $conn->prepare("
+                UPDATE product SET Stock = Stock - ? WHERE ID = ?
+            ");
+            $stmt->bind_param("ii", $quantity, $product_id);
+            $stmt->execute();
+        }
+
+        $conn->commit();
+        echo "success";
+
+    } catch (Exception $e) {
+        $conn->rollback();
+        echo "error";
     }
 
-    echo "success";
     exit;
 }
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Checkout</title>
@@ -63,31 +87,39 @@ if ($data) {
 
 <div class="checkout-container">
 
-
- <button type="button" onclick="window.location.href='order.php'">Place Order</button>
-
     <h1>Checkout</h1>
 
-    <!-- ONLY ONE FORM -->
     <form id="checkout-form">
 
-        <h2>Shipping Details</h2>
+        <!-- SHIPPING -->
+        <section>
+            <h2>Shipping Details</h2>
 
-        <input id="full-name" type="text" placeholder="Full Name">
-        <input id="address" type="text" placeholder="Address">
-        <input id="city" type="text" placeholder="City">
-        <input id="zip" type="text" placeholder="Post Code">
+            <input id="full-name" type="text" placeholder="Full Name">
+            <input id="address" type="text" placeholder="Address">
 
-        <h2>Payment</h2>
+            <div class="checkout-row">
+                <input id="city" type="text" placeholder="City">
+                <input id="zip" type="text" placeholder="Post Code">
+            </div>
 
-        <input id="card-number" type="text" placeholder="Card Number">
-        <input id="expiry" type="text" placeholder="MM/YY">
-        <input id="cvc" type="text" placeholder="CVC">
+            <label id="infolabel" hidden></label>
+        </section>
 
-        <label id="infolabel" hidden></label>
-        <label id="infolabel2" hidden></label>
+        <!-- PAYMENT -->
+        <section>
+            <h2>Payment</h2>
 
-        <br><br>
+            <input id="card-number" type="text" placeholder="Card Number">
+
+            <div class="checkout-row">
+                <input id="expiry" type="text" placeholder="MM/YY">
+                <input id="cvc" type="text" placeholder="CVC">
+            </div>
+
+            <label id="infolabel2" hidden></label>
+        </section>
+
         <button type="submit">Place Order</button>
 
     </form>

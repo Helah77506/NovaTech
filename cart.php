@@ -4,18 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Cart - NovaTech</title>
+  <link rel="stylesheet" href="Styles/Home.css">
   <link rel="stylesheet" href="Styles/style.css" />
 </head>
 <body>
-  <header class="header">
-    <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
-    <div class="links">
-          <?php require_once __DIR__ . '/topbar.php';?>
-    </div>
-  </header>
 
-  <!-- Category Bar -->
-<div class="header2">
+  <!-- header -->
+<header class="header">
+    <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
+    <?php require_once __DIR__ . '/topbar.php';?>
+</header>
+
+ <div class="header2">
     <nav class="nav2">
         
     </nav>
@@ -37,5 +37,6 @@
   
 
   <script src="javascript/cart.js"></script>
+  <script src="javascript/cartCount.js"></script>
 </body>
 </html>

@@ -70,5 +70,6 @@
 
   
   <script src="javascript/product.js"></script>
+  <script src="javascript/cartCount.js"></script>
 </body>
 </html>

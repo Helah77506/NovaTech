@@ -11,8 +11,8 @@ function loadCart() {
 function saveCart(cart) {
   localStorage.setItem('cart', JSON.stringify(cart));
   // update global cart count )
-  try { window.parent && window.parent.updateCartCount && window.parent.updateCartCount(); } catch(e){}
-}
+  updateCartCount();
+} 
 
 function renderCart() {
   const cart = loadCart();
@@ -139,32 +139,17 @@ function clearCart() {
 }
 
 function checkout() {
-  // placeholder action - replace with real checkout
   const cart = loadCart();
-  if (!cart.length) { alert('Cart is empty.'); return; }
-<<<<<<< HEAD
-<<<<<<< HEAD
-  window.location.href='Checkout.php';
-=======
-  window.location.href='Checkout.html';
->>>>>>> parent of cf7649b (removed duplicate files)
-=======
-  window.location.href='Checkout.html';
->>>>>>> parent of cf7649b (removed duplicate files)
+  if (!cart.length) { 
+    alert('Cart is empty.'); 
+    return; 
+  }
+  window.location.href = 'Checkout.php'; // or .html (pick ONE)
 }
 
-// header cart count update
-function updateHeaderCartCount() {
-  const cart = loadCart();
-  const total = cart.reduce((s,i)=> s + (i.quantity || 0), 0);
-  const el = document.getElementById('cartCount');
-  if (el) el.textContent = total;
-  saveCart(cart);
-}
 
 clearCartBtn.addEventListener('click', clearCart);
 checkoutBtn.addEventListener('click', checkout);
 
 // initial render
 renderCart();
-updateHeaderCartCount();
