@@ -57,8 +57,7 @@ $reviews = $review_stmt->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rate & Review</title>
     <link rel="stylesheet" href="styles/review.css" />
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
@@ -67,15 +66,7 @@ $reviews = $review_stmt->get_result();
 <body>
 <header class="header">
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
-
-    <nav class="navbar">
-        <a href="Homepage.php">Home</a>
-        <a href="ContactUs.php">Contact</a>
-        <a href="aboutpage.php">About Us</a>
-        <a href="productpage.php"> Products</a>
-	     <a href="logout.php" class="logout">logout</a>
-        <a href="#"> Review</a>
-    </nav>
+    <?php require_once __DIR__ . '/topbar.php';?>
 </header>
 
     <div class="container">

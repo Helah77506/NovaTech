@@ -1,16 +1,11 @@
+/* Header */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 40px;
+    padding: 14px 5%;
+    background: var(--bg-light);
 }
-
-.navbar {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
 
 
 body {
