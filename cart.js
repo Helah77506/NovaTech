@@ -142,7 +142,7 @@ function checkout() {
   // placeholder action - replace with real checkout
   const cart = loadCart();
   if (!cart.length) { alert('Cart is empty.'); return; }
-  window.location.href='Checkout.html';
+  window.location.href='Checkout.php';
 }
 
 // header cart count update
