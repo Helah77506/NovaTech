@@ -32,7 +32,7 @@
     <div class="hero-text">
         <h1>Providing for the Future starts with us</h1>
         <p>Get bulk deals</p>
-        <a href="dashboard.php">
+        <a href="orderpage.php">
         <button>Dashboard</button>
         </a>
     

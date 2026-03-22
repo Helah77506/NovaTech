@@ -416,7 +416,7 @@ $ord_stmt->close();
 
     <!-- Quick Links -->
     <div class="quick-links">
-        <a href="dashboard.php" class="quick-card">
+        <a href="orderpage.php" class="quick-card">
             <div class="qc-icon blue">&#128230;</div>
             <div class="qc-info">
                 <strong>My Orders</strong>
