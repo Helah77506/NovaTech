@@ -56,20 +56,20 @@
 
     <div class="col">
         <h4>Shop</h4>
-        <a href="product.html">Shop All</a>
-        <a href="product.html">Computers</a>
-        <a href="product.html">Projectors</a>
-        <a href="product.html">Smart Boards</a>
-        <a href="product.html">Classroom Audio</a>
-        <a href="product.html">Wireless Clickers</a>
-        <a href="product.html">Chromebooks</a>
-        <a href="product.html">Tablets</a>
+        <a href="product.php">Shop All</a>
+        <a href="product.php">Computers</a>
+        <a href="product.php">Projectors</a>
+        <a href="product.php">Smart Boards</a>
+        <a href="product.php">Classroom Audio</a>
+        <a href="product.php">Wireless Clickers</a>
+        <a href="product.php">Chromebooks</a>
+        <a href="product.php">Tablets</a>
     </div>
 
     <div class="col">
         <h4>Support</h4>
         <a href="ContactUs.php">Contact Us</a>
-        <a href="about.html">About Us</a>
+        <a href="about.php">About Us</a>
     </div>
 </footer>
 
@@ -88,6 +88,6 @@
         <img src="Assets/Home/applepay.svg">
     </div>
 </section>
-<script src="javascript/cartCount.js"></script>
+
 </body>
 </html>
