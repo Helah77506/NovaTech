@@ -316,7 +316,7 @@ function listen_Submission() {
                         <div style="font-size:3rem; margin-bottom:16px;">✅</div>
                         <h1 style="font-size:1.6rem; margin-bottom:8px;">Order Placed!</h1>
                         <p style="color:#6c757d;">Thank you for your purchase. You'll receive a confirmation shortly.</p>
-                        <a href="order.php" style="display:inline-block; margin-top:20px; padding:12px 24px;
+                        <a href="orderpage.php" style="display:inline-block; margin-top:20px; padding:12px 24px;
                            background:#0d6bcb; color:#fff; border-radius:10px; text-decoration:none; font-weight:700;">
                            View My Orders</a>
                     </div>`;
