@@ -40,17 +40,7 @@
 <header class="header">
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
     <nav class="nav">
-        <a href="Homepage.php">Home</a>
-        <a href="ContactUs.php" class="active">Contact</a>
-        <a href="aboutpage.php">About Us</a>
-        <a href="productpage.php">Products</a>
-
-        <div class="nav-icons">
-            <a href="Login.php">Log in</a>
-            <img src="Assets/Home/user.png" alt="Login" />
-            <a href="cart.php">Cart</a>
-            <img src="Assets/Home/cart .png" alt="Cart" />
-        </div>
+    <?php require_once __DIR__ . '/topbar.php';?>
     </nav>
 </header>
 

@@ -92,6 +92,9 @@ $reviews = $conn->query("
         <li><a href="#">Reviews</a></li>
         <li><a href="#">Returns</a></li>
         <li><a href="switch_to_customer.php">View as Customer</a></li>
+        <li><a href="#">Customers</a></li>
+        <li><a href="Admin_reviews.php">Reviews</a></li>
+        <li><a href="Admin_returns.php">Returns</a></li>
         <li><a href="AuthenticationSec/adminchangepw.php">Change Password</a></li>
     </ul>
 </div>

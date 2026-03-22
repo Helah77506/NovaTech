@@ -255,6 +255,104 @@ function setLoading(on) {
 }
 
 // ===============================
+// BUILD CONFIRMATION SCREEN (NEW)
+// ===============================
+function showConfirmation(orderId, orderItems) {
+    const orderTotal = orderItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+    // Estimated delivery: 5–7 days from now
+    const deliveryMin = new Date();
+    deliveryMin.setDate(deliveryMin.getDate() + 5);
+    const deliveryMax = new Date();
+    deliveryMax.setDate(deliveryMax.getDate() + 7);
+    const options = { weekday: 'short', day: 'numeric', month: 'short' };
+    const deliveryRange = deliveryMin.toLocaleDateString('en-GB', options) + ' – ' + deliveryMax.toLocaleDateString('en-GB', options);
+
+    // Build item rows
+    const itemsHTML = orderItems.map(item => `
+        <div class="confirm-item">
+            <img src="${item.image || 'images/placeholder.png'}" alt="${item.name}" class="confirm-item-img">
+            <div class="confirm-item-info">
+                <span class="confirm-item-name">${item.name}</span>
+                <span class="confirm-item-qty">Qty: ${item.quantity}</span>
+            </div>
+            <span class="confirm-item-price">£${(item.price * item.quantity).toFixed(2)}</span>
+        </div>
+    `).join("");
+
+    // Grab shipping info before form is replaced
+    const fullName = document.getElementById("full-name").value;
+    const address  = document.getElementById("address").value;
+    const city     = document.getElementById("city").value;
+    const zip      = document.getElementById("zip").value;
+
+    // Replace page content
+    document.querySelector(".checkout-wrapper").innerHTML = `
+        <div class="confirm-page">
+
+            <div class="confirm-checkmark">
+                <svg class="confirm-tick" viewBox="0 0 52 52">
+                    <circle class="confirm-tick-circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="confirm-tick-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+            </div>
+
+            <h1 class="confirm-title">Order Confirmed!</h1>
+            <p class="confirm-subtitle">Thank you for your purchase</p>
+
+            <div class="confirm-ref">
+                Order #<strong>NT-${String(orderId).padStart(5, '0')}</strong>
+            </div>
+
+            <div class="confirm-card">
+                <div class="confirm-card-header">
+                    <h3>Order Summary</h3>
+                </div>
+                <div class="confirm-items">
+                    ${itemsHTML}
+                </div>
+                <div class="confirm-totals">
+                    <div class="confirm-total-line">
+                        <span>Subtotal</span>
+                        <span>£${orderTotal.toFixed(2)}</span>
+                    </div>
+                    <div class="confirm-total-line">
+                        <span>Shipping</span>
+                        <span>Free</span>
+                    </div>
+                    <div class="confirm-total-line confirm-grand-total">
+                        <span>Total</span>
+                        <span>£${orderTotal.toFixed(2)}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="confirm-delivery">
+                <span class="confirm-delivery-icon"></span>
+                <div>
+                    <strong>Estimated Delivery</strong>
+                    <p>${deliveryRange}</p>
+                </div>
+            </div>
+
+            <div class="confirm-address">
+                <span class="confirm-address-icon"></span>
+                <div>
+                    <strong>Shipping To</strong>
+                    <p>${fullName}</p>
+                    <p>${address}, ${city}, ${zip}</p>
+                </div>
+            </div>
+
+            <div class="confirm-actions">
+                <a href="order.php" class="confirm-btn confirm-btn-primary">View My Orders</a>
+                <a href="index.php" class="confirm-btn confirm-btn-secondary">Continue Shopping</a>
+            </div>
+
+        </div>`;
+}
+
+// ===============================
 // MAIN SUBMISSION
 // ===============================
 function listen_Submission() {
@@ -282,6 +380,9 @@ function listen_Submission() {
 
         // Show loading
         setLoading(true);
+
+        // Save cart before it gets cleared
+        const orderItems = [...cart];
 
         // SEND TO PHP
         fetch("checkout.php", {
@@ -341,11 +442,70 @@ function listen_Submission() {
 }
 
 // ===============================
+// PROGRESS BAR TRACKING
+// ===============================
+function setupProgressBar() {
+    const shippingFields = ['full-name', 'address', 'city', 'zip'];
+    const paymentFields  = ['card-number', 'expiry', 'cvc'];
+
+    function checkSection(fieldIds) {
+        return fieldIds.every(id => {
+            const el = document.getElementById(id);
+            return el && el.value.trim().length > 0;
+        });
+    }
+
+    function updateProgress() {
+        const stepShipping = document.getElementById('step-shipping');
+        const stepPayment  = document.getElementById('step-payment');
+        const stepConfirm  = document.getElementById('step-confirm');
+        const line1        = document.getElementById('line-1');
+        const line2        = document.getElementById('line-2');
+
+        const shippingDone = checkSection(shippingFields);
+        const paymentDone  = checkSection(paymentFields);
+
+        // Shipping step
+        if (shippingDone) {
+            stepShipping.className = 'progress-step done';
+            line1.className = 'progress-line complete';
+        } else {
+            stepShipping.className = 'progress-step active';
+            line1.className = 'progress-line';
+        }
+
+        // Payment step
+        if (shippingDone && paymentDone) {
+            stepPayment.className = 'progress-step done';
+            line2.className = 'progress-line complete';
+            stepConfirm.className = 'progress-step active';
+        } else if (shippingDone) {
+            stepPayment.className = 'progress-step active';
+            line2.className = 'progress-line';
+            stepConfirm.className = 'progress-step';
+        } else {
+            stepPayment.className = 'progress-step';
+            line2.className = 'progress-line';
+            stepConfirm.className = 'progress-step';
+        }
+    }
+
+    // Listen to all fields
+    [...shippingFields, ...paymentFields].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('input', updateProgress);
+    });
+
+    updateProgress();
+}
+
+// ===============================
 // INIT
 // ===============================
 document.addEventListener("DOMContentLoaded", function () {
     renderOrderSummary();
     setupFormatting();
     setupBlurValidation();
+    setupProgressBar();
     listen_Submission();
 });
