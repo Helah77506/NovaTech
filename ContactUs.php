@@ -42,7 +42,8 @@
             <input type="email" name="email" placeholder="Email" required>
             <input type="text" name="subject" placeholder="Subject" required>
             <textarea name="message" rows="6" placeholder="Message" required></textarea>
-              <a href="MessageSent.php"> <button type="button">Send Message</button></a>
+            
+            <button type="submit">Send Message</button>
         </form>
     </div>
 </section>
@@ -73,7 +74,6 @@
     </div>
 </footer>
 
-<!-- Payments -->
 <section class="payment-options">
     <h4>We accept the following paying methods:</h4>
    

@@ -40,13 +40,13 @@
 <header class="header">
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
     <nav class="nav">
-        <a href="Home.html">Home</a>
+        <a href="Home.php">Home</a>
         <a href="ContactUs.php" class="active">Contact</a>
-        <a href="about.html">About Us</a>
-        <a href="product.html">Products</a>
+        <a href="about.php">About Us</a>
+        <a href="product.php">Products</a>
 
         <div class="nav-icons">
-            <a href="Login.html">Log in</a>
+            <a href="Login.php">Log in</a>
             <img src="Assets/Home/user.png" alt="Login" />
             <a href="cart.php">Cart</a>
             <img src="Assets/Home/cart .png" alt="Cart" />
@@ -66,7 +66,7 @@
         </p>
 
         <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-            <a href="Home.html">
+            <a href="Home.php">
                 <button style="width: 250px; padding: 14px 40px; background-color: #0d6bcb; color: white; border: none; border-radius: 12px; font-weight: 600; cursor: pointer;">
                     Return to Home
                 </button>
