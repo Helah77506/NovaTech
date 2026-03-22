@@ -105,3 +105,11 @@ ALTER TABLE `orders`
 ADD CONSTRAINT `fk_orders_user`
 FOREIGN KEY (`User_ID`) REFERENCES `users`(`ID`)
 ON DELETE CASCADE;
+
+-- -----------------------------------------------------
+--  ADD PASSWORD RESET FIELDS TO USERS
+-- -----------------------------------------------------
+
+ALTER TABLE `users`
+ADD COLUMN `reset_token_hash` VARCHAR(64) DEFAULT NULL,
+ADD COLUMN `reset_token_expires` DATETIME DEFAULT NULL;
