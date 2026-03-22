@@ -70,7 +70,7 @@
     <div class="col">
         <h4>Support</h4>
         <a href="ContactUs.php">Contact Us</a>
-        <a href="about.php">About Us</a>
+        <a href="aboutpage.php">About Us</a>
     </div>
 </footer>
 

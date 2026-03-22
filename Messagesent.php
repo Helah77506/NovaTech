@@ -42,7 +42,7 @@
     <nav class="nav">
         <a href="Home.php">Home</a>
         <a href="ContactUs.php" class="active">Contact</a>
-        <a href="about.php">About Us</a>
+        <a href="aboutpage.php">About Us</a>
         <a href="product.php">Products</a>
 
         <div class="nav-icons">
@@ -116,7 +116,7 @@
     <div class="col">
         <h4>Support</h4>
         <a href="ContactUs.php">Contact Us</a>
-        <a href="about.php">About Us</a>
+        <a href="aboutpage.php">About Us</a>
     </div>
 </footer>
 
