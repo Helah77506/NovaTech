@@ -1,6 +1,6 @@
 <?php
 include "Config.php";
-
+session_start();
 // ===============================
 // GET PRODUCT ID
 // ===============================
@@ -31,10 +31,10 @@ $product = $product_result->fetch_assoc();
 // ===============================
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if (!isset($_SESSION['user_id'])) {
-        header("Location: login.php");
-        exit();
-    }
+    // if (!isset($_SESSION['user_id'])) {
+    //     header("Location: login.php");
+    //     exit();
+    // }
 
     $user_id = $_SESSION['user_id'];
     $rating = intval($_POST['rating']);
@@ -55,7 +55,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-$review_stmt = $conn->prepare("SELECT * FROM reviews WHERE product_id = ? ORDER BY created_at DESC");
+$review_stmt = $conn->prepare("
+    SELECT reviews.*, users.Full_name 
+    FROM reviews 
+    JOIN users ON reviews.user_id = users.id
+    WHERE product_id = ?
+    ORDER BY created_at DESC
+");
 $review_stmt->bind_param("i", $product_id);
 $review_stmt->execute();
 $reviews = $review_stmt->get_result();
@@ -124,7 +130,7 @@ $reviews = $review_stmt->get_result();
 
     <?php while($row = $reviews->fetch_assoc()): ?>
         <div class="review-box">
-            <strong><?= htmlspecialchars($row['username']); ?></strong>
+            <strong><?= htmlspecialchars($row['Full_name']); ?></strong>
 
             <div class="stars-display">
                 <?= str_repeat("★", $row['rating']) . str_repeat("☆", 5 - $row['rating']); ?>
