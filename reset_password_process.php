@@ -27,14 +27,24 @@ if (strlen($password) < 8) {
 
 $tokenHash = hash('sha256', $token);
 
+// find matching reset token
 $stmt = $conn->prepare("
-    SELECT id, Reset_Token_Expires
+    SELECT ID, Reset_Token_Expires
     FROM users
     WHERE Reset_Token_Hash = ?
     LIMIT 1
 ");
+
+if (!$stmt) {
+    die("RESET PASSWORD SELECT prepare failed: " . $conn->error);
+}
+
 $stmt->bind_param("s", $tokenHash);
-$stmt->execute();
+
+if (!$stmt->execute()) {
+    die("RESET PASSWORD SELECT execute failed: " . $stmt->error);
+}
+
 $result = $stmt->get_result();
 
 if ($result->num_rows !== 1) {
@@ -49,16 +59,25 @@ if (empty($user['Reset_Token_Expires']) || strtotime($user['Reset_Token_Expires'
     exit();
 }
 
+// update password and clear token
 $newHash = password_hash($password, PASSWORD_DEFAULT);
-$userId = (int)$user['id'];
+$userId = (int)$user['ID'];
 
 $update = $conn->prepare("
     UPDATE users
     SET Password_Hash = ?, Reset_Token_Hash = NULL, Reset_Token_Expires = NULL
-    WHERE id = ?
+    WHERE ID = ?
 ");
+
+if (!$update) {
+    die("RESET PASSWORD UPDATE prepare failed: " . $conn->error);
+}
+
 $update->bind_param("si", $newHash, $userId);
-$update->execute();
+
+if (!$update->execute()) {
+    die("RESET PASSWORD UPDATE execute failed: " . $update->error);
+}
 
 header('Location: Loginpage.php?reset=success');
 exit();

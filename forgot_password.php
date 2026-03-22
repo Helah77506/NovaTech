@@ -8,6 +8,10 @@ if (isset($_GET['error']) && $_GET['error'] === 'invalid') {
 if (isset($_GET['status']) && $_GET['status'] === 'notfound') {
     $message = 'No account was found with that email.';
 }
+
+if (isset($_GET['status']) && $_GET['status'] === 'sent') {
+    $message = 'A password reset email has been sent.';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +37,7 @@ if (isset($_GET['status']) && $_GET['status'] === 'notfound') {
             <img src="Assets/Home/Logo.png" class="logo" alt="NovaTech Logo" />
 
             <h1>Forgot Password</h1>
-            <p>Enter your email to generate a password reset link.</p>
+            <p>Enter your email to receive a password reset link.</p>
 
             <?php if ($message !== ''): ?>
                 <p class="auth-info" style="display:block;"><?php echo htmlspecialchars($message); ?></p>
@@ -50,7 +54,7 @@ if (isset($_GET['status']) && $_GET['status'] === 'notfound') {
                     />
                 </div>
 
-                <button type="submit">Generate Reset Link</button>
+                <button type="submit">Send Reset Link</button>
             </form>
 
             <p class="login-text register-text">

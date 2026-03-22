@@ -1,6 +1,13 @@
 <?php
 require 'Config.php';
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: forgot_password.php');
     exit();
@@ -13,9 +20,24 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit();
 }
 
-$stmt = $conn->prepare("SELECT id, email FROM users WHERE email = ? LIMIT 1");
+// find user by email
+$stmt = $conn->prepare("
+    SELECT ID, Email
+    FROM users
+    WHERE Email = ?
+    LIMIT 1
+");
+
+if (!$stmt) {
+    die("FORGOT PASSWORD SELECT prepare failed: " . $conn->error);
+}
+
 $stmt->bind_param("s", $email);
-$stmt->execute();
+
+if (!$stmt->execute()) {
+    die("FORGOT PASSWORD SELECT execute failed: " . $stmt->error);
+}
+
 $result = $stmt->get_result();
 
 if ($result->num_rows !== 1) {
@@ -24,59 +46,67 @@ if ($result->num_rows !== 1) {
 }
 
 $user = $result->fetch_assoc();
-$userId = (int)$user['id'];
+$userId = (int)$user['ID'];
 
+// generate reset token
 $token = bin2hex(random_bytes(32));
 $tokenHash = hash('sha256', $token);
 $expires = date('Y-m-d H:i:s', time() + 3600);
 
+// store token and expiry
 $update = $conn->prepare("
     UPDATE users
     SET Reset_Token_Hash = ?, Reset_Token_Expires = ?
-    WHERE id = ?
+    WHERE ID = ?
 ");
+
+if (!$update) {
+    die("FORGOT PASSWORD UPDATE prepare failed: " . $conn->error);
+}
+
 $update->bind_param("ssi", $tokenHash, $expires, $userId);
-$update->execute();
 
-$resetLink = "http://localhost/NOVATECH/reset_password.php?token=" . urlencode($token);
+if (!$update->execute()) {
+    die("FORGOT PASSWORD UPDATE execute failed: " . $update->error);
+}
+
+// IMPORTANT: keep this matching your localhost folder name
+$resetLink = "http://localhost/novatech/reset_password.php?token=" . urlencode($token);
+
+// send email using same settings as send_email.php
+$mail = new PHPMailer(true);
+
+try {
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.gmail.com';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'novatech2025nt@gmail.com';
+    $mail->Password   = 'gdgxhunkjduephvb';
+    $mail->SMTPSecure = 'tls';
+    $mail->Port       = 587;
+
+    $mail->setFrom('novatech2025nt@gmail.com', 'NovaTech');
+    $mail->addAddress($email);
+
+    $mail->isHTML(true);
+    $mail->Subject = 'Password Reset - NovaTech';
+    $mail->Body = "
+        <h2>Password Reset</h2>
+        <p>Hello,</p>
+        <p>We received a request to reset your password.</p>
+        <p>Click the link below to reset it:</p>
+        <p><a href='$resetLink'>Reset Password</a></p>
+        <p>This link expires in 1 hour.</p>
+        <p>If you did not request this, please ignore this email.</p>
+    ";
+    $mail->AltBody = "Reset your password using this link: $resetLink";
+
+    $mail->send();
+
+    header('Location: forgot_password.php?status=sent');
+    exit();
+
+} catch (Exception $e) {
+    die("Mailer Error: " . $mail->ErrorInfo);
+}
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reset Link Generated - NovaTech</title>
-    <link rel="stylesheet" href="Styles/Login.css">
-</head>
-<body>
-
-    <a href="Loginpage.php" id="back-home-link">
-        <div class="back-home-container">
-            <img src="Assets/Home/arrow.png" class="home-icon" alt="Back" />
-            <span class="back-home-text">Back to Login</span>
-        </div>
-    </a>
-
-    <div class="container">
-        <div class="left"></div>
-
-        <div class="right">
-            <img src="Assets/Home/Logo.png" class="logo" alt="NovaTech Logo" />
-
-            <h1>Reset Link Generated</h1>
-            <p>Testing on localhost: click the link below to reset the password.</p>
-
-            <p class="auth-info" style="display:block; width:90%; word-break:break-all;">
-                <a href="<?php echo htmlspecialchars($resetLink); ?>">
-                    <?php echo htmlspecialchars($resetLink); ?>
-                </a>
-            </p>
-
-            <p class="login-text register-text">
-                <a href="Loginpage.php">Back to login</a>
-            </p>
-        </div>
-    </div>
-
-</body>
-</html>
