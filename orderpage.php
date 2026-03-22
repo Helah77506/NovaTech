@@ -13,15 +13,15 @@
 <header class="header">
   <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
   <nav class="nav">
-    <a href="Home.php">Home</a>      
+    <a href="Homepage.php">Home</a>      
     <a href="ContactUs.php">Contact</a>
-    <a href="about.php">About</a>       
-    <a href="product.php">Products</a>
+    <a href="aboutpage.php">About</a>       
+    <a href="productpage.php">Products</a>
     <a href="cart.php">Cart</a>
     <a href="dashboard.php">Dashboard</a>
     <div class="nav-icons">
       <img src="Assets/Home/user.svg" alt="User" />
-      <a href="login.php">Login</a>
+      <a href="Loginpage.php">Login</a>
     </div>
   </nav>
 </header>
@@ -70,20 +70,20 @@
     <p>NovaTech@gmail.com<br>07378867181</p>
   </div>
   <div class="col">
-      <a href="product.php">Shop All</a>
-        <a href="product.php">Computers</a>
-        <a href="product.php">Projectors</a>
-        <a href="product.php">Smart Boards</a>
-        <a href="product.php">Classroom Audio</a>
-        <a href="product.php">Wireless Presentation Clickers</a>
-        <a href="product.php">Chromebooks</a>
-        <a href="product.php">Tablets</a>
-        <a href="product.php">Printers and Scanners</a>
+      <a href="productpage.php">Shop All</a>
+        <a href="productpage.php">Computers</a>
+        <a href="productpage.php">Projectors</a>
+        <a href="productpage.php">Smart Boards</a>
+        <a href="productpage.php">Classroom Audio</a>
+        <a href="productpage.php">Wireless Presentation Clickers</a>
+        <a href="productpage.php">Chromebooks</a>
+        <a href="productpage.php">Tablets</a>
+        <a href="productpage.php">Printers and Scanners</a>
   </div>
   <div class="col">
     <h4>Support</h4>
     <a href="ContactUs.php">Contact Us</a>
-    <a href="about.php">About Us</a>
+    <a href="aboutpage.php">About Us</a>
   </div>
 </footer>
 

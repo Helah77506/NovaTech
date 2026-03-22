@@ -16,15 +16,15 @@
 
 <div class="header2">
     <nav class="nav2">
-          <a href="product.html">Shop All</a>
-        <a href="product.html">Computers</a>
-        <a href="product.html">Projectors</a>
-        <a href="product.html">Smart Boards</a>
-        <a href="product.html">Classroom Audio</a>
-        <a href="product.html">Wireless Presentation Clickers</a>
-        <a href="product.html">Chromebooks</a>
-        <a href="product.html">Tablets</a>
-        <a href="product.html">Printers and Scanners</a>
+          <a href="productpage.php">Shop All</a>
+        <a href="productpage.php">Computers</a>
+        <a href="productpage.php">Projectors</a>
+        <a href="productpage.php">Smart Boards</a>
+        <a href="productpage.php">Classroom Audio</a>
+        <a href="productpage.php">Wireless Presentation Clickers</a>
+        <a href="productpage.php">Chromebooks</a>
+        <a href="productpage.php">Tablets</a>
+        <a href="productpage.php">Printers and Scanners</a>
     </nav>
 </div>
 
@@ -52,20 +52,20 @@
     </div>
     <div class="col">
         <h4>Shop</h4>
-           <a href="product.html">Shop All</a>
-        <a href="product.html">Computers</a>
-        <a href="product.html">Projectors</a>
-        <a href="product.html">Smart Boards</a>
-        <a href="product.html">Classroom Audio</a>
-        <a href="product.html">Wireless Presentation Clickers</a>
-        <a href="product.html">Chromebooks</a>
-        <a href="product.html">Tablets</a>
-        <a href="product.html">Printers and Scanners</a>
+           <a href="productpage.php">Shop All</a>
+        <a href="productpage.php">Computers</a>
+        <a href="productpage.php">Projectors</a>
+        <a href="productpage.php">Smart Boards</a>
+        <a href="productpage.php">Classroom Audio</a>
+        <a href="productpage.php">Wireless Presentation Clickers</a>
+        <a href="productpage.php">Chromebooks</a>
+        <a href="productpage.php">Tablets</a>
+        <a href="productpage.php">Printers and Scanners</a>
     </div>
     <div class="col">
         <h4>Support</h4>
         <a href="ContactUs.php">Contact Us</a>
-        <a href="about.html">About Us</a>
+        <a href="aboutpage.php">About Us</a>
     </div>
 </footer>
 
