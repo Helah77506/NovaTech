@@ -204,6 +204,18 @@ STOCK LEVEL COLORS
     font-weight:bold;
 }
 
+.low-stock {
+    background-color: #ffcc00 !important; /* bright yellow */
+    color: #000;
+    font-weight: bold;
+}
+
+.out-stock {
+    background-color: #ff4d4f !important; /* strong red */
+    color: white;
+    font-weight: bold;
+}
+
 /* ===============================
    BUTTONS
 =================================*/

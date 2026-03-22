@@ -21,9 +21,10 @@ $products = $conn->query("SELECT * FROM product");
         <li><a href="admin_products.php">products</a></li>
         <li><a href="admin_inventory.php">Inventory</a></li>
         <li><a href="admin_orders.php">Orders</a></li>
-        <li><a href="#">Customers</a></li>
+        <li><a href="admin_customers.php">Customers</a></li>
         <li><a href="#">Reviews</a></li>
         <li><a href="#">Returns</a></li>
+        <li><a href="AuthenticationSec/adminchangepw.php">Change Password</a></li>
     </ul>
 </div>
 

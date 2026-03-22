@@ -1,5 +1,6 @@
 <?php
 require 'config.php';
+session_start(); 
 
 // ===============================
 // HANDLE ORDER SUBMISSION (API)
@@ -8,8 +9,13 @@ $data = json_decode(file_get_contents("php://input"), true);
 
 if ($data) {
 
+    if (!isset($_SESSION['user_id'])) {
+        echo "not_logged_in";
+        exit;
+    }
+
+    $user_id = $_SESSION['user_id'];
     $cart = $data['cart'];
-    $user_id = 1; // TODO: replace with session later
 
     $total = 0;
     foreach ($cart as $item) {

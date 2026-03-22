@@ -25,9 +25,10 @@ $orders = $conn->query("
         <li><a href="admin_products.php">products</a></li>
         <li><a href="admin_inventory.php">Inventory</a></li>
         <li><a href="admin_orders.php">Orders</a></li>
-        <li><a href="#">Customers</a></li>
+        <li><a href="admin_customers.php">Customers</a></li>
         <li><a href="#">Reviews</a></li>
         <li><a href="#">Returns</a></li>
+        <li><a href="AuthenticationSec/adminchangepw.php">Change Password</a></li>
     </ul>
 </div>
 
@@ -41,6 +42,7 @@ $orders = $conn->query("
             <th>Total</th>
             <th>Status</th>
             <th>Update</th>
+            <th>Details</th>
         </tr>
 
         <?php while($order = $orders->fetch_assoc()): ?>
@@ -60,6 +62,12 @@ $orders = $conn->query("
                     </select>
                     <button type="submit">Update</button>
                 </form>
+            </td>
+            <td>
+                <a href="admin_order_details.php?id=<?= $order['ID']; ?>" 
+                style="padding:6px 10px; background:#0d6bcb; color:white; border-radius:6px; text-decoration:none;">
+                View
+                </a>
             </td>
         </tr>
         <?php endwhile; ?>

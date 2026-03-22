@@ -1,6 +1,9 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
+
 
 
 <nav class="nav">
@@ -31,4 +34,8 @@ session_start();
 
         <img src="Assets/Home/user.png" alt="User" />
     </div>
+
+    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'customer'): ?>
+    <a href="switch_to_admin.php">Back to Admin</a>
+    <?php endif; ?>
 </nav>
