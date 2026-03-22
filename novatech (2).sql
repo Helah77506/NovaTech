@@ -10,8 +10,11 @@
 ALTER TABLE `users`
 ADD COLUMN `Role` ENUM('admin','customer') NOT NULL DEFAULT 'customer' AFTER `Password_Hash`;
 
+ALTER TABLE `users`
+ADD COLUMN `Reset_Token_Hash` VARCHAR(64) DEFAULT NULL;
 
-
+ALTER TABLE `users`
+ADD COLUMN `Reset_Token_Expires` DATETIME DEFAULT NULL;
 -- --------------------------------------------------------
 -- 2️⃣ PRODUCT TABLE - Add image column
 -- --------------------------------------------------------
