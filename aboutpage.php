@@ -137,6 +137,6 @@
         <img src="Assets/Home/applepay.svg">
     </div>
 </section>
-
+<script src="javascript/cartCount.js"></script>
 </body>
 </html>

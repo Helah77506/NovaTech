@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Products - School Inventory</title>
-    <link rel="stylesheet" href="Styles/Home.css">
-    <link rel="stylesheet" href="Styles/style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Products - School Inventory</title>
+  <link rel="stylesheet" href="Styles/Home.css">
+  <link rel="stylesheet" href="Styles/style.css" />
 </head>
 <body>
 
@@ -14,8 +14,8 @@
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
     <?php require_once __DIR__ . '/topbar.php';?>
 </header>
-<!-- Category Bar -->
-<div class="header2">
+
+ <div class="header2">
     <nav class="nav2">
         
     </nav>
@@ -70,5 +70,6 @@
 
   
   <script src="javascript/product.js"></script>
+  <script src="javascript/cartCount.js"></script>
 </body>
 </html>

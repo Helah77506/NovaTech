@@ -83,7 +83,7 @@ $reviews = $conn->query("
 <!-- SIDEBAR -->
 <div class="sidebar">
     <h2>NovaTech Admin</h2>
-    <ul>
+    <ul class="menu-top">
         <li><a href="admin.php">Dashboard</a></li>
         <li><a href="admin_products.php">products</a></li>
         <li><a href="admin_inventory.php">Inventory</a></li>
@@ -91,6 +91,7 @@ $reviews = $conn->query("
         <li><a href="#">Customers</a></li>
         <li><a href="#">Reviews</a></li>
         <li><a href="#">Returns</a></li>
+        <li><a href="AuthenticationSec/adminchangepw.php">Change Password</a></li>
     </ul>
 </div>
 

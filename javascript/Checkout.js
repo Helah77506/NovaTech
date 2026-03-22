@@ -1,70 +1,68 @@
-
-//function to validate user inputs 
+// ===============================
+// VALIDATE SHIPPING INPUTS
+// ===============================
 function validateUserInputs(){
-    //set up variables 
-    const full_name = document.getElementById("full-name")
-    const address = document.getElementById("address")
-    const city = document.getElementById("city")
-    const zip = document.getElementById("zip")
-    const infolabel = document.getElementById("infolabel")
+    const full_name = document.getElementById("full-name");
+    const address = document.getElementById("address");
+    const city = document.getElementById("city");
+    const zip = document.getElementById("zip");
+    const infolabel = document.getElementById("infolabel");
 
-    const full_nameV = full_name.value.trim()
-    const addressV = address.value.trim()
-    const cityV = city.value.trim()
-    const zipV = zip.value.trim()
+    if (!full_name.value.trim() ||
+        !address.value.trim() ||
+        !city.value.trim() ||
+        !zip.value.trim()) {
 
-    if (full_nameV == "" || addressV == "" || cityV == "" || zipV == "") {
-       infolabel.hidden = false
-       infolabel.textContent = "Please Ensure All Shipping Fields Are Entered"
-       return false
+        infolabel.hidden = false;
+        infolabel.textContent = "Please fill in all shipping fields";
+        return false;
     }
-    
-    infolabel.hidden = true
-    infolabel.style.display = "none"
-    return true 
-    
+
+    infolabel.hidden = true;
+    return true;
 }
 
-//function to validate card inputs 
+// ===============================
+// VALIDATE PAYMENT INPUTS
+// ===============================
 function validatePaymentInputs(){
-    const card_number = document.getElementById("card-number")
-    const expiry = document.getElementById("expiry")
-    const cvc = document.getElementById("cvc")
-    const infolabel2 = document.getElementById("infolabel2")
+    const card = document.getElementById("card-number");
+    const expiry = document.getElementById("expiry");
+    const cvc = document.getElementById("cvc");
+    const infolabel2 = document.getElementById("infolabel2");
 
-    const card_numberV = card_number.value.trim()
-    const expiryV = expiry.value.trim()
-    const cvcV = cvc.value.trim()
+    const expiryRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
 
-    const expiryRegex = /^(0[1-9]|1[0-2])\/\d{2}$/ //regex for the expiry 
-
-    if(card_numberV.length!=16){
-        infolabel2.textContent = "Please ensure a valid 16 digit card number is entered"
-        infolabel2.hidden = false
-        return false
-    } 
-    else if(!expiryRegex.test(expiryV)){
-        infolabel2.textContent = "Please ensure a valid expiry is entered in the format MM/YY"
-        infolabel2.hidden = false
-        return false
+    if (card.value.trim().length !== 16){
+        infolabel2.textContent = "Enter a valid 16-digit card number";
+        infolabel2.hidden = false;
+        return false;
     }
-    else if (cvcV.length < 3 || cvcV.length > 4) {
-        infolabel2.textContent = "Please ensure a valid CVC is entered"
-        infolabel2.hidden = false
-        return false
+
+    if (!expiryRegex.test(expiry.value.trim())){
+        infolabel2.textContent = "Use MM/YY format";
+        infolabel2.hidden = false;
+        return false;
     }
-    infolabel2.hidden = true
-    infolabel2.style.display = "none"
-    return true 
+
+    if (cvc.value.trim().length < 3 || cvc.value.trim().length > 4){
+        infolabel2.textContent = "Invalid CVC";
+        infolabel2.hidden = false;
+        return false;
+    }
+
+    infolabel2.hidden = true;
+    return true;
 }
-    
 
-// CHECK STOCK BEFORE ORDER
-// ======================================
-function validateStock(cart, products) {
-    for (let item of cart) {
-        const product = products.find(p => p.id === item.id);
-        if (!product || product.stock < item.quantity) {
+// ===============================
+// CHECK STOCK (FRONTEND SAFETY)
+// ===============================
+function validateStock(cart, products){
+    for (let item of cart){
+        const product = products.find(p => p.id == item.id);
+
+        if (!product || product.stock < item.quantity){
             alert(`Insufficient stock for ${item.name}`);
             return false;
         }
@@ -72,90 +70,70 @@ function validateStock(cart, products) {
     return true;
 }
 
-
-// UPDATE STOCK AFTER ORDER
-// ======================================
-function updateStockFromCart(cart) {
-    let products = JSON.parse(localStorage.getItem("productsData") || "[]");
-
-    cart.forEach(item => {
-        const product = products.find(p => p.id === item.id);
-        if (product) {
-            product.stock -= item.quantity;
-            if (product.stock < 0) product.stock = 0;
-        }
-    });
-
-    localStorage.setItem("productsData", JSON.stringify(products));
-}
-
-
-// SAVE ORDER
-// ======================================
-function saveOrder(cart) {
-    const orders = JSON.parse(localStorage.getItem("orders") || "[]");
-
-    orders.push({
-        id: Date.now(),
-        items: cart,
-        date: new Date().toISOString(),
-        status: "Pending"
-    });
-
-    localStorage.setItem("orders", JSON.stringify(orders));
-}
-
-// function listen_Sumbission(){
-//     const form = document.querySelector("form")
-    
-//     form.addEventListener("submit", function(e){
-//         const shippingOK = validateUserInputs()
-//         const paymentOK = validatePaymentInputs()
-
-//         if (!shippingOK || !paymentOK) {
-//             e.preventDefault()
-//         } 
-//         else {
-//             // redirect to another page
-//             window.location.href = "order.php";}
-//     })
-// }
-// this is the old funcion just incase
-
+// ===============================
+// MAIN SUBMISSION
+// ===============================
 function listen_Submission(){
-    const form = document.querySelector("form");
+    const form = document.getElementById("checkout-form");
 
     form.addEventListener("submit", function(e){
         e.preventDefault();
 
-        const shippingOK = validateUserInputs();
-        const paymentOK = validatePaymentInputs();
-
-        if (!shippingOK || !paymentOK) return;
+        if (!validateUserInputs() || !validatePaymentInputs()) return;
 
         const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-        let products = JSON.parse(localStorage.getItem("productsData") || "[]");
+        const products = JSON.parse(localStorage.getItem("productsData") || "[]");
 
-        if (cart.length === 0) {
+        if (cart.length === 0){
             alert("Your cart is empty.");
             return;
         }
 
-        // Validate stock before reducing
         if (!validateStock(cart, products)) return;
 
-        // Update stock
-        updateStockFromCart(cart);
+        // SEND TO PHP
+        fetch("checkout.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                cart: cart,
+                full_name: document.getElementById("full-name").value,
+                address: document.getElementById("address").value,
+                city: document.getElementById("city").value,
+                zip: document.getElementById("zip").value
+            })
+        })
+        .then(res => res.text())
+        .then(data => {
 
-        // Save order
-        saveOrder(cart);
+            if (data === "success") {
 
-        // Clear cart
-        localStorage.removeItem("cart");
+                alert("Order placed successfully!");
 
-        // Redirect
-        window.location.href = "order.php";
+                // clear cart
+                localStorage.removeItem("cart");
+
+                // update cart count globally
+                if (window.updateCartCount) {
+                    window.updateCartCount();
+                }
+
+                window.location.href = "order.php";
+
+            } else {
+                alert("Order failed. Try again.");
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Something went wrong.");
+        });
     });
 }
 
+// ===============================
+// INIT
+// ===============================
 document.addEventListener("DOMContentLoaded", listen_Submission);
