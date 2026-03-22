@@ -1,68 +1,205 @@
 // ===============================
+// RENDER ORDER SUMMARY FROM CART
+// ===============================
+function renderOrderSummary() {
+    const container = document.getElementById("summary-items");
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    if (!cart.length) {
+        container.innerHTML = '<p class="summary-empty">Your cart is empty.</p>';
+        document.getElementById("summary-subtotal").textContent = "£0.00";
+        document.getElementById("summary-total").textContent = "£0.00";
+        document.getElementById("submit-btn").disabled = true;
+        return;
+    }
+
+    let subtotal = 0;
+    container.innerHTML = cart.map(item => {
+        const lineTotal = item.price * item.quantity;
+        subtotal += lineTotal;
+        return `
+            <div class="summary-item">
+                <img class="summary-item-img"
+                     src="${item.image || 'images/placeholder.png'}"
+                     alt="${item.name}">
+                <div class="summary-item-info">
+                    <div class="summary-item-name">${item.name}</div>
+                    <div class="summary-item-qty">Qty: ${item.quantity}</div>
+                </div>
+                <span class="summary-item-price">£${lineTotal.toFixed(2)}</span>
+            </div>`;
+    }).join("");
+
+    document.getElementById("summary-subtotal").textContent = "£" + subtotal.toFixed(2);
+    document.getElementById("summary-total").textContent = "£" + subtotal.toFixed(2);
+}
+
+// ===============================
+// INPUT FORMATTING
+// ===============================
+function setupFormatting() {
+    const cardInput = document.getElementById("card-number");
+    const expiryInput = document.getElementById("expiry");
+    const cvcInput = document.getElementById("cvc");
+
+    // Card number: spaces every 4 digits + card type detection
+    cardInput.addEventListener("input", function () {
+        let v = this.value.replace(/\D/g, "").substring(0, 16);
+        this.value = v.replace(/(.{4})/g, "$1 ").trim();
+
+        const icon = document.getElementById("card-icon");
+        if (!icon) return;
+        if (/^4/.test(v)) icon.textContent = "💳 Visa";
+        else if (/^5[1-5]/.test(v)) icon.textContent = "💳 MC";
+        else if (/^3[47]/.test(v)) icon.textContent = "💳 Amex";
+        else icon.textContent = "💳";
+    });
+
+    // Expiry: auto-insert slash
+    expiryInput.addEventListener("input", function () {
+        let v = this.value.replace(/\D/g, "").substring(0, 4);
+        if (v.length >= 3) v = v.slice(0, 2) + "/" + v.slice(2);
+        this.value = v;
+    });
+
+    // CVC: digits only
+    cvcInput.addEventListener("input", function () {
+        this.value = this.value.replace(/\D/g, "").substring(0, 4);
+    });
+}
+
+// ===============================
+// INLINE FIELD VALIDATION HELPER
+// ===============================
+function showFieldError(input, errId, message) {
+    const errEl = document.getElementById(errId);
+    input.classList.remove("valid");
+    input.classList.add("invalid");
+    if (errEl) errEl.textContent = message;
+}
+
+function showFieldValid(input, errId) {
+    const errEl = document.getElementById(errId);
+    input.classList.remove("invalid");
+    input.classList.add("valid");
+    if (errEl) errEl.textContent = "";
+}
+
+function clearFieldState(input, errId) {
+    const errEl = document.getElementById(errId);
+    input.classList.remove("invalid", "valid");
+    if (errEl) errEl.textContent = "";
+}
+
+// ===============================
 // VALIDATE SHIPPING INPUTS
 // ===============================
-function validateUserInputs(){
+function validateUserInputs() {
     const full_name = document.getElementById("full-name");
     const address = document.getElementById("address");
     const city = document.getElementById("city");
     const zip = document.getElementById("zip");
-    const infolabel = document.getElementById("infolabel");
 
-    if (!full_name.value.trim() ||
-        !address.value.trim() ||
-        !city.value.trim() ||
-        !zip.value.trim()) {
+    let valid = true;
 
-        infolabel.hidden = false;
-        infolabel.textContent = "Please fill in all shipping fields";
-        return false;
+    if (!full_name.value.trim() || full_name.value.trim().length < 2) {
+        showFieldError(full_name, "err-name", "Enter your full name");
+        valid = false;
+    } else {
+        showFieldValid(full_name, "err-name");
     }
 
-    infolabel.hidden = true;
-    return true;
+    if (!address.value.trim() || address.value.trim().length < 5) {
+        showFieldError(address, "err-address", "Enter a valid address");
+        valid = false;
+    } else {
+        showFieldValid(address, "err-address");
+    }
+
+    if (!city.value.trim() || city.value.trim().length < 2) {
+        showFieldError(city, "err-city", "Enter a city");
+        valid = false;
+    } else {
+        showFieldValid(city, "err-city");
+    }
+
+    if (!/^[A-Za-z0-9\s\-]{3,10}$/.test(zip.value.trim())) {
+        showFieldError(zip, "err-zip", "Enter a valid post code");
+        valid = false;
+    } else {
+        showFieldValid(zip, "err-zip");
+    }
+
+    return valid;
 }
 
 // ===============================
 // VALIDATE PAYMENT INPUTS
 // ===============================
-function validatePaymentInputs(){
+function luhnCheck(num) {
+    if (!/^\d{13,19}$/.test(num)) return false;
+    let sum = 0, alt = false;
+    for (let i = num.length - 1; i >= 0; i--) {
+        let n = parseInt(num[i], 10);
+        if (alt) { n *= 2; if (n > 9) n -= 9; }
+        sum += n;
+        alt = !alt;
+    }
+    return sum % 10 === 0;
+}
+
+function validExpiry(v) {
+    const parts = v.split("/");
+    if (parts.length !== 2) return false;
+    const month = parseInt(parts[0], 10);
+    const year = parseInt("20" + parts[1], 10);
+    if (month < 1 || month > 12) return false;
+    const now = new Date();
+    const exp = new Date(year, month); // first day of next month
+    return exp > now;
+}
+
+function validatePaymentInputs() {
     const card = document.getElementById("card-number");
     const expiry = document.getElementById("expiry");
     const cvc = document.getElementById("cvc");
-    const infolabel2 = document.getElementById("infolabel2");
 
-    const expiryRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+    let valid = true;
 
-    if (card.value.trim().length !== 16){
-        infolabel2.textContent = "Enter a valid 16-digit card number";
-        infolabel2.hidden = false;
-        return false;
+    // Card: strip spaces then Luhn check
+    const rawCard = card.value.replace(/\s/g, "");
+    if (!luhnCheck(rawCard)) {
+        showFieldError(card, "err-card", "Enter a valid card number");
+        valid = false;
+    } else {
+        showFieldValid(card, "err-card");
     }
 
-    if (!expiryRegex.test(expiry.value.trim())){
-        infolabel2.textContent = "Use MM/YY format";
-        infolabel2.hidden = false;
-        return false;
+    if (!validExpiry(expiry.value.trim())) {
+        showFieldError(expiry, "err-expiry", "Enter a valid expiry (MM/YY)");
+        valid = false;
+    } else {
+        showFieldValid(expiry, "err-expiry");
     }
 
-    if (cvc.value.trim().length < 3 || cvc.value.trim().length > 4){
-        infolabel2.textContent = "Invalid CVC";
-        infolabel2.hidden = false;
-        return false;
+    if (!/^\d{3,4}$/.test(cvc.value.trim())) {
+        showFieldError(cvc, "err-cvc", "Enter a 3 or 4 digit CVC");
+        valid = false;
+    } else {
+        showFieldValid(cvc, "err-cvc");
     }
 
-    infolabel2.hidden = true;
-    return true;
+    return valid;
 }
 
 // ===============================
 // CHECK STOCK (FRONTEND SAFETY)
 // ===============================
-function validateStock(cart, products){
-    for (let item of cart){
+function validateStock(cart, products) {
+    for (let item of cart) {
         const product = products.find(p => p.id == item.id);
 
-        if (!product || product.stock < item.quantity){
+        if (!product || product.stock < item.quantity) {
             alert(`Insufficient stock for ${item.name}`);
             return false;
         }
@@ -71,25 +208,80 @@ function validateStock(cart, products){
 }
 
 // ===============================
+// REAL-TIME BLUR VALIDATION
+// ===============================
+function setupBlurValidation() {
+    const fieldMap = [
+        { id: "full-name", errId: "err-name",    test: v => v.trim().length >= 2,                      msg: "Enter your full name" },
+        { id: "address",   errId: "err-address",  test: v => v.trim().length >= 5,                      msg: "Enter a valid address" },
+        { id: "city",      errId: "err-city",     test: v => v.trim().length >= 2,                      msg: "Enter a city" },
+        { id: "zip",       errId: "err-zip",      test: v => /^[A-Za-z0-9\s\-]{3,10}$/.test(v.trim()), msg: "Enter a valid post code" },
+        { id: "card-number", errId: "err-card",   test: v => luhnCheck(v.replace(/\s/g, "")),           msg: "Enter a valid card number" },
+        { id: "expiry",   errId: "err-expiry",    test: v => validExpiry(v),                            msg: "Enter a valid expiry (MM/YY)" },
+        { id: "cvc",      errId: "err-cvc",       test: v => /^\d{3,4}$/.test(v),                       msg: "Enter a 3 or 4 digit CVC" },
+    ];
+
+    fieldMap.forEach(({ id, errId, test, msg }) => {
+        const input = document.getElementById(id);
+        if (!input) return;
+
+        // Show error on blur if invalid
+        input.addEventListener("blur", () => {
+            if (input.value.length === 0) return; // don't nag empty untouched fields
+            if (!test(input.value)) showFieldError(input, errId, msg);
+            else showFieldValid(input, errId);
+        });
+
+        // Clear error while typing once it passes
+        input.addEventListener("input", () => {
+            if (input.classList.contains("invalid") && test(input.value)) {
+                showFieldValid(input, errId);
+            }
+        });
+    });
+}
+
+// ===============================
+// LOADING STATE HELPERS
+// ===============================
+function setLoading(on) {
+    const btn = document.getElementById("submit-btn");
+    const btnText = btn.querySelector(".btn-text");
+    const btnSpin = btn.querySelector(".btn-spinner");
+
+    btn.disabled = on;
+    btnText.textContent = on ? "Processing…" : "Place Order";
+    btnSpin.hidden = !on;
+}
+
+// ===============================
 // MAIN SUBMISSION
 // ===============================
-function listen_Submission(){
+function listen_Submission() {
     const form = document.getElementById("checkout-form");
 
-    form.addEventListener("submit", function(e){
+    form.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        if (!validateUserInputs() || !validatePaymentInputs()) return;
+        if (!validateUserInputs() || !validatePaymentInputs()) {
+            // Focus first invalid field
+            const first = form.querySelector(".invalid");
+            if (first) first.focus();
+            return;
+        }
 
         const cart = JSON.parse(localStorage.getItem("cart") || "[]");
         const products = JSON.parse(localStorage.getItem("productsData") || "[]");
 
-        if (cart.length === 0){
+        if (cart.length === 0) {
             alert("Your cart is empty.");
             return;
         }
 
         if (!validateStock(cart, products)) return;
+
+        // Show loading
+        setLoading(true);
 
         // SEND TO PHP
         fetch("checkout.php", {
@@ -105,35 +297,49 @@ function listen_Submission(){
                 zip: document.getElementById("zip").value
             })
         })
-        .then(res => res.text())
-        .then(data => {
+            .then(res => res.text())
+            .then(data => {
 
-            if (data === "success") {
+                if (data.trim() === "success") {
 
-                alert("Order placed successfully!");
+                    // Clear cart
+                    localStorage.removeItem("cart");
 
-                // clear cart
-                localStorage.removeItem("cart");
+                    // Update cart count globally
+                    if (window.updateCartCount) {
+                        window.updateCartCount();
+                    }
 
-                // update cart count globally
-                if (window.updateCartCount) {
-                    window.updateCartCount();
+                    // Show success confirmation inline
+                    document.querySelector(".checkout-wrapper").innerHTML = `
+                    <div style="text-align:center; padding:60px 20px;">
+                        <div style="font-size:3rem; margin-bottom:16px;">✅</div>
+                        <h1 style="font-size:1.6rem; margin-bottom:8px;">Order Placed!</h1>
+                        <p style="color:#6c757d;">Thank you for your purchase. You'll receive a confirmation shortly.</p>
+                        <a href="order.php" style="display:inline-block; margin-top:20px; padding:12px 24px;
+                           background:#0d6bcb; color:#fff; border-radius:10px; text-decoration:none; font-weight:700;">
+                           View My Orders</a>
+                    </div>`;
+
+                } else {
+                    setLoading(false);
+                    alert("Order failed. Try again.");
                 }
-
-                window.location.href = "order.php";
-
-            } else {
-                alert("Order failed. Try again.");
-            }
-        })
-        .catch(err => {
-            console.error(err);
-            alert("Something went wrong.");
-        });
+            })
+            .catch(err => {
+                console.error(err);
+                setLoading(false);
+                alert("Something went wrong.");
+            });
     });
 }
 
 // ===============================
 // INIT
 // ===============================
-document.addEventListener("DOMContentLoaded", listen_Submission);
+document.addEventListener("DOMContentLoaded", function () {
+    renderOrderSummary();
+    setupFormatting();
+    setupBlurValidation();
+    listen_Submission();
+});

@@ -77,53 +77,128 @@ if ($data) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
 
     <link rel="stylesheet" href="Styles/style.css">
+    <link rel="stylesheet" href="Styles/checkout.css">
     <script src="javascript/checkout.js" defer></script>
 </head>
 
 <body>
 
-<div class="checkout-container">
+<div class="checkout-wrapper">
 
-    <h1>Checkout</h1>
+    <h1 class="checkout-title">Checkout</h1>
 
-    <form id="checkout-form">
+    <div class="checkout-layout">
 
-        <!-- SHIPPING -->
-        <section>
-            <h2>Shipping Details</h2>
+        <!-- ====== LEFT: FORM ====== -->
+        <div class="checkout-form-col">
+            <form id="checkout-form" novalidate>
 
-            <input id="full-name" type="text" placeholder="Full Name">
-            <input id="address" type="text" placeholder="Address">
+                <!-- SHIPPING -->
+                <section class="checkout-section">
+                    <div class="section-header">
+                        <span class="section-step">1</span>
+                        <h2>Shipping Details</h2>
+                    </div>
 
-            <div class="checkout-row">
-                <input id="city" type="text" placeholder="City">
-                <input id="zip" type="text" placeholder="Post Code">
-            </div>
+                    <div class="field">
+                        <label for="full-name">Full Name</label>
+                        <input id="full-name" type="text" placeholder="John Smith" autocomplete="name">
+                        <span class="field-error" id="err-name"></span>
+                    </div>
 
-            <label id="infolabel" hidden></label>
-        </section>
+                    <div class="field">
+                        <label for="address">Address</label>
+                        <input id="address" type="text" placeholder="123 High Street" autocomplete="street-address">
+                        <span class="field-error" id="err-address"></span>
+                    </div>
 
-        <!-- PAYMENT -->
-        <section>
-            <h2>Payment</h2>
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="city">City</label>
+                            <input id="city" type="text" placeholder="London" autocomplete="address-level2">
+                            <span class="field-error" id="err-city"></span>
+                        </div>
+                        <div class="field">
+                            <label for="zip">Post Code</label>
+                            <input id="zip" type="text" placeholder="SW1A 1AA" autocomplete="postal-code">
+                            <span class="field-error" id="err-zip"></span>
+                        </div>
+                    </div>
+                </section>
 
-            <input id="card-number" type="text" placeholder="Card Number">
+                <!-- PAYMENT -->
+                <section class="checkout-section">
+                    <div class="section-header">
+                        <span class="section-step">2</span>
+                        <h2>Payment</h2>
+                    </div>
 
-            <div class="checkout-row">
-                <input id="expiry" type="text" placeholder="MM/YY">
-                <input id="cvc" type="text" placeholder="CVC">
-            </div>
+                    <div class="field">
+                        <label for="card-number">Card Number</label>
+                        <div class="input-icon-wrap">
+                            <input id="card-number" type="text" placeholder="1234 5678 9012 3456"
+                                   inputmode="numeric" maxlength="19" autocomplete="cc-number">
+                            <span class="card-icon" id="card-icon">💳</span>
+                        </div>
+                        <span class="field-error" id="err-card"></span>
+                    </div>
 
-            <label id="infolabel2" hidden></label>
-        </section>
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="expiry">Expiry</label>
+                            <input id="expiry" type="text" placeholder="MM/YY"
+                                   inputmode="numeric" maxlength="5" autocomplete="cc-exp">
+                            <span class="field-error" id="err-expiry"></span>
+                        </div>
+                        <div class="field">
+                            <label for="cvc">CVC</label>
+                            <input id="cvc" type="text" placeholder="123"
+                                   inputmode="numeric" maxlength="4" autocomplete="cc-csc">
+                            <span class="field-error" id="err-cvc"></span>
+                        </div>
+                    </div>
+                </section>
 
-        <button type="submit">Place Order</button>
+                <button type="submit" id="submit-btn">
+                    <span class="btn-text">Place Order</span>
+                    <span class="btn-spinner" hidden></span>
+                </button>
 
-    </form>
+            </form>
+        </div>
 
+        <!-- ====== RIGHT: ORDER SUMMARY ====== -->
+        <aside class="checkout-summary-col">
+            <section class="checkout-section summary-section">
+                <h2>Order Summary</h2>
+
+                <div id="summary-items">
+                    <!-- JS fills this -->
+                </div>
+
+                <div class="summary-divider"></div>
+
+                <div class="summary-line">
+                    <span>Subtotal</span>
+                    <span id="summary-subtotal">£0.00</span>
+                </div>
+                <div class="summary-line">
+                    <span>Shipping</span>
+                    <span id="summary-shipping">Free</span>
+                </div>
+                <div class="summary-divider"></div>
+                <div class="summary-line summary-total">
+                    <span>Total</span>
+                    <span id="summary-total">£0.00</span>
+                </div>
+            </section>
+        </aside>
+
+    </div>
 </div>
 
 </body>
