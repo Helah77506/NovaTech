@@ -1,4 +1,4 @@
-alert("NEW CHATBOT JS FILE LOADED");
+
 const chatToggle = document.getElementById("chatToggle");
 const chatbot = document.getElementById("chatbot");
 const closeChat = document.getElementById("closeChat");
@@ -256,7 +256,7 @@ function getBotResponse(input) {
         );
 
         if (matchedProduct) {
-            return `${matchedProduct.name} costs £${matchedProduct.price}. ${matchedProduct.description}`;
+            return `${matchedProduct.name} costs ï¿½${matchedProduct.price}. ${matchedProduct.description}`;
         }
 
         const matchedCategory = products.filter(product =>
@@ -281,7 +281,7 @@ function getBotResponse(input) {
 
             if (matchedProduct && qty > 0) {
                 const total = matchedProduct.price * qty;
-                return `${qty} x ${matchedProduct.name} would cost £${total.toLocaleString()}.`;
+                return `${qty} x ${matchedProduct.name} would cost ï¿½${total.toLocaleString()}.`;
             }
         }
     }
