@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -187,6 +186,8 @@ function animate(){
 renderSlides();
 setInterval(animate,INTERVAL);
 </script>
+<script src="product.js?v=2"></script>
+<script src="Chatbot.js?v=3"></script>
 <script src="javascript/cartCount.js"></script>
 </body>
 </html>
