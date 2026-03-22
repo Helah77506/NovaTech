@@ -68,9 +68,11 @@ if ($data) {
         }
 
         $conn->commit();
+        echo "success";
 
     } catch (Exception $e) {
         $conn->rollback();
+        echo "error";
     }
 
     exit;
@@ -93,7 +95,7 @@ if ($data) {
 
 <div class="checkout-wrapper">
 
-    <a href="index.php" class="back-home-btn">
+    <a href="homepage.php" class="back-home-btn">
         <span class="back-arrow-circle"><img src="Assets/Home/arrow.png" alt="Back" class="back-arrow-icon"></span>
         Back to Home
     </a>
