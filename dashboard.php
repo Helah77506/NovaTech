@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | NovaTech</title>
-    <link rel="stylesheet" href="Styles/dashboard.css">
+    <link rel="stylesheet" href="Styles/Home.css">
+<link rel="stylesheet" href="Styles/dashboard.css">
+    
 </head>
 
 <body>
@@ -14,17 +16,11 @@
     <?php require_once __DIR__ . '/topbar.php';?>
 </header>
 
+
+
 <div class="header2">
     <nav class="nav2">
-          <a href="productpage.php">Shop All</a>
-        <a href="productpage.php">Computers</a>
-        <a href="productpage.php">Projectors</a>
-        <a href="productpage.php">Smart Boards</a>
-        <a href="productpage.php">Classroom Audio</a>
-        <a href="productpage.php">Wireless Presentation Clickers</a>
-        <a href="productpage.php">Chromebooks</a>
-        <a href="productpage.php">Tablets</a>
-        <a href="productpage.php">Printers and Scanners</a>
+        
     </nav>
 </div>
 
