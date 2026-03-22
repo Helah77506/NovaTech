@@ -6,6 +6,7 @@
     <title>NovaTech – Modern</title>
 
     <link rel="stylesheet" href="Styles/Home.css">
+    <link rel="stylesheet" href="Chatbot.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -148,6 +149,27 @@
         <img src="Assets/Home/applepay.svg">
     </div>
 </section>
+
+<div class="chat-toggle" id="chatToggle">Chat</div>
+
+<div class="chatbot-container" id="chatbot">
+   <div class="chat-header">
+       <h3>Shop Assistant</h3>
+       <span id="closeChat">&times;</span>
+   </div>
+
+   <div class="chat-body" id="chatBody">
+       <div class="bot-message message">
+           Hi, welcome to our store. How can I help you today?
+       </div>
+   </div>
+
+   <div class="chat-footer">
+       <input type="text" id="userInput" placeholder="Type your message...">
+       <button id="sendBtn">Send</button>
+   </div>
+</div>
+
 
 <script>
 const slider = document.getElementById("slider");
