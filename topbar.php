@@ -11,7 +11,8 @@ if (session_status() === PHP_SESSION_NONE) {
     <a href="ContactUs.php">Contact</a>
     <a href="aboutpage.php">About</a>       
     <a href="productpage.php">Products</a>
-    <a href="customer_returns.php" class="login">Returns</a>
+    
+    <a href="#" class="login">Account Details</a>
     <a href="cart.php" style="position: relative;">
         🛒Cart
         <span id="cartCount" style="
