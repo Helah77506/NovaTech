@@ -62,11 +62,9 @@ if ($data) {
         }
 
         $conn->commit();
-        echo "success";
 
     } catch (Exception $e) {
         $conn->rollback();
-        echo "error";
     }
 
     exit;
@@ -89,7 +87,39 @@ if ($data) {
 
 <div class="checkout-wrapper">
 
+    <a href="index.php" class="back-home-btn">
+        <span class="back-arrow-circle"><img src="Assets/Home/arrow.png" alt="Back" class="back-arrow-icon"></span>
+        Back to Home
+    </a>
+
+    <!-- SECURE BADGE -->
+    <div class="secure-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        Secure Checkout
+    </div>
+
     <h1 class="checkout-title">Checkout</h1>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-bar">
+        <div class="progress-step active" id="step-shipping">
+            <div class="progress-circle">1</div>
+            <span>Shipping</span>
+        </div>
+        <div class="progress-line" id="line-1"></div>
+        <div class="progress-step" id="step-payment">
+            <div class="progress-circle">2</div>
+            <span>Payment</span>
+        </div>
+        <div class="progress-line" id="line-2"></div>
+        <div class="progress-step" id="step-confirm">
+            <div class="progress-circle">3</div>
+            <span>Confirm</span>
+        </div>
+    </div>
 
     <div class="checkout-layout">
 
@@ -167,6 +197,10 @@ if ($data) {
                     <span class="btn-text">Place Order</span>
                     <span class="btn-spinner" hidden></span>
                 </button>
+
+                <div class="payment-methods">
+                   
+                </div>
 
             </form>
         </div>
