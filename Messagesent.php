@@ -40,10 +40,10 @@
 <header class="header">
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
     <nav class="nav">
-        <a href="Home.php">Home</a>
+        <a href="Homepage.php">Home</a>
         <a href="ContactUs.php" class="active">Contact</a>
         <a href="aboutpage.php">About Us</a>
-        <a href="product.php">Products</a>
+        <a href="productpage.php">Products</a>
 
         <div class="nav-icons">
             <a href="Login.php">Log in</a>
@@ -66,7 +66,7 @@
         </p>
 
         <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-            <a href="Home.php">
+            <a href="Homepage.php">
                 <button style="width: 250px; padding: 14px 40px; background-color: #0d6bcb; color: white; border: none; border-radius: 12px; font-weight: 600; cursor: pointer;">
                     Return to Home
                 </button>

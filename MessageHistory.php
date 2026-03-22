@@ -60,10 +60,10 @@ $result = $conn->query($sql);
 <header class="header">
     <img src="Assets/Home/Logo.png" alt="logo" class="logo" />
     <nav class="nav">
-        <a href="Home.php">Home</a>
+        <a href="Homepage.php">Home</a>
         <a href="ContactUs.php">Contact</a>
         <a href="aboutpage.php">About Us</a>
-        <a href="product.php">Products</a>
+        <a href="productpage.php">Products</a>
 
         <div class="nav-icons">
             <a href="Login.php">Log in</a>
@@ -119,9 +119,9 @@ $result = $conn->query($sql);
 
     <div class="col">
         <h4>Shop</h4>
-        <a href="product.php">Shop All</a>
-        <a href="product.php">Computers</a>
-        <a href="product.php">Projectors</a>
+        <a href="productpage.php">Shop All</a>
+        <a href="productpage.php">Computers</a>
+        <a href="productpage.php">Projectors</a>
     </div>
 
     <div class="col">
