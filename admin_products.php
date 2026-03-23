@@ -1,5 +1,6 @@
 <?php
 require 'config.php';
+require 'AuthenticationSec/adminlogincheck.php';
 
 // Fetch Products
 $products = $conn->query("SELECT * FROM product");

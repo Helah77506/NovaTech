@@ -3,10 +3,7 @@ session_start();
 require 'Config.php';
 
 // redirect if not logged in
-if (!isset($_SESSION['user_id'])) {
-    header('Location: Loginpage.php');
-    exit();
-}
+require 'AuthenticationSec/loggedincheck.php';
 
 $user_id = $_SESSION['user_id'];
 $success = '';

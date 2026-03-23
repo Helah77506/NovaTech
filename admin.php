@@ -1,6 +1,6 @@
 <?php
 require 'config.php';
-//require 'AuthenticationSec/adminlogincheck.php';
+require 'AuthenticationSec/adminlogincheck.php';
 
 /* =============================
    ANALYTICS

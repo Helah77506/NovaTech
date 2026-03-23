@@ -2,8 +2,7 @@
 session_start();
 require 'config.php';
 
-// if ($_SESSION['role'] !== 'admin') exit("Unauthorized");
-
+require 'AuthenticationSec/adminlogincheck.php';
 $order_id = $_POST['order_id'];
 $status = $_POST['status'];
 

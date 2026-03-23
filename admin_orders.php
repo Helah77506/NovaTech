@@ -1,5 +1,6 @@
 <?php
 require 'config.php';
+require 'AuthenticationSec/adminlogincheck.php';
 
 $orders = $conn->query("
     SELECT orders.ID, users.Full_Name, orders.Total, orders.Status

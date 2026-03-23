@@ -48,7 +48,7 @@ if ($result->num_rows === 1) {
     // verify password
     if (password_verify($password, $user['Password_Hash'])) {
 
-        // set session variables
+        // set session variables   
         $_SESSION['user_id']   = $user['ID'];
         $_SESSION['id']        = $user['ID'];
         $_SESSION['full_name'] = $user['Full_Name'];

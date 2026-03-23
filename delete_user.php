@@ -1,5 +1,6 @@
 <?php
 require 'config.php';
+require 'AuthenticationSec/adminlogincheck.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

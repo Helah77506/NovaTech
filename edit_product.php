@@ -1,5 +1,6 @@
 <?php
 require 'config.php';
+require 'AuthenticationSec/adminlogincheck.php';
 
 // Get product ID
 if(!isset($_GET['id'])){

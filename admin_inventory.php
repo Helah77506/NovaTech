@@ -1,6 +1,6 @@
 <?php
 require 'config.php';
-
+require 'AuthenticationSec/adminlogincheck.php';
 
 // HANDLE STOCK UPDATE (SAME PAGE)
 // ===============================

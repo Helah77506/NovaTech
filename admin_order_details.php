@@ -1,5 +1,6 @@
 <?php
 require 'config.php';
+require 'AuthenticationSec/adminlogincheck.php';
 session_start();
 
 // SECURITY

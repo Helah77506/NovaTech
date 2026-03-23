@@ -1,5 +1,6 @@
 <?php
 require 'config.php';
+require 'AuthenticationSec/adminlogincheck.php';
 
 // Check if ID exists
 if(!isset($_GET['id'])){

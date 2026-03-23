@@ -1,6 +1,9 @@
 <?php
 require 'config.php';
-session_start(); 
+require 'AuthenticationSec/loggedincheck.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+} 
 
 // ===============================
 // HANDLE ORDER SUBMISSION (API)

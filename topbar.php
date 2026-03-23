@@ -2,10 +2,8 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
 ?>
-
-
-
 <nav class="nav">
     <a href="Homepage.php">Home</a>      
     <a href="ContactUs.php">Contact</a>
@@ -35,9 +33,10 @@ if (session_status() === PHP_SESSION_NONE) {
         <?php endif; ?>
 
         <img src="Assets/Home/user.png" alt="User" />
+        <?php if (isset($_SESSION['role']) && strtolower(trim($_SESSION['role'])) !== 'customer'): ?>
+            <a href="switch_to_admin.php">Back to Admin</a>
+        <?php endif; ?>
     </div>
 
-    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'customer'): ?>
-    <a href="switch_to_admin.php">Back to Admin</a>
-    <?php endif; ?>
+    
 </nav>

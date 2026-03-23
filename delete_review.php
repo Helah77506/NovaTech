@@ -2,7 +2,7 @@
 session_start();
 require 'config.php';
 
-if ($_SESSION['role'] !== 'admin') exit("Unauthorized");
+require 'AuthenticationSec/adminlogincheck.php';
 
 $review_id = $_POST['review_id'];
 
